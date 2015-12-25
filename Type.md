@@ -41,7 +41,11 @@ The reference types contains:
 
 ##### Examples
 
-
+```cs
+int a = 12345;
+long b = x; //implicit conversion
+short c = (short)x; //explicit conversion
+```
 
 ####Alias
 
