@@ -11,6 +11,7 @@
 - struct cannot have virtual/protected members (inheritance is forbidden)
 - struct cannot have fields initializers
 - struct cannot have finalizer
+- struct cannot be null (it's a value type)
 - when you define a struct constructor, you have to explicitly assign every field
 
 The simple value type (int, double, bool..) provided by the C# are in fact the structure.
