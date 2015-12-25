@@ -93,5 +93,20 @@ Console.WriteLine(person.LastName); //string.Empty
 
 ```
 
+#####Nullable structure
+You can set a structure as null by using Nullable<T>.
 
+```cs
+public struct Person
+{
+    public int Age;
+    public string LastName;
+    public string FirstName;
+}
+...
+Nullable<Person> person;
+Console.WriteLine(person.HasValue);      //false
+
+
+```
 
