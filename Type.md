@@ -29,6 +29,20 @@ The reference types contains:
 
 
 
+#### Conversion
+
+##### Implicit conversion
+- always succeed
+- no information lost in the conversion
+
+##### Explicit conversion
+- the compiler cannot guarantee the explicit conversion will always succeed
+- information may be lost during the conversion
+
+##### Examples
+
+
+
 ####Alias
 
 
