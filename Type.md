@@ -1,3 +1,34 @@
+#### Some defintions
+- A __type__ defines the blueprint for a value
+- __predefined types__ are the types specially supported by the compiler
+- __Custom type__ is a complex type built from _primitive type_
+
+#### Type categories
+
+There are 4 categories:
+- value type
+- reference type
+- generic type parameter
+- pointer type
+
+##### Value type
+
+The value type contains:
+- the most built-in type (all numeric type, char, bool, DateTime),
+- struct, 
+- enum.
+
+##### Reference type
+
+The reference types contains:
+- class
+- array
+- delegate
+- interface
+- string
+
+
+
 ####Alias
 
 
