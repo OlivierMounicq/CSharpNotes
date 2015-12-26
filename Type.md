@@ -1,13 +1,9 @@
-11. Liste dont la numérotation démarre au numéro spécifié
-
-#.  Élément suivant, etc...
-
 ####1. Some defintions
 - A __type__ defines the blueprint for a value
 - __predefined types__ are the types specially supported by the compiler
 - __Custom type__ is a complex type built from _primitive type_
 
-####. Type categories
+####2 Type categories
 
 There are 4 categories:
 - value type
@@ -15,14 +11,14 @@ There are 4 categories:
 - generic type parameter
 - pointer type
 
-#####. Value type
+#####3 Value type
 
 The value type contains:
 - the most built-in type (all numeric type, char, bool, DateTime),
 - struct, 
 - enum.
 
-#####. Reference type
+#####4 Reference type
 
 The reference types contains:
 - class
@@ -31,7 +27,7 @@ The reference types contains:
 - interface
 - string
 
-#### Default values
+####5 Default values
 
 |Type | Default value |
 |:----|:--------------|
@@ -40,7 +36,7 @@ The reference types contains:
 | char type | '\0' |
 | bool type | false |
 
-####. Conversion
+####6 Conversion
 
 ##### Implicit conversion
 - always succeed
@@ -58,7 +54,7 @@ long b = x; //implicit conversion
 short c = (short)x; //explicit conversion
 ```
 
-####. Alias
+####7 Alias
 
 
 | Alias   | Class            |
