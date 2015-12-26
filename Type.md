@@ -1,3 +1,6 @@
+11. Liste dont la numérotation démarre au numéro spécifié
+#.  Élément suivant, etc...
+
 ####1. Some defintions
 - A __type__ defines the blueprint for a value
 - __predefined types__ are the types specially supported by the compiler
