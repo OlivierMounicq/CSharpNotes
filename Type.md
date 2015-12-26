@@ -29,10 +29,12 @@ The reference types contains:
 
 #### Default values
 
-- All reference type : null
-- All numeric and enum type : 0
-- char type : '\0'
-- bool type : false
+|Type | Default value |
+|:----|:--------------|
+| All reference type | null |
+| All numeric and enum type | 0 |
+| char type | '\0' |
+| bool type | false |
 
 #### Conversion
 
