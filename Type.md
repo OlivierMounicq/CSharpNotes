@@ -11,14 +11,14 @@ There are 4 categories:
 - generic type parameter
 - pointer type
 
-#####3 Value type
+#####2.1 Value type
 
 The value type contains:
 - the most built-in type (all numeric type, char, bool, DateTime),
 - struct, 
 - enum.
 
-#####4 Reference type
+#####2.2 Reference type
 
 The reference types contains:
 - class
@@ -27,7 +27,7 @@ The reference types contains:
 - interface
 - string
 
-####5 Default values
+####3 Default values
 
 |Type | Default value |
 |:----|:--------------|
@@ -36,17 +36,17 @@ The reference types contains:
 | char type | '\0' |
 | bool type | false |
 
-####6 Conversion
+####4 Conversion
 
-##### Implicit conversion
+#####4.1 Implicit conversion
 - always succeed
 - no information lost in the conversion
 
-##### Explicit conversion
+#####4.2 Explicit conversion
 - the compiler cannot guarantee the explicit conversion will always succeed
 - information may be lost during the conversion
 
-##### Examples
+#####4.3 Examples
 
 ```cs
 int a = 12345;
@@ -54,7 +54,7 @@ long b = x; //implicit conversion
 short c = (short)x; //explicit conversion
 ```
 
-####7 Alias
+####5 Alias
 
 
 | Alias   | Class            |
