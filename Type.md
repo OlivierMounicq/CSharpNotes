@@ -1,4 +1,4 @@
-####. Some defintions
+####1 Some defintions
 - A __type__ defines the blueprint for a value
 - __predefined types__ are the types specially supported by the compiler
 - __Custom type__ is a complex type built from _primitive type_
