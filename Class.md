@@ -20,7 +20,7 @@ For instance:
 public string FirstName = "Olivier";
 ```
 
-####1.3 Inheritance modifier __new__
+####1.3 Inheritance modifier _new_
 
 
 ```cs
