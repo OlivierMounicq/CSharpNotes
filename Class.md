@@ -6,15 +6,21 @@
 |Type | Modifier name |
 |:----|:--------------|
 | static | static |
-| Acess modifier | public |
-|                | internal |
-|                | private |
-|                | protected |
+| Acess modifier | public, internal, private, protected |
 | Instance modifier | new |
-| unsafe code modifier | readonly |
+| Read-only modifier | readonly |
 | Threading modifier | volatile |
 
+####1.2 Filed initialization
 
+Field initializers run __before__ contructor.
+
+For instance:
+```cs
+public string FirstName = "Olivier";
+```
+
+####1.3 Inheritance modifier __new__
 
 
 ```cs
