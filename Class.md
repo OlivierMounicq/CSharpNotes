@@ -61,10 +61,10 @@ Console.WriteLine(b.myStr); //B
 | private | The type or member can be accessed only by code in the same class or struct. |
 | protected | The type or member can be accessed only by code in the same class or struct, or in a class that is derived from that class.|
 | internal | The type or member can be accessed by any code in the same assembly, but not from another assembly.|
-| protected internal | .... |
+| protected internal | The type or member can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly.Access from another assembly must take place within a class declaration that derives from the class in which the protected internal element is declared, and it must take place through an instance of the derived class type |
 
-
-######2.1.1 Extern
+##### 2.3 Unmanaged code modifiers
+######2.3.1 Extern
 
 The extern modifier is used to declare a method that is implemented externally.A common use of the extern modifier is with the DllImport attribute when you are using Interop services to call into unmanaged code.In this case, the method must also be declared as static, as shown in the following example:
 
@@ -85,8 +85,9 @@ class ExternTest
 
 }
 ```
+#####2.4 Overriding / Hidding
 
-######2.1.1 new
+
 
 
 
