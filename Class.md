@@ -141,6 +141,20 @@ Console.WriteLine("Result 1 : {0}", res1); //Result 1 : 3
 Console.WriteLine("Result 2 : {0}", res2); //Result 2 : 15
 ```
 
+#####2.6 Constructor
+
+######2.6.1 Constructor modifiers
+
+| Modifiers | Keywords |
+|:----------|----------|
+| Access modifiers | public, internal, private, proctected |
+| Unmanaged code modifiers | unsafe extern|
+
+######2.6.2 Implicit parameterless constructor
+
+
+
+
 ####3. Access modifier by default
 
 |Type | Access modifier by default |
