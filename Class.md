@@ -106,9 +106,31 @@ The properties of an absract class are:
 
 If a method is declared as abstract, the class containing this method must be declared as abstract
 
+```cs
 
+public abstract class BaseClass
+{
+    private readonly string ClassName;
+    
+    public BaseClass(string className)
+    {
+        this.ClassName = className;
+    }
+    
+    public string GetClassName()
+    {
+        return ClassName;
+    }    
+}
+public class MyClass : BaseClass
+{
+    public MyClass():base("MyClass")
+    {}
+}
+var myClass = new MyClass();
+Console.WriteLine(myClass.GetClassName()); //MyClass
 
-
+```
 
 ####5 Overriding / Hidding
 #####5.1 
