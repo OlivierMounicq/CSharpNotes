@@ -97,7 +97,17 @@ class ExternTest
 | members of struct | private |
 
 
-####4. Abstract class 
+####4. Abstract class properties
+
+The properties of an absract class are:
+- an abstract class can have a constructor
+- an abstract class cannot be instanciate
+- an abstract may contains only non abstract method
+
+If a method is declared as abstract, the class containing this method must be declared as abstract
+
+
+
 
 
 ####5 Overriding / Hidding
