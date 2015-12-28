@@ -85,11 +85,6 @@ class ExternTest
 
 }
 ```
-#####2.4 Overriding / Hidding
-
-
-
-
 
 ####3. Access modifier by default
 
@@ -100,5 +95,13 @@ class ExternTest
 | non-nested types | internal |
 | members of class | private |
 | members of struct | private |
+
+
+####4. Abstract class 
+
+
+####5 Overriding / Hidding
+#####5.1 
+
 
 
