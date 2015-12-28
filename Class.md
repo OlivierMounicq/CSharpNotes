@@ -40,6 +40,27 @@ Console.WriteLine(b.myStr); //B
 
 ```
 
+#####1.4 Constants
+
+######1.4.1 Properties of the constants
+
+The properties of a constant are : 
+- A _constant_ is a static field whose value can never change. 
+- A constant is evaluated statically at compile time and the compiler literally substitutes its value whenever used.
+- A constant can be any of the built-in nulmeric types, bool, char, string or an enum type.
+- A constant is more restrictive than a _static readonly_ field.
+
+######1.4.2 Access modifiers
+
+| Access modifiers | Keywords |
+|:-----------------|:---------|
+| Access modifiers | public, internal, private, protected |
+| Inheritance modifiers | new |
+
+
+
+
+
 ####2.Methods
 
 #####2.1 Method modifiers
@@ -141,16 +162,16 @@ Console.WriteLine("Result 1 : {0}", res1); //Result 1 : 3
 Console.WriteLine("Result 2 : {0}", res2); //Result 2 : 15
 ```
 
-#####2.6 Constructor
+####3 Constructor
 
-######2.6.1 Constructor modifiers
+#####3.1 Constructor modifiers
 
 | Modifiers | Keywords |
 |:----------|----------|
 | Access modifiers | public, internal, private, proctected |
 | Unmanaged code modifiers | unsafe extern|
 
-######2.6.2 Implicit parameterless constructor
+#####3.2 Implicit parameterless constructor
 
 For classes, the compiler automatically generates a _parameterless public constructor_ if and only if you do not define any constructor.
 However, as soon as you define at least one constructor, the parameterless constructor is no longer automatically generated.
@@ -183,7 +204,7 @@ var a =  new A(); //OK
 var b= new B(); //Compile-time error
 ```
 
-####3. Access modifier by default
+####4. Access modifier by default
 
 |Type | Access modifier by default |
 |:----|:--------------|
