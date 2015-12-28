@@ -1,7 +1,7 @@
 
-###1.Fields
+####1.Fields
 
-####1.1 Field modifiers
+#####1.1 Field modifiers
 
 |Type | Modifier name |
 |:----|:--------------|
@@ -11,7 +11,7 @@
 | Read-only modifier | readonly |
 | Threading modifier | volatile |
 
-####1.2 Filed initialization
+#####1.2 Filed initialization
 
 Field initializers run __before__ contructor.
 
@@ -20,7 +20,7 @@ For instance:
 public string FirstName = "Olivier";
 ```
 
-####1.3 Inheritance modifier _new_
+#####1.3 Inheritance modifier _new_
 
 
 ```cs
