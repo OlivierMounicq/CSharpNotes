@@ -53,6 +53,17 @@ Console.WriteLine(b.myStr); //B
 | Unmanaged code modifiers | unsafe, extern |
 | Asynchronous code modifier | async | 
 
+#####2.2 Access modifiers
+
+|Access modifier | Purpose |
+|:----|:--------------|
+| public | The type or member can be accessed by any other code in the same assembly or another assembly that references it |
+| private | The type or member can be accessed only by code in the same class or struct. |
+| protected | The type or member can be accessed only by code in the same class or struct, or in a class that is derived from that class.|
+| internal | The type or member can be accessed by any code in the same assembly, but not from another assembly.|
+| protected internal | .... |
+
+
 ######2.1.1 Extern
 
 The extern modifier is used to declare a method that is implemented externally.A common use of the extern modifier is with the DllImport attribute when you are using Interop services to call into unmanaged code.In this case, the method must also be declared as static, as shown in the following example:
