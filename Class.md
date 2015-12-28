@@ -97,7 +97,9 @@ class ExternTest
 | members of struct | private |
 
 
-####4. Abstract class properties
+####4. Abstract class
+
+#####4.1 Properties
 
 The properties of an absract class are:
 - an abstract class can have a constructor
@@ -131,6 +133,17 @@ var myClass = new MyClass();
 Console.WriteLine(myClass.GetClassName()); //MyClass
 
 ```
+#####4.2 Abstract class vs interface
+
+Obvioulsy, defining an abstract class with abstract members has the same effect to defining an interface.
+But the purposes are differents:
+- an abstract is made to factorise the code
+- an interface is made to define a service contract
+- a class can inherit one or more interfaces, but only one abstract class.
+- the members of the interface are public with no implementation.
+- an abstract classes can have protected parts, static methods, etc.
+- Abstract classes can add more functionality without destroying the child classes that were using the old version. In an interface, creation of additional functions will have an effect on its child classes, due to the necessary implementation of interface methods to classes.
+
 
 ####5 Overriding / Hidding
 #####5.1 
