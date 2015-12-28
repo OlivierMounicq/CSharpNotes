@@ -195,6 +195,81 @@ Console.WriteLine(d.GetClassName()); //D
 
 -A __virtual function__, is basically saying look, here's the functionality that may or may not be good enough for the child class. So if it is good enough, use this method, if not, then override me, and provide your own functionality.
 
+#####5.2 Overriding vs Hidding
 
+######5.2.1 The keywords
+The overriding (on instance):
+- abstract /ovrerride
+- virtual/override
 
+The hidding:
+- new / virual
 
+######5.2.2 Difference between the overriding and the hidding
+
+The _overriding_ is: 
+- Used in polymorphism implementation 
+- Includes same method name and same params 
+- Used in method overriding 
+- It is also called runtime polymorphism
+- Causes late binding (at the runtime)
+
+The _hidding_ is:
+- It is also used in polymorphism concept
+- Includes the same method name and different params
+- Used in method overriding
+- It is compile-time polymorphism
+- Causes early binding (at the compile time)
+
+######5.2.3 Example
+
+__Overrding example__
+
+```cs
+public class OverridingA
+{
+    public virtual string GetClassName()
+    {
+        return "OverridingA";
+    }
+}
+public class OverridingB : OverridingA
+{
+    public override string GetClassName()
+    {
+        return "OverridingB";
+    }
+}
+OverridingA a = new OverridingA();
+OverridingB b = new OverridingB();
+OverridingA bAsA = new OverridingB();
+
+Console.WriteLine(a.GetClassName());    //A
+Console.WriteLine(b.GetClassName());    //B
+Console.WriteLine(bAsA.GetClassName()); //B
+```
+
+__Hidding example__
+
+```cs
+public class HiddingA
+{
+    public string GetClassName()
+    {
+        return "OverridingA";
+    }
+}
+public class HiddingB : HiddingA
+{
+    new public string GetClassName()
+    {
+        return "OverridingB";
+    }
+}
+HiddingA a = new HiddingA();
+HiddingB b = new HiddingB();
+HiddingA bAsA = new HiddingB();
+Console.WriteLine(a.GetClassName());    //A
+Console.WriteLine(b.GetClassName());    //B
+Console.WriteLine(bAsA.GetClassName()); //A
+```
