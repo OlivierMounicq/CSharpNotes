@@ -86,6 +86,31 @@ class ExternTest
 }
 ```
 
+##### 2.4 Method overloading
+
+In fact, the return type and the _params_ modifier are not part of a method's signature.
+
+```cs
+void MyMethod(int x)
+string MyMethod(int x) //Compile-time error
+
+void FirstMethod(int[] array)
+void FirstMethod(params int[] array) //Compile-time error
+
+```
+But the way used to pass the parameter (either pass-by-value or pass-by-reference) is also a part of the signature:
+
+```cs
+
+void MyMetod(int x){...}
+void MyMethod(ref int x){...} //OK
+void MyMethod(out int x){...} //Compile-time error
+```
+
+
+
+
+
 ####3. Access modifier by default
 
 |Type | Access modifier by default |
