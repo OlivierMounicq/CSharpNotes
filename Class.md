@@ -152,8 +152,36 @@ Console.WriteLine("Result 2 : {0}", res2); //Result 2 : 15
 
 ######2.6.2 Implicit parameterless constructor
 
+For classes, the compiler automatically generates a _parameterless public constructor_ if and only if you do not define any constructor.
+However, as soon as you define at least one constructor, the parameterless constructor is no longer automatically generated.
 
+```cs
+public class A
+{
+    public string GetClassName()
+    {
+        return "A";
+    }
+}
 
+public class B
+{
+    private string className;
+    
+    public B(string param)
+    {
+        this.className = param;
+    }
+    
+    public string GetClassName()
+    {
+        return "B";
+    }
+}
+
+var a =  new A(); //OK
+var b= new B(); //Compile-time error
+```
 
 ####3. Access modifier by default
 
