@@ -75,8 +75,18 @@ class ExternTest
 }
 ```
 
+######2.1.1 new
 
 
 
+####3. Access modifier by default
+
+|Type | Access modifier by default |
+|:----|:--------------|
+| members of an interface | public |
+| members of a structure | public |
+| non-nested types | internal |
+| members of class | private |
+| members of struct | private |
 
 
