@@ -244,9 +244,9 @@ OverridingA a = new OverridingA();
 OverridingB b = new OverridingB();
 OverridingA bAsA = new OverridingB();
 
-Console.WriteLine(a.GetClassName());    //A
-Console.WriteLine(b.GetClassName());    //B
-Console.WriteLine(bAsA.GetClassName()); //B
+Console.WriteLine(a.GetClassName());    //OverridingA
+Console.WriteLine(b.GetClassName());    //OverridingB
+Console.WriteLine(bAsA.GetClassName()); //OverridingB
 ```
 
 __Hidding example__
@@ -261,16 +261,16 @@ public class HiddingA
 }
 public class HiddingB : HiddingA
 {
-    new public string GetClassName()
+    new public int GetClassName()
     {
-        return "OverridingB";
+        return 1;
     }
 }
 HiddingA a = new HiddingA();
 HiddingB b = new HiddingB();
 HiddingA bAsA = new HiddingB();
 
-Console.WriteLine(a.GetClassName());    //A
-Console.WriteLine(b.GetClassName());    //B
-Console.WriteLine(bAsA.GetClassName()); //A
+Console.WriteLine(a.GetClassName());    //OverridingA
+Console.WriteLine(b.GetClassName());    //1
+Console.WriteLine(bAsA.GetClassName()); //OverridingA
 ```
