@@ -146,7 +146,55 @@ But the purposes are differents:
 
 
 ####5 Overriding / Hidding
-#####5.1 
+#####5.1 Virtual / Override
+
+######5.1.1 Defintion 
+
+The _virtual_ keyword is used to modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived class.
+
+######5.1.2 Example
+
+```cs
+public class A
+{
+    public virtual string GetClassName()
+    {
+        return "A";
+    }
+}
+public class B : A
+{
+}
+public class C : A
+{
+    public override string GetClassName()
+    {
+        return "C";
+    }
+}
+public class D : C
+{
+    public override string GetClassName()
+    {
+        return "D";
+    }
+}
+var a = new A();
+var b = new B();
+var c = new C();
+var d = new D();
+Console.WriteLine(a.GetClassName()); //A
+Console.WriteLine(b.GetClassName()); //A
+Console.WriteLine(c.GetClassName()); //C
+Console.WriteLine(d.GetClassName()); //D
+```
+
+######5.1.3 virtual vs abstract
+
+-An __abstract function__ has to have no functionality. You're basically saying, any child class MUST give their own version of this method, however it's too general to even try to implement in the parent class.
+
+-A __virtual function__, is basically saying look, here's the functionality that may or may not be good enough for the child class. So if it is good enough, use this method, if not, then override me, and provide your own functionality.
+
 
 
 
