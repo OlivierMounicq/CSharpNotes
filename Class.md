@@ -101,7 +101,6 @@ void FirstMethod(params int[] array) //Compile-time error
 But the way used to pass the parameter (either pass-by-value or pass-by-reference) is also a part of the signature:
 
 ```cs
-
 void MyMetod(int x){...}
 void MyMethod(ref int x){...} //OK
 void MyMethod(out int x){...} //Compile-time error
@@ -120,7 +119,27 @@ void MyMethod(out int x){...} //Compile-time error
 
 ######2.5.2 Examples
 
+```cs
+public class MyClass
+{
+    public static int Add(params int[] list)
+    {
+        int res = 0;
+        
+        foreach(int i in list)
+        {
+            res += i;
+        }
+        
+        return res;
+    }
+}
+var res1 = MyClass.Add(1,2);
+var res2 = MyClass.Add(1,2,3,4,5);
 
+Console.WriteLine("Result 1 : {0}", res1); //Result 1 : 3
+Console.WriteLine("Result 2 : {0}", res2); //Result 2 : 15
+```
 
 ####3. Access modifier by default
 
@@ -133,9 +152,11 @@ void MyMethod(out int x){...} //Compile-time error
 | members of struct | private |
 
 
-####4. Abstract class
 
-#####4.1 Properties
+
+####5. Abstract class
+
+#####5.1 Properties
 
 The properties of an absract class are:
 - an abstract class can have a constructor
@@ -169,7 +190,7 @@ var myClass = new MyClass();
 Console.WriteLine(myClass.GetClassName()); //MyClass
 
 ```
-#####4.2 Abstract class vs interface
+#####5.2 Abstract class vs interface
 
 Obvioulsy, defining an abstract class with abstract members has the same effect to defining an interface.
 But the purposes are differents:
@@ -181,14 +202,14 @@ But the purposes are differents:
 - Abstract classes can add more functionality without destroying the child classes that were using the old version. In an interface, creation of additional functions will have an effect on its child classes, due to the necessary implementation of interface methods to classes.
 
 
-####5 Overriding / Hidding
-#####5.1 Virtual / Override
+####6 Overriding / Hidding
+#####6.1 Virtual / Override
 
-######5.1.1 Defintion 
+######6.1.1 Defintion 
 
 The _virtual_ keyword is used to modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived class.
 
-######5.1.2 Example
+######6.1.2 Example
 
 ```cs
 public class A
@@ -225,15 +246,15 @@ Console.WriteLine(c.GetClassName()); //C
 Console.WriteLine(d.GetClassName()); //D
 ```
 
-######5.1.3 virtual vs abstract
+######6.1.3 virtual vs abstract
 
 -An __abstract function__ has to have no functionality. You're basically saying, any child class MUST give their own version of this method, however it's too general to even try to implement in the parent class.
 
 -A __virtual function__, is basically saying look, here's the functionality that may or may not be good enough for the child class. So if it is good enough, use this method, if not, then override me, and provide your own functionality.
 
-#####5.2 Overriding vs Hidding
+#####6.2 Overriding vs Hidding
 
-######5.2.1 The keywords
+######6.2.1 The keywords
 The overriding (on instance):
 - abstract /ovrerride
 - virtual/override
@@ -241,7 +262,7 @@ The overriding (on instance):
 The hidding:
 - new / virual
 
-######5.2.2 Difference between the overriding and the hidding
+######6.2.2 Difference between the overriding and the hidding
 
 The _overriding_ is: 
 - Used in polymorphism implementation 
@@ -257,7 +278,7 @@ The _hidding_ is:
 - It is compile-time polymorphism
 - Causes early binding (at the compile time)
 
-######5.2.3 Example
+######6.2.3 Example
 
 __Overrding example__
 
