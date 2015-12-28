@@ -269,6 +269,7 @@ public class HiddingB : HiddingA
 HiddingA a = new HiddingA();
 HiddingB b = new HiddingB();
 HiddingA bAsA = new HiddingB();
+
 Console.WriteLine(a.GetClassName());    //A
 Console.WriteLine(b.GetClassName());    //B
 Console.WriteLine(bAsA.GetClassName()); //A
