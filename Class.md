@@ -107,7 +107,18 @@ void MyMethod(ref int x){...} //OK
 void MyMethod(out int x){...} //Compile-time error
 ```
 
+##### 2.5 Method parameters
 
+###### 2.5.1 Keywords
+
+| Keyword | Goal |
+|:--------|:-----|
+| ref     | The ref keyword causes an argument to be passed by reference, not by value|
+| out     | The out keyword causes arguments to be passed by reference. This is like the ref keyword, except that ref requires that the variable be initialized before it is passed.| 
+| params  | A method parameter can take a variable number of arguments.|
+
+
+######2.5.2 Examples
 
 
 
