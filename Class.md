@@ -20,7 +20,21 @@ For instance:
 public string FirstName = "Olivier";
 ```
 
-#####1.3 Inheritance modifier _new_
+#####1.3 Get/Set & CLR
+
+During the compilation, the CLR transforms the getter and the setter into two methods called get_XXX and set_XXX where XXX is the name of the field:
+
+```cs
+public string FirstName {get; set;}
+
+//CLR compiles into:
+
+public string get_FirstName{...}
+public void set_FirstName(string value){...}
+```
+
+
+#####1.4 Inheritance modifier _new_
 
 
 ```cs
@@ -40,9 +54,9 @@ Console.WriteLine(b.myStr); //B
 
 ```
 
-#####1.4 Constants
+#####1.5 Constants
 
-######1.4.1 Properties of the constants
+######1.5.1 Properties of the constants
 
 The properties of a constant are : 
 - A _constant_ is a static field whose value can never change. 
@@ -50,7 +64,7 @@ The properties of a constant are :
 - A constant can be any of the built-in nulmeric types, bool, char, string or an enum type.
 - A constant is more restrictive than a _static readonly_ field.
 
-######1.4.2 Access modifiers
+######1.5.2 Access modifiers
 
 | Access modifiers | Keywords |
 |:-----------------|:---------|
