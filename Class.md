@@ -164,14 +164,16 @@ Console.WriteLine("Result 2 : {0}", res2); //Result 2 : 15
 
 ####3 Constructor
 
-#####3.1 Constructor modifiers
+##### 3.1 Constructor of the instances
+
+######3.1.1 Constructor modifiers
 
 | Modifiers | Keywords |
 |:----------|----------|
 | Access modifiers | public, internal, private, proctected |
 | Unmanaged code modifiers | unsafe extern|
 
-#####3.2 Implicit parameterless constructor
+######3.1.2 Implicit parameterless constructor
 
 For classes, the compiler automatically generates a _parameterless public constructor_ if and only if you do not define any constructor.
 However, as soon as you define at least one constructor, the parameterless constructor is no longer automatically generated.
@@ -203,6 +205,31 @@ public class B
 var a =  new A(); //OK
 var b= new B(); //Compile-time error
 ```
+
+##### 3.2 Static Constructor
+
+######3.2.1 Properties
+
+The properties of a static constructor are:
+- a static constructor executes once per type.
+- A type can define only one static constructor
+- The only static constructor must be parameterless
+- The constructeur must have the same name of the type
+- The runtime automatically invokes the constructor just prior to the type being used.
+- There are two ways to invoke the static constructor:
+- - Instantiate the type
+- - Accessing a static member in the type
+
+######3.2.2 The static constructor modifiers
+
+| Modifiers | Keywords |
+|:----------|----------|
+| Unmanaged code modifiers | unsafe extern|
+
+######3.2.3 Examples
+
+
+
 
 ####4. Access modifier by default
 
