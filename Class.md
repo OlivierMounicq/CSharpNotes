@@ -365,15 +365,30 @@ But the purposes are differents:
 - an abstract classes can have protected parts, static methods, etc.
 - Abstract classes can add more functionality without destroying the child classes that were using the old version. In an interface, creation of additional functions will have an effect on its child classes, due to the necessary implementation of interface methods to classes.
 
+####8 Inheritance
 
-####6 Overriding / Hidding
-#####6.1 Virtual / Override
+#####8.1 Constructor and field initialization order
 
-######6.1.1 Defintion 
+
+#####8.2 Constructor rules
+
+
+
+
+#####8.3 Do not call a overridable methods from a constructor
+
+cf see [CA2214: Do not call overridable methods in constructors](https://msdn.microsoft.com/en-us/library/ms182331.aspx?f=255&MSPPError=-2147217396)
+
+
+
+####7 Overriding / Hidding
+#####7.1 Virtual / Override
+
+######7.1.1 Defintion 
 
 The _virtual_ keyword is used to modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived class.
 
-######6.1.2 Example
+######7.1.2 Example
 
 ```cs
 public class A
@@ -410,15 +425,15 @@ Console.WriteLine(c.GetClassName()); //C
 Console.WriteLine(d.GetClassName()); //D
 ```
 
-######6.1.3 virtual vs abstract
+######7.1.3 virtual vs abstract
 
 -An __abstract function__ has to have no functionality. You're basically saying, any child class MUST give their own version of this method, however it's too general to even try to implement in the parent class.
 
 -A __virtual function__, is basically saying look, here's the functionality that may or may not be good enough for the child class. So if it is good enough, use this method, if not, then override me, and provide your own functionality.
 
-#####6.2 Overriding vs Hidding
+#####7.2 Overriding vs Hidding
 
-######6.2.1 The keywords
+######7.2.1 The keywords
 The overriding (on instance):
 - abstract /ovrerride
 - virtual/override
@@ -426,7 +441,7 @@ The overriding (on instance):
 The hidding:
 - new / virual
 
-######6.2.2 Difference between the overriding and the hidding
+######7.2.2 Difference between the overriding and the hidding
 
 The _overriding_ is: 
 - Used in polymorphism implementation 
@@ -442,7 +457,7 @@ The _hidding_ is:
 - It is compile-time polymorphism
 - Causes early binding (at the compile time)
 
-######6.2.3 Example
+######7.2.3 Example
 
 __Overrding example__
 
@@ -497,16 +512,16 @@ Console.WriteLine(bAsA.GetClassName()); //OverridingA
 ```
 
 
-####7 Casting
+####8 Casting
 
-#####7.1 Definitions
+#####8.1 Definitions
 
 - _upcast_ to a base class reference (always succeed)
 - _downcast_ to a subclass reference (not always succeed : InvalidCastException)
 
-#####7.2 _as_ operator
+#####8.2 _as_ operator
 
-######7.2.1 Limitation
+######8.2.1 Limitation
 
 We can only use the _as_ operator with reference type or nullable type.
 
@@ -519,7 +534,7 @@ long y = x as long; //KO
 
 ```
 
-######7.2.1 The raised exception
+######8.2.1 The raised exception
 
 Beware before to use the operator _as_ :
 
