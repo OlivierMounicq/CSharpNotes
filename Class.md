@@ -495,3 +495,41 @@ Console.WriteLine(a.GetClassName());    //OverridingA
 Console.WriteLine(b.GetClassName());    //1
 Console.WriteLine(bAsA.GetClassName()); //OverridingA
 ```
+
+
+####7 Casting
+
+#####7.1 Definitions
+
+- _upcast_ to a base class reference (always succeed)
+- _downcast_ to a subclass reference (not always succeed : InvalidCastException)
+
+#####7.2 _as_ operator
+
+Beware before to use the operator _as_ :
+
+```cs
+class A
+{
+    public string GetClassName()
+    {
+        return "A";
+    }
+}
+
+class B
+{
+    public string GetClassName()
+    {
+        return "B";
+    }
+}
+
+var a = new A();
+var b = new B();
+
+string res1 = ((A)b).GetClassName();    //InvalidCastException
+string res2 = (b as A).GetClassName();  //NullReferenceException
+```
+
+First method raise an error which is more accurate.
