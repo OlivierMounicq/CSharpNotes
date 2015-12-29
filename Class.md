@@ -13,7 +13,7 @@
 
 #####1.2 Filed initialization
 
-Field initializers run __before__ contructor.
+Field initializers run __before__ contructor. (The same mechanism for the static class)
 
 For instance:
 ```cs
