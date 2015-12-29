@@ -506,6 +506,14 @@ Console.WriteLine(bAsA.GetClassName()); //OverridingA
 
 #####7.2 _as_ operator
 
+######7.2.1 Limitation
+
+We can only use the _as_ operator with reference type or nullable type.
+
+
+
+######7.2.1 The raised exception
+
 Beware before to use the operator _as_ :
 
 ```cs
