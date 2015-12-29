@@ -228,7 +228,34 @@ The properties of a static constructor are:
 
 ######3.2.3 Examples
 
+```cs
+public class Person
+{
+    public static int Count;
+    
+    private string FirstName {get;set;}
+    private string LastName {get;set;}
+    private int Age {get;set;}
+    
+    
+    public Person(string firstName, string lastName, int age)
+    {
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Age = age;
+    }
+    
+    //No access modifier must be add otherwise a compile-time error will be raised
+    static Person()
+    {
+        Count = -10;
+    }
+}
 
+Console.WriteLine(Person.Count); //-10
+```
+
+In the previous example, the static constructor has been invoked when we want to get the value of the field Count.
 
 
 ####4. Access modifier by default
