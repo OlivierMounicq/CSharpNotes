@@ -510,7 +510,14 @@ Console.WriteLine(bAsA.GetClassName()); //OverridingA
 
 We can only use the _as_ operator with reference type or nullable type.
 
+```cs
+int? x = 12;
+long? y = x as long?; //OK
 
+int x = 12;
+long y = x as long; //KO
+
+```
 
 ######7.2.1 The raised exception
 
