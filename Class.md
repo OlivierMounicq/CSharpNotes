@@ -375,10 +375,53 @@ But the purposes are differents:
 
 
 
-#####6.3 Do not call a overridable methods from a constructor
+#####6.3 Do not call overridable methods from a constructor
 
 cf see [CA2214: Do not call overridable methods in constructors](https://msdn.microsoft.com/en-us/library/ms182331.aspx?f=255&MSPPError=-2147217396)
 
+For instance:
+
+```cs
+public class BaseClass
+{
+    protected bool IsInitialized = false;
+    
+    public virtual void GetInfo()
+    {
+        Console.WriteLine("Base Class - IsInitialized : {0}", IsInitialized);
+    }
+    
+    public BaseClass()
+    {
+        Console.WriteLine("Base class contructor");
+        this.GetInfo();
+    }
+}
+public class InheritedClass : BaseClass
+{
+    public override void GetInfo()
+    {
+        Console.WriteLine("Inherited Class - IsInitialized : {0}", IsInitialized);
+    }
+    
+    public InheritedClass()
+    {
+        Console.WriteLine("Inherited class contructor");
+        this.GetInfo();
+    }
+}
+var myClass = new InheritedClass();
+
+//Output:
+//Base class contructor
+//Inherited Class - IsInitialized : False
+//Inherited class contructor
+//Inherited Class - IsInitialized : False
+
+```
+
+As we can see both constructor call the virtual method of instance : the one of the inherited class. 
+But the field named IsInitalized has been 
 
 
 ####7 Overriding / Hidding
