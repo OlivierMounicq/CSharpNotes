@@ -365,17 +365,17 @@ But the purposes are differents:
 - an abstract classes can have protected parts, static methods, etc.
 - Abstract classes can add more functionality without destroying the child classes that were using the old version. In an interface, creation of additional functions will have an effect on its child classes, due to the necessary implementation of interface methods to classes.
 
-####8 Inheritance
+####6 Inheritance
 
-#####8.1 Constructor and field initialization order
-
-
-#####8.2 Constructor rules
+#####6.1 Constructor and field initialization order
 
 
+#####6.2 Constructor rules
 
 
-#####8.3 Do not call a overridable methods from a constructor
+
+
+#####6.3 Do not call a overridable methods from a constructor
 
 cf see [CA2214: Do not call overridable methods in constructors](https://msdn.microsoft.com/en-us/library/ms182331.aspx?f=255&MSPPError=-2147217396)
 
