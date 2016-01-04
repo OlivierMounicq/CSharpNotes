@@ -61,6 +61,7 @@ Console.WriteLine(b.myStr); //B
 The properties of a constant are : 
 - A _constant_ is a static field whose value can never change. 
 - A constant is evaluated statically at compile time and the compiler literally substitutes its value whenever used.
+- A constant has to have a value at the compile time
 - A constant can be any of the built-in nulmeric types, bool, char, string or an enum type.
 - A constant is more restrictive than a _static readonly_ field.
 
@@ -72,7 +73,11 @@ The properties of a constant are :
 | Inheritance modifiers | new |
 
 
+######1.5.3 Difference between const and readonly
 
+- A readonly variable could be set in the constructor
+- A readonly variable could be a reference type
+- A readonly variable could be set at the run time
 
 
 ####2.Methods
