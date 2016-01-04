@@ -20,6 +20,7 @@ public interface IRectangle
 {
     int GetSurface();
 }
+
 public class Rectangle : IRectangle
 {
     private int Width;
@@ -37,6 +38,7 @@ public class Rectangle : IRectangle
         return this.Length * this.Width;
     }
 }
+
 public class Square
 {
     private int Side;
@@ -51,6 +53,7 @@ public class Square
         return Side*Side;
     }
 }
+
 public class Adapter : IRectangle
 {
     private Square adpatedObject;
@@ -65,8 +68,10 @@ public class Adapter : IRectangle
         return this.adpatedObject.GetArea();
     }
 }
+
 var rectangle = new Rectangle(5,2);
 Console.WriteLine(rectangle.GetSurface());
+
 var square = new Square(10);
 var adapter = new Adapter(square);
 Console.WriteLine(adapter.GetSurface());
