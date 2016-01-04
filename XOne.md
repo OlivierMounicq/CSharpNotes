@@ -76,3 +76,15 @@ Console.WriteLine(OlivierAge);
 ```
 
 
+#### String and the operal ==
+
+The operateurs __==__ and __!=__ have been defined to compare the value of the string.
+
+```cs
+string str = "TOTO";
+string ing = "TOTO";
+Console.WriteLine(str == ing);
+```
+
+
+
