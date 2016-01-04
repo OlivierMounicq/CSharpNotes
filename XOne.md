@@ -33,3 +33,9 @@ short z;
 z = (short)(x + y);
 ```
 
+####A method to calculate the age
+
+
+
+
+
