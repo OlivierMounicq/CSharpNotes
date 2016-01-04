@@ -76,7 +76,7 @@ Console.WriteLine(OlivierAge);
 ```
 
 
-#### String and the operal ==
+#### String and the operators == & !=
 
 The operateurs __==__ and __!=__ have been defined to compare the value of the string.
 
