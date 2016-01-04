@@ -64,6 +64,7 @@ The properties of a constant are :
 - A constant has to have a value at the compile time
 - A constant can be any of the built-in nulmeric types, bool, char, string or an enum type.
 - A constant is more restrictive than a _static readonly_ field.
+- A constant can not be static (see the allowed access modifiers)
 
 ######1.5.2 Access modifiers
 
@@ -78,7 +79,7 @@ The properties of a constant are :
 - A readonly variable could be set in the constructor
 - A readonly variable could be a reference type
 - A readonly variable could be set at the run time
-
+- A readonly variable could be static
 
 ####2.Methods
 
