@@ -274,7 +274,6 @@ Console.WriteLine(Person.Count); //-10
 Now, the static constructor will be invoked when we will instantiate a new person:
 
 ```cs
-
 public class Person
 {
     public static int Count;
@@ -304,6 +303,36 @@ var person = new Person("Olivier", "Mounicq", 39);
 //Output : The static constructor is invoked
 ```
 
+And the static constructor is only called one time:
+
+```cs
+public class Person
+{
+    public static int Count;
+    private string FirstName {get;set;}
+    private string LastName {get;set;}
+    private int Age {get;set;}
+    public Person(string firstName, string lastName, int age)
+    {
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Age = age;
+        Console.WriteLine("The instance constructor is invoked");
+    }
+    static Person()
+    {
+        Count = -10;
+        Console.WriteLine("The static constructor is invoked");
+    }
+}
+var albertEinstein = new Person("Albert","Einstein",137);
+var richardFeynman = new Person("Richard","Feynmann",98);
+
+//The output:
+The static constructor is invoked
+The instance constructor is invoked
+The instance constructor is invoked
+```
 
 ####4. Access modifier by default
 
