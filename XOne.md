@@ -87,4 +87,41 @@ Console.WriteLine(str == ing);
 ```
 
 
+### Virtual and public/protected
+
+```cs
+
+public class A
+{
+    public virtual void GetData()
+    {
+        Console.WriteLine("A class of A type");
+    }
+}
+public class B : A
+{
+    public virtual void GetData()
+    {
+        Console.WriteLine("A class of B type");
+    }
+}
+public class C : A
+{
+    protected virtual void GetData()
+    {
+        Console.WriteLine("A class of C type");
+    }
+}
+public class D : A
+{
+    public override void GetData()
+    {
+        Console.WriteLine("A class of D type");
+    }
+}
+(new A()).GetData(); //A class of A type
+(new B()).GetData(); //A class of B type
+(new C()).GetData(); //A class of A type !!!!!
+(new D()).GetData(); //A class of D type
+```
 
