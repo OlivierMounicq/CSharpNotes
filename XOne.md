@@ -87,7 +87,7 @@ Console.WriteLine(str == ing);
 ```
 
 
-### Virtual and public/protected
+#### Virtual and public/protected
 
 ```cs
 
@@ -128,4 +128,24 @@ public class D : A
 (new C()).GetData(); //A class of A type !!!!!
 (new D()).GetData(); //A class of D type
 ```
+
+
+#### Factorial & Recursivity
+
+```cs
+
+public static int Factorial(int i)
+{
+    if(i > 1)
+    {
+        return i * Func(i-1);
+    }
+    
+    return i;
+}
+
+Factorial(5) //120
+
+```
+
 
