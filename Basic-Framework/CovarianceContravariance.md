@@ -94,7 +94,7 @@ In the .net framework 4.0, the following interfaces are _covariant_ :
 | ``` IOrderedEnumerable<TElement> ```|
 | ``` IOrderedQueryable<T> ```|
 | ``` IQueryable<T> ```|
-|---------------|
+
 
 
 
