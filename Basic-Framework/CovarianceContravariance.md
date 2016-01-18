@@ -80,8 +80,8 @@ personStack.Pop().GetData();
 
 In the .net framework 4.0, the following interfaces are _covariant_ : 
 
-|----------|
-|Interface |
+
+| Interface |
 |:---------|
 | Converter |
 | Func<TResult> |
