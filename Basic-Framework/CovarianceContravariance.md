@@ -7,7 +7,7 @@
 Let B is convertible to A, X has a covariant type parameter if X<B> is convertible to X<A>.
 
 
-##### The modifier _out_
+##### The modifier out
 
 To decalare a type parameter as covariant, you must ass the modifier _out_. (See the below example).
 
