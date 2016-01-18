@@ -2,6 +2,12 @@
 
 #### Covariance
 
+##### Definition
+
+
+
+##### Example
+
 ```cs
 public class Person
 {
@@ -77,6 +83,64 @@ personStack.Pop().GetData();
 personStack.Pop().GetData();
 
 ```
+
+##### IEnumerable
+
+The interface IEnumerable is convariant. So, for instance: 
+
+```cs
+public class Person
+{
+    protected string FirstName;
+    
+    protected string LastName;
+    
+    public Person(string firstName, string lastName)
+    {
+        this.FirstName = firstName;
+        this.LastName = lastName;
+    }
+    
+    public virtual void GetData()
+    {
+        Console.WriteLine("Person : {0} {1}", this.FirstName, this.LastName);
+    }
+}
+
+public class Teacher : Person
+{
+    protected string Activity;
+    
+    public Teacher(string firstName, string LastName, string activity)
+        :base(firstName, LastName)
+    {
+        this.Activity = activity;
+    }
+    
+    public override void GetData()
+    {
+        Console.WriteLine("Teacher : {0} {1} - Activity : {2}", this.FirstName, this.LastName, this.Activity);
+    }    
+}
+
+var teachersList = new List<Teacher>();
+teachersList.Add(new Teacher("Richard","Feynmann","Physics"));
+
+//The interface Ienumerable is covariant
+IEnumerable<Person> personList = teachersList;
+
+var enumerator = personList.GetEnumerator();
+
+while(enumerator.MoveNext())
+{
+    enumerator.Current.GetData();
+}
+
+```
+
+
+
+##### Interface & Covariance
 
 In the .net framework 4.0, the following interfaces are _covariant_ : 
 
