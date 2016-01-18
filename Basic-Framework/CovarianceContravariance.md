@@ -4,10 +4,10 @@
 
 ##### Definition
 
-Let B is convertible to A, X has a covariant type parameter if X<C> is convertible to X<A>.
+Let B is convertible to A, X has a covariant type parameter if X&lt;B&gt; is convertible to X&lt;A&gt;.
 
 
-##### The modifier out
+##### The modifier _out_
 
 To decalare a type parameter as covariant, you must ass the modifier _out_. (See the below example).
 
