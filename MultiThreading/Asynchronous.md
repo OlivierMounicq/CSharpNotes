@@ -1,0 +1,16 @@
+###7 async / await
+
+```cs
+Task<int> GetPrimesCountAsync(int start, int count)
+{
+     return Task.Run(() => ParallelEnumerable.Range(start, count).Count(n => Enumerable.Range(2, (int)Math.Sqrt(n)-1).All(i => n % i > 0)));
+}
+
+....
+
+async void Display()
+{
+     int res = await GetPrimesCountAsync(2, 1000000);
+     Console.WriteLine(res);
+}
+```
