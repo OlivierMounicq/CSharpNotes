@@ -4,7 +4,7 @@
 
 ##### Definition
 
-Let B is convertible to A, X has a covariant type parameter if X<B> is convertible to X<A>.
+Let B is convertible to A, X has a covariant type parameter if X<C> is convertible to X<A>.
 
 
 ##### The modifier out
