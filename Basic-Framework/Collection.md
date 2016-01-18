@@ -50,3 +50,7 @@ inherit of ICollection and:
 - HashSet<T>
 - SortedSet<T>
 - OrderedDictionary (is not a sorted! 
+
+####Links
+
+[When to use IEnumerable, ICollection, Ilist](http://www.claudiobernasconi.ch/2013/07/22/when-to-use-ienumerable-icollection-ilist-and-list/)
