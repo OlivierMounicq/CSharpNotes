@@ -2,3 +2,5 @@
 
 [Fundamentals of Garbage Collection](https://msdn.microsoft.com/en-us/library/ee787088(v=vs.110).aspx)
 
+[Basic memory housekeeping net memory management](http://content.atalasoft.com/h/i/58205464-basic-memory-housekeeping-net-memory-management-part-1)
+
