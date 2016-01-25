@@ -26,3 +26,7 @@ The heap contains:
 
 ####The stackoverflow and out of memory
 
+#####The stackoverflow
+
+This error raised when the stack memory capacity is not enough.
+
