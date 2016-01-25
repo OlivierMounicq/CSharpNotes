@@ -13,6 +13,7 @@ This memory contains all:
 The heap contains:
 - the reference variable
 - the static variable (even if the static variable type is a value type)
+- the array (even if the nested variable type is a value type)
 
 ####The memory size
 
