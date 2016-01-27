@@ -23,3 +23,5 @@ public interface IDisposable
 [IDisposable for Dummies #1 – Why? What?](http://blog.ilab8.com/2012/04/26/idisposable-for-dummies-1-why/)
 
 [IDisposable for dummies #2 – A guide about ‘how to implement it’](http://blog.ilab8.com/2012/04/29/idisposable-for-dummies-2-how/)
+
+[How to Implement IDisposable and Finalizers: 3 Easy Rules](http://blog.stephencleary.com/2009/08/how-to-implement-idisposable-and.html)
