@@ -4,3 +4,5 @@
 
 [Basic memory housekeeping net memory management](http://content.atalasoft.com/h/i/58205464-basic-memory-housekeeping-net-memory-management-part-1)
 
+[E2E: Erik Meijer and Patrick Dussud - Inside Garbage Collection](https://channel9.msdn.com/Shows/Going+Deep/E2E-Erik-Meijer-and-Patrick-Dussud-Inside-Garbage-Collection)
+
