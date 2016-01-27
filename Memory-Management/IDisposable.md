@@ -1,10 +1,29 @@
-###The interface IDisposable
-
-#### _Disposal_ vs Garbage Collector
+##The interface IDisposable
 
 
+####1. _Disposal_ vs Garbage Collector
 
-####IDisposable
+#####1.1 The resource types
+
+
+
+#####1.2 How 
+
+
+####3.The best practices / The pattern
+
+
+#####3.1.When should you use and implement the IDisposable interface?
+
+
+#####3.2. How to use the IDisposable interface?
+
+
+
+
+####2.IDisposable
+
+
 
 The interface IDisposable is : 
 
