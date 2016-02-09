@@ -89,7 +89,7 @@ public class Singleton
   }
 }
 ```
-And we have to add a new check and not just inverse the lock statement with the check statement. Because if we inverse the lock with the checking, a thread my have 
+And we have to add a new check and not just inverse the lock statement with the check statement. Because if we inverse the lock with the checking, two threads may access to the code in order instantiate the class as we could see: 
 
 NEVER DO THAT IN A MULTI-THREADING CONTEXT:
 
