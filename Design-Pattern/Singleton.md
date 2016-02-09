@@ -57,7 +57,7 @@ public class Singleton
 ```
 
 
-##### Double check singleton
+##### Singleton with double-checked locking
 
 With the previous Sigleton pattern, after to instanciate the class Singleton, each time we lock to check if the class have been already created. To avoid to lose time to check, we decide to make a double check. 
 
