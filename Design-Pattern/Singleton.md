@@ -119,3 +119,5 @@ public class Singleton
   }
 }
 ```
+
+see [Double-checked locking](https://en.wikipedia.org/wiki/Double-checked_locking)
