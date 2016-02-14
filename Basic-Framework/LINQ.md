@@ -40,3 +40,8 @@ Cécile DeWitt-Morette
 **/
 
 ```
+
+
+####Links
+
+[Understanding IEnumerable and IQueryable in C#](http://blog.falafel.com/understanding-ienumerable-iqueryable-c/)
