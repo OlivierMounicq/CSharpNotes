@@ -382,6 +382,7 @@ Nested-type and member accessibilities
 
 ² structs cannot inherit from structs or classes (although they can, interfaces), hence protected is not a valid modifier
 
+[What are the default access modifier in C#](http://stackoverflow.com/questions/2521459/what-are-the-default-access-modifiers-in-c)
 
 ####5. Abstract class
 
