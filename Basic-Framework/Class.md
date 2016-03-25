@@ -350,7 +350,37 @@ The instance constructor is invoked
 | members of class | private |
 | members of struct | private |
 
+Non-nested types, enumeration and delegate accessibilities (may only have internal or public)
 
+| Type | Default access modifier | Permitted declared accessibilities |
+|:-----|:------------------------|:-----------------------------------|
+|namespace            | public    | none (always implicitly public)   |
+|enum                 | public    | none (always implicitly public)   |
+|interface            | internal  | public, internal                  |
+|class                | internal  | public, internal                  |
+|struct               | internal  | public, internal                  |
+|delegate             | internal  | public, internal                  |
+
+Nested-type and member accessibilities
+
+| Type               | Default   | Permitted declared accessibilities |
+|:-------------------|:----------|:-----------------------------------|
+|namespace            | public    | none (always implicitly public)    |
+|enum                 | public    | none (always implicitly public)    |
+|interface            | public    | none                               |
+|class                | private   | All¹                               |
+|struct               | private   | public, internal, private²         |
+|delegate             | private   | All¹                               |
+|constructor          | private   | All¹                               |
+|interface member     | public    | none (always implicitly public)    |
+|method               | private   | All¹                               |
+|field                | private   | All¹                               |
+|user-defined operator| none      | public (must be declared public)   |
+
+
+¹ All === public, protected, internal, private, protected internal
+
+² structs cannot inherit from structs or classes (although they can, interfaces), hence protected is not a valid modifier
 
 
 ####5. Abstract class
