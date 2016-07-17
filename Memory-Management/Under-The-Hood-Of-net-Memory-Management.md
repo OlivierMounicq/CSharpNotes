@@ -55,6 +55,16 @@ The value types are
 | Decimal | IntPtr | UIntPtr |
 | Structs | | 
 
+####The datatypes stored in the _heap_
+
+The _reference types_ stored on the heap (LOH or SOH) are:
+- classes
+- interfaces
+- delegate
+- strings
+- instance of object
+-
+
 
 
 
