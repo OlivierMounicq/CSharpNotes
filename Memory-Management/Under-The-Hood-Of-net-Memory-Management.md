@@ -63,7 +63,8 @@ The _reference types_ stored on the heap (LOH or SOH) are:
 - delegate
 - strings
 - instance of object
--
+
+
 
 
 
