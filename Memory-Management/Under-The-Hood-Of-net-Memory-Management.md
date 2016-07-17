@@ -46,6 +46,8 @@ The stack stores the __Common Type System__ (CTS) ie the __value types__.
 
 The value types are
 
+
+|:-----|:------|:------|
 | Byte | SByte | Int16 |
 | Int32 | Int64 | UInt16 |
 | UInt32 | UInt64 | Single |
