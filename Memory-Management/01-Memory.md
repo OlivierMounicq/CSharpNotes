@@ -1,12 +1,12 @@
 #The memory management
 
-##Introduction
+##1.Introduction
 
 Application = the code + data storing the state during the execution
 
-##The heap
+##2.The heap
 
-###The type of heap
+###2.1The type of heap
 
 They are _4 sections of memory_  creating for the storage:
 - __code heap__ stores the actual the native code instructions after they have been _Just In Time_ (JiTed)
@@ -19,15 +19,15 @@ Everything on the heap has an address.
 
 
 
-##The stack
+##3The stack
 
-###The stack properties
+###3.1The stack properties
 
 The purpose of the _stack_ is to keep track of a method's data from every other method call.
 
 Each thread has its own thread.
 
-###The method executin and the stack
+###3.1.1The method execution and the stack
 
 The execution process is the following:
 - When a method is called, it has its own cocooned environment where any data variables that it creates exist only for the lifetime of the call
@@ -36,16 +36,16 @@ The execution process is the following:
 
 To keep track of everything, .net maintains a __stack__ data structure which it uses to track the state of an execution thread and all the method calls made.
 
-###The stack using
+###3.1.2The stack using
 
 - When a method is called, .net created a container (a stack frame) that contains all of the data necessary to complete the call, including parameters locally declared variables and addresses of the line of code to execute after the method finishes.
 - For every method call made in a call tree, the stack containers are stacked on the top of the other
 - When a method completes, its container is removed from the top of the stack and the excution returns to the next line of within the calling method
 - the frame at the top of the stack is always the oe-ne used by the current executing method.
 
-##Datatypes and their storages
+##4Datatypes and their storages
 
-###The datatypes stored in the _stack_
+###4.1The datatypes stored in the _stack_
 
 The stack stores the __Common Type System__ (CTS) ie the __value types__.
 
@@ -60,7 +60,7 @@ The value types are
 | Decimal | IntPtr | UIntPtr |
 | Structs | | 
 
-###The datatypes stored in the _heap_
+###4.2The datatypes stored in the _heap_
 
 The _reference types_ stored on the heap (LOH or SOH) are:
 - classes
@@ -72,7 +72,7 @@ The _reference types_ stored on the heap (LOH or SOH) are:
 - the array (even if the nested variable type is a value type)
 
 
-##The stack vs the heap
+##5.The stack vs the heap
 
 | The stack | The heap |
 |:----------|:---------|
