@@ -46,3 +46,7 @@ public interface IDisposable
 [How to Implement IDisposable and Finalizers: 3 Easy Rules](http://blog.stephencleary.com/2009/08/how-to-implement-idisposable-and.html)
 
 [IDisposable and using in C#](https://coding.abel.nu/2011/12/idisposable-and-using-in-c/)
+
+[Implementing IDisposable and the Dispose pattern](http://www.codeproject.com/Articles/15360/Implementing-IDisposable-and-the-Dispose-Pattern-P)
+
+[Back to basics : Dispose vs finalize](http://www.c-sharpcorner.com/UploadFile/nityaprakash/back-to-basics-dispose-vs-finalize/)
