@@ -50,3 +50,5 @@ public interface IDisposable
 [Implementing IDisposable and the Dispose pattern](http://www.codeproject.com/Articles/15360/Implementing-IDisposable-and-the-Dispose-Pattern-P)
 
 [Back to basics : Dispose vs finalize](http://www.c-sharpcorner.com/UploadFile/nityaprakash/back-to-basics-dispose-vs-finalize/)
+
+[Difference between Finalize and Dispose method](http://www.dotnet-tricks.com/Tutorial/netframework/P1MK271013-Difference-Between-Finalize-and-Dispose-Method.html)
