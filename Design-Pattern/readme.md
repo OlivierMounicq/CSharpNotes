@@ -14,7 +14,7 @@
 | Adpater                 | Structural |   |
 | Bridge                  | Structural |   |
 | Composite               | Structural |   |
-| Decorator               | Structural | AOP |
+| Decorator               | Structural | AOP, LINQ |
 | Facade                  | Structural |   |
 | Flyweight               | Structural |   |
 | Proxy                   | Structural |   |
