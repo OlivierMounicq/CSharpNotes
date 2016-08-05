@@ -32,13 +32,24 @@ IEnumerable<string> query = from n in names
                             where n.Contains("a")
                             orderby n.Length
                             select n.ToUpper()
-                            
-                            
-
-
 ```
 
+###The operator
 
+The LINQ operators are the _extension methods_.
+
+Without extension method, we should use this syntax by using the conventional static method:
+
+```cs
+IEnumerable<string> query = Enumerable.Select(
+                              Enumerable.Select
+                                Enumerable.OrderBy(
+                                  Enumerable.Where(
+                                    names, n => n.Contains("a)
+                                  ), n => n.Length
+                                ), n => n.ToUpper()
+                              );
+```
 
 
 
