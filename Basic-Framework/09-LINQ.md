@@ -38,6 +38,8 @@ IEnumerable<string> query = from n in names
 
 The operator that we could use with _query syntax_:
 
+|       |         |         |
+|-------|---------|---------|
 | Where | OrderBy | GroupBy |
 |-------|---------|---------|
 |Select | ThenBy  | Join    |
