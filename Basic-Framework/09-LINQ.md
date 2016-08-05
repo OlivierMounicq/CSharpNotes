@@ -34,7 +34,16 @@ IEnumerable<string> query = from n in names
                             select n.ToUpper()
 ```
 
-###The operator
+=> _Many operators have no keyword in __query syntax__ _.
+
+The operator that we could use with _query syntax_:
+
+| Where | OrderBy | GroupBy |
+|Select | ThenBy  | Join    |
+
+
+
+###The extension method
 
 The LINQ operators are the _extension methods_.
 
@@ -45,7 +54,7 @@ IEnumerable<string> query = Enumerable.Select(
                               Enumerable.Select
                                 Enumerable.OrderBy(
                                   Enumerable.Where(
-                                    names, n => n.Contains("a)
+                                    names, n => n.Contains("a")
                                   ), n => n.Length
                                 ), n => n.ToUpper()
                               );
