@@ -34,7 +34,7 @@ IEnumerable<string> query = from n in names
                             select n.ToUpper()
 ```
 
-=> _Many operators have no keyword in __query syntax__ _.
+=> _Many operators have no keyword in query syntax_.
 
 The operator that we could use with _query syntax_:
 
@@ -45,6 +45,12 @@ The operator that we could use with _query syntax_:
 |SelectMany | OrderByDescending | GroupJoin |
 |           | ThenByDescending  |           |
 
+
+####Mix the fluent syntax with the query syntax
+
+```cs
+int qty = (from n in names where n.Contains("a") select n).Count();
+```
 
 
 ###The extension method
@@ -68,7 +74,7 @@ IEnumerable<string> query = Enumerable.Select(
 
 ####Defered execution
 
-The query is executed when the method _Next()_ of the iterator is called.
+The query is executed when the method _MoveNext()_ of the iterator is called.
 
 ```cs
 public class Scientist
