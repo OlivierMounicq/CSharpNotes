@@ -4,7 +4,7 @@ Langage INtegrated Query
 
 ###Definitions
 
-- sequences : a collectio
+- sequences : a collection
 - element : an item in a sequence
 
 ###Lambda expression
