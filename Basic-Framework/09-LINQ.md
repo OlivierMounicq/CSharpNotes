@@ -39,6 +39,15 @@ or
 
 (IQueryable<T>).AsEnumerable() => IEnumerable<T>
 
+###Delegate vs Expression tree
+
+```cs
+//local query
+public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource,bool> predicate)
+
+//database query
+public static IQueryable<TSource> Where<TSource>(this IQueryable<TSource> source, Expression<Func<TSource,bool>> predicate)
+```
 
 ###Fluent syntax vs query expression
 
