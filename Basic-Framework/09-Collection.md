@@ -11,12 +11,12 @@
 
 ###The interfaces
 
-| Non Generic        | Generic                     | Features         |
-|:-------------------|:----------------------------|:-----------------|
-| IEnumerator        | IEnumerator<T>              |                  |
-| IEnumerable        | IEnumerable<T>              | Enumeration only |
-| ICollection        | ICollection<T>              | Countable        |
-|IDictionary / IList | IDictionary<K,V> / IList<T> | Rich features    |
+| Non Generic        | Generic                     | Features         | Implemented in  |
+|:-------------------|:----------------------------|:-----------------|:----------------|
+| IEnumerator        | IEnumerator<T>              |                  |                 |
+| IEnumerable        | IEnumerable<T>              | Enumeration only | Arrays          |
+| ICollection        | ICollection<T>              | Countable        |                 |
+|IDictionary / IList | IDictionary<K,V> / IList<T> | Rich features    |                 |
 
 
 ####IEnumerator
@@ -71,12 +71,30 @@ while(enumeration.MoveNext())
 }
 ```
 
-
 And the output is :
 
 ```cmd
 Hello world!
 ```
+
+
+
+###Arrays
+
+####Get the generic interface
+
+Arrays are not generic, so if you want to get the _generic interface_, you should do that:
+
+```cs
+int[] numbers = {1, 2, 3 };
+
+var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
+
+```
+
+
+
+
 
 #####ICollection
 - Count
