@@ -284,8 +284,9 @@ And the output is :
 Hll wrld! I m  C# pplctn
 ```
 
-__Remark : __ It does work with c# 4.0
+__Remark #1: __ It does work with c# 4.0
 
+__Remark #2:__ It works with the foreach because the iteration variable is __immutable__ in the foreach loop.
 ###Links
 
 [Understanding IEnumerable and IQueryable in C#](http://blog.falafel.com/understanding-ienumerable-iqueryable-c/)
