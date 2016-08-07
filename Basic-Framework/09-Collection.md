@@ -247,6 +247,46 @@ foreach(var n in numberLst)
 5
 ```
 
+#####6th example : implement the generic IEnumerator
+
+```cs
+using System.Collections;
+using System.Collections.Generic;
+public class Numbers : IEnumerable<Int32>
+{
+    int[] data = {1, 2, 3, 4, 5};
+    
+    public IEnumerator<Int32> GetEnumerator(){ return new Enumerator(this); }
+    IEnumerator IEnumerable.GetEnumerator(){ return new Enumerator(this); }
+    
+    class Enumerator : IEnumerator<Int32>
+    {
+        Numbers numbers;
+        int currentIdx = -1;
+        
+        public Enumerator(Numbers pNumbers)
+        {
+            this.numbers = pNumbers;   
+        }
+        
+        public int Current => this.numbers.data[currentIdx];
+        
+        object IEnumerator.Current => this.Current;
+        
+        public bool MoveNext() => ++currentIdx < this.numbers.data.Length;
+        
+        public void Reset() => currentIdx = -1;
+        
+        void IDisposable.Dispose(){ }
+    }
+}
+var numberLst = new Numbers();
+foreach(var n in numberLst)
+{
+    Console.WriteLine(n);   
+}
+```
+
 
 ###Arrays
 
