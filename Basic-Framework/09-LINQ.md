@@ -91,7 +91,7 @@ IEnumerable<string> query = Enumerable.Select(
 
 
 
-####Defered execution
+###Defered execution
 
 The query is executed when the method _MoveNext()_ of the iterator is called.
 
@@ -132,6 +132,6 @@ Cécile DeWitt-Morette
 ```
 
 
-####Links
+###Links
 
 [Understanding IEnumerable and IQueryable in C#](http://blog.falafel.com/understanding-ienumerable-iqueryable-c/)
