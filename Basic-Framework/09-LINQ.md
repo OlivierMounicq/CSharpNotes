@@ -39,6 +39,22 @@ or
 
 (IQueryable<T>).AsEnumerable() => IEnumerable<T>
 
+###Transform a db query to a local query to apply some operator
+
+The db query will be transformed into a SQL query. And all C# operators/method have not equivalent in SQL. 
+For instance, the regular expressio does not exist in SQl, so if you want to execute this db query, the CLR won't be able to transform the regex into a SQL statement. So in this case, we can mix the db query with a local query by this way by using the _AsEnumerable_ method:
+
+
+```cs
+var regex = new Regex("ey");
+
+//An exception will throw : there is no regex SQL statement!
+var dbQuery = dataContext.Persons.Where(p => regex.Matches(p.LastName).Count > 1);
+
+//Apply the regular expression after to use AsEnumerable()
+var dbQuery = dataContext.Persons.AsEnumerable().Where(p => regex.Matches(p.LastName).Count > 1);
+```
+
 ###Delegate vs Expression tree
 
 ```cs
