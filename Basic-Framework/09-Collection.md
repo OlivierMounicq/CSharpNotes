@@ -19,9 +19,10 @@
 |IDictionary / IList | IDictionary<K,V> / IList<T> | Rich features    |
 
 
-###IEnumerable / IEnumerator
+####IEnumerator
 
 ```cs
+//Non generic
 public interface IEnumerator
 {
      bool MoveNext();
@@ -29,24 +30,28 @@ public interface IEnumerator
      void Reset();
 }
 
+//Generic
+public interface IEnumerator<T> : IEnumerator, IDisposable
+{
+     T Current {get;}
+}
+```
+
+####IEnumerable
+```cs
+//Non-generic
 public interface IEnumerable
 {
      IEnumerator GetEnumerator();
 }
 
-public interface IEnumerator<T> : IEnumerator, IDisposable
-{
-     T Current {get;}
-}
-
+//Generic
 public interface IEnumerable<T> : IEnumerable
 {
      IEnumrator<T> GetEnumerator();
 }
 ```
 
-IEnumerable <- ICollection <- IDictionary
-IEnumerable <- ICollection <- IList
 
 #####ICollection
 - Count
