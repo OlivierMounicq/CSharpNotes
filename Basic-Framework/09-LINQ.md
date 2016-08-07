@@ -156,6 +156,53 @@ Cécile DeWitt-Morette
 
 ```
 
+###Inner mechanism
+
+The CLR use the _Decorator_ design patter. Each pattern will be a decorator.
+
+###Captured variable
+
+####For loop
+An error will throw, because the variable _i_ is capture by both loop.
+
+
+```cs
+try
+{
+    IEnumerable<char> query = "Hello world! I am a C# application";
+    string vowels = "aeiou";
+
+    int i = -10;
+
+    for(i=0; i < vowels.Length; i++)
+    {
+        Console.WriteLine(i);
+        query = query.Where(c => c != vowels[i]);
+    }
+
+    Console.WriteLine(i);
+
+    foreach (char c in query)
+    {
+        Console.Write(c);
+    }
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+```
+
+Actually, the value of _i_ just before the second loop is equal at 5. So the program attempt to execute this statement 
+```cs c != vowels[5] ```
+
+####Foreach loop
+
+The foreach loop does not run like the For loop.
+
+
+
 
 ###Links
 
