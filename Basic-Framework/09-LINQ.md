@@ -11,7 +11,7 @@ Langage INtegrated Query
 
 A lambda expression is transformed by the compilater 
 - either in a _delegate_
-- or an expression _tree_
+- or an expression _tree_ 
 
 
 ###Interfaces
@@ -19,6 +19,25 @@ A lambda expression is transformed by the compilater
 We can query a _sequence_ if it implements one this interface:
 - IEnumerable : for the _local_ query
 - IQueryable : made to query the database by using either _Linq to Sql_ or _Entity Framework_
+
+###Local query vs database query
+
+Local query:
+- _IEnumerable<T>_
+- lambda expression => delegate
+
+Database query (Linq2Sql or Entity Framework):
+- IQueryable
+- lambda expression => Expression
+
+
+###AsEnumerable, AsQueryable
+
+(IEnumerable<T>).AsQueryable => IQueryable<T>
+
+or
+
+(IQueryable<T>).AsEnumerable() => IEnumerable<T>
 
 
 ###Fluent syntax vs query expression
