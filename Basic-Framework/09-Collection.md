@@ -153,6 +153,26 @@ foreach(var number in numbers)
 
 ```
 
+#####4th example: the easiest way by using the _yield_ keyword
+
+```cs
+public class List
+{
+     public static IEnumerable<Int32> GetList()
+     {
+          yield return 1;
+          yield return 2;
+          yield return 3;
+          yield return 4;
+          yield return 5;
+     }
+}
+
+foreach(var n in List.GetList())
+{
+     Console.WriteLine(n);
+}
+```
 
 
 ###Arrays
