@@ -174,6 +174,79 @@ foreach(var n in List.GetList())
 }
 ```
 
+#####5th example : implement the IEnumerator interface
+
+```cs
+using System.Collections;
+using System.Collections.Generic;
+public class Numbers : IEnumerable
+{
+    int[] data = {1, 2, 3, 4, 5};
+    
+    public IEnumerator GetEnumerator()
+    {
+        return new Enumerator(this);    
+    }
+    
+    
+    class Enumerator : IEnumerator
+    {
+        Numbers numbers;
+        int currentIdx = -1;
+        
+        public Enumerator(Numbers pNumbers)
+        {
+            this.numbers = pNumbers;   
+        }
+        
+        public object Current
+        {
+            get
+            {
+                if(currentIdx == -1)
+                {
+                    throw new InvalidOperationException("Enumeration has not started");
+                }
+                
+                if(currentIdx == numbers.data.Length)
+                {
+                    throw new InvalidOperationException("Invalid index!");
+                }
+                
+                return this.numbers.data[currentIdx];
+            }
+        }
+            
+        public bool MoveNext()
+        {
+            if(currentIdx >= numbers.data.Length - 1)
+            {
+                return false;
+            }
+                
+            return ++currentIdx < numbers.data.Length;
+        }
+            
+        public void Reset()
+        {
+            currentIdx = -1;
+        }
+    }
+}
+var numberLst = new Numbers();
+foreach(var n in numberLst)
+{
+    Console.WriteLine(n);   
+}
+
+//Output:
+1
+2
+3
+4
+5
+```
+
 
 ###Arrays
 
