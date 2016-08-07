@@ -284,7 +284,7 @@ And the output is :
 Hll wrld! I m  C# pplctn
 ```
 
-
+__Remark : __ It does work with c# 4.0
 
 ###Links
 
