@@ -206,7 +206,7 @@ The value of i : 5;
 
 In the first loop, the first statment is only executed. The LINQ query is not executed because the iterator on the sequence is not yet called.
 And then the value of _i_ just before the second loop is equal at 5. This value has been captured just before to call the iterator in the second loop. And the program attempt to execute this statement 
-```cs c != vowels[5] ```
+``` c != vowels[5] ```
 
 To avoid the program, you may add another variable _j_ : 
 
