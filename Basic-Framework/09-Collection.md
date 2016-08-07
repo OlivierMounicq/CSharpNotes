@@ -9,7 +9,14 @@
 | System.Collections.Concurrent   | Thread-safe collections                  |
 
 
+###The interfaces
 
+| Non Generic        | Generic                     | Features         |
+|:-------------------|:----------------------------|:-----------------|
+| IEnumerator        | IEnumerator<T>              |                  |
+| IEnumerable        | IEnumerable<T>              | Enumeration only |
+| ICollection        | ICollection<T>              | Countable        |
+|IDictionary / IList | IDictionary<K,V> / IList<T> | Rich features    |
 
 
 ###IEnumerable / IEnumerator
