@@ -85,7 +85,7 @@ public interface IEnumerable<T> : IEnumerable
 ```
 
 
-#####An example
+#####1st example
 
 ```cs
 string quote = "Hello world!";
@@ -103,26 +103,44 @@ And the output is :
 Hello world!
 ```
 
-###Yield 
+#####2nd example : using the _yield_ keyword to buid a non generic class implementing IEnumerable
 
 ```cs
-public class Numbers
+public class MyCollection : IEnumerable
 {
-    public static IEnumerable<Int32> GetSquaredNumbers(IEnumerable<int> list)
-    {
-        foreach(var number in list)
-        {    
-            yield return (Int32)Math.Pow(number,2);   
-        }
-    }
+     int[] data = {1, 2, 3};
+     
+     public Enumerator GetEnumerator()
+     {
+          foreach(int n in data)
+          {
+               yield return n; 
+          }
+}
+```
+
+
+#####3rd example : using the _yield_ keyword to build a generic class implementing IEnumerable<T>
+
+```cs
+public class SquaredNumbers : IEnumerable<int>
+{
+     public readonly int[] list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+     public IEnumerator<Int32> GetEnumerator()
+     {
+          foreach(var number in list)
+          {    
+               yield return (Int32)Math.Pow(number,2);   
+          }
+     }
 }
 
-var numbers = new List<Int32>(){1,2,3,4,5,6,7,8,9,10}; 
-var squaredNumbers = Numbers.GetSquaredNumbers(numbers).ToList();
+var numbers = new SquaredNumbers();
 
 for(int i = 0; i < 10; i++)
 {
-    Console.WriteLine("{0} : {1}", numbers[i], squaredNumbers[i]);  
+    Console.WriteLine("{0} : {1}", numbers.list[i], numbers[i]);  
 }
 ```
 
