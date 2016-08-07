@@ -1,4 +1,18 @@
-####IEnumerable / IEnumerator
+###The namespace
+
+| namespace                       |The collections                           |
+|:--------------------------------|:-----------------------------------------|
+| System.Collections              | Non generic collection                   |
+| System.Collections.Specialized  | Strongly typed non-generic collection    |
+| System.Collections.Generic      | Generic collection                       |
+| System.Collections.ObjectModel  | Proxies and bases for custom collections |
+| System.Collections.Concurrent   | Thread-safe collections                  |
+
+
+
+
+
+###IEnumerable / IEnumerator
 
 ```cs
 public interface IEnumerator
