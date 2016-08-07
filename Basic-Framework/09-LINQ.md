@@ -254,6 +254,35 @@ Hll wrld! I m  C# pplctn
 
 The foreach loop does not run like the For loop.
 
+With C# 5.0, we don't need to add an extra variable:
+
+```cs
+try
+{
+    IEnumerable<char> query = "Hello world! I am a C# application";
+    string vowels = "aeiou";
+
+    foreach(char vowel in vowels)
+    {
+        query = query.Where(c => c != vowel);
+    }
+
+    foreach (char c in query)
+    {
+        Console.Write(c);
+    }
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+```
+
+And the output is :
+
+```cs
+Hll wrld! I m  C# pplctn
+```
 
 
 
