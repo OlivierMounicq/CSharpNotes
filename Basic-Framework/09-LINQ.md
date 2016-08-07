@@ -180,7 +180,7 @@ try
         query = query.Where(c => c != vowels[i]);
     }
 
-    Console.WriteLine(i);
+    Console.WriteLine("The value of {0}" , i);
 
     foreach (char c in query)
     {
@@ -193,9 +193,62 @@ catch(Exception ex)
 }
 
 ```
+The output is : 
 
-Actually, the value of _i_ just before the second loop is equal at 5. So the program attempt to execute this statement 
+```cs
+0
+1
+2
+3
+4
+The value of i : 5;
+```
+
+In the first loop, the first statment is only executed. The LINQ query is not executed because the iterator on the sequence is not yet called.
+And then the value of _i_ just before the second loop is equal at 5. This value has been captured just before to call the iterator in the second loop. And the program attempt to execute this statement 
 ```cs c != vowels[5] ```
+
+To avoid the program, you may add another variable _j_ : 
+
+```cs
+try
+{
+    IEnumerable<char> query = "Hello world! I am a C# application";
+    string vowels = "aeiou";
+
+    int i = -10;
+
+    for(i=0; i < vowels.Length; i++)
+    {
+        Console.WriteLine(i);
+        int j = i;
+        query = query.Where(c => c != vowels[j]);
+    }
+
+    Console.WriteLine("The value of {0}" , i);
+
+    foreach (char c in query)
+    {
+        Console.Write(c);
+    }
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+```
+
+And the output is : 
+
+```cs
+0
+1
+2
+3
+4
+The value of i : 5
+Hll wrld! I m  C# pplctn
+```
 
 ####Foreach loop
 
