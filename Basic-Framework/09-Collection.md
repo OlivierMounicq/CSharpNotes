@@ -19,8 +19,11 @@
 |IDictionary / IList | IDictionary<K,V> / IList<T> | Rich features    |                 |
 
 
+###IEnumerator / IEnumerable
+
 ####IEnumerator
 
+#####The non-generic and generic interfaces
 
 ```cs
 //Non generic
@@ -37,6 +40,29 @@ public interface IEnumerator<T> : IEnumerator, IDisposable
      T Current {get;}
 }
 ```
+
+#####IDispose & IEnumerator<T>
+
+The interface _IEnumerator_ inherits of the _IDispose_. So, when we use the _foreach_ loop, the method _Dispose()_ is called. So the resources are released after the _foreach_ loop:
+
+```cs
+foreach(var itemDisposable in myDisposableItemList)
+{
+     ....
+}
+
+//equivalent to:
+
+using(var enumerator = myDisposableItemList.GetEnumerator())
+{
+     while(enumerator.MoveNext())
+     {
+          var item = enumerator.Current;
+          ...
+     }
+}
+```
+
 
 ####IEnumerable
 
@@ -75,6 +101,29 @@ And the output is :
 
 ```cmd
 Hello world!
+```
+
+###Yield 
+
+```cs
+public class Numbers
+{
+    public static IEnumerable<Int32> GetSquaredNumbers(IEnumerable<int> list)
+    {
+        foreach(var number in list)
+        {    
+            yield return (Int32)Math.Pow(number,2);   
+        }
+    }
+}
+
+var numbers = new List<Int32>(){1,2,3,4,5,6,7,8,9,10}; 
+var squaredNumbers = Numbers.GetSquaredNumbers(numbers).ToList();
+
+for(int i = 0; i < 10; i++)
+{
+    Console.WriteLine("{0} : {1}", numbers[i], squaredNumbers[i]);  
+}
 ```
 
 
