@@ -289,6 +289,100 @@ foreach(var n in numberLst)
 }
 ```
 
+###ICollection & ICollection<T>
+
+####Non generic interface
+
+```cs
+public interface ICollection : IEnumerable
+{
+     int Count { get; }
+     bool IsSynchronized{ get; }
+     object SyncRoot{ get; }
+     
+     void CopyTo(Array array, int index);
+}
+```
+
+#### Generic interface
+
+```cs 
+public interface ICollection<T> : IEnumerable<T>, IEnumerable
+{
+     int Count { get; }
+     
+     bool Contains(T item);
+     void CopyTo(T[] array, int arrayIndex);
+     bool IsReadOnly { get; }
+
+     void Add(T item);
+     bool Remove(T item);
+     void Clear();
+}
+```
+
+####The features
+
+The features implemented into a collection is that the set of item is accountable.
+
+####Difference between the non-generic and generic interfaces
+
+- no _Add_ method in the non-generic method
+- no _Remove_ method in the non-generic method
+- no synchronization method in the generic method
+
+
+###IList & IList<T>
+
+####Non-generic interface IList
+
+```cs
+public interface IList : ICollection, IEnumerable
+{
+     object this [int index] {get; set;}
+     bool IsFixedSize { get; }
+     bool IsReadOnly  { get; }
+     int  Add      (object value);
+     void Clear();
+     bool Contains (object value);
+     int  IndexOf  (object value);
+     void Insert   (int index, object value);
+     void Remove   (object value);
+     void RemoveAt (int index);
+}
+```
+
+####The generic interface IList<T>
+
+```cs
+public interface IList<T> : ICollection<T>, IEnumerable<T>, IEnumerable
+{
+     T this [int index] { get; set; }
+     int IndexOf (T item);
+     void Insert (int index, T item);
+     void RemoveAt (int index);
+}
+```
+
+####Difference between IList & IList<T>
+
+- the interface IList must add the missing feature in ICollection interface : Insert & Remove
+- the method _Add_ returns an integer 
+
+
+###IReadOnlyList<T>
+
+This interface has been added in the framework __4.5__. It's like the IList<T> without the method to add and remove the items.
+
+```cs
+public interface IReadOnlyList<out T> : IEnumerable<T>, IEnumerable
+{
+     int Count { get; }
+     T this[int index] { get; }
+}
+```
+
+__Remark : __ It will be logical if the IList will inherit from IReadOnlyList. But the cost to modify the inheritance schema will be to much. Everybody will have to recompile its solution.
 
 ###Arrays
 
@@ -307,10 +401,7 @@ var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
 
 
 
-#####ICollection
-- Count
-- IsSynchronized
-- CopyTo
+
 
 #####IList
 inherit of ICollection and:
