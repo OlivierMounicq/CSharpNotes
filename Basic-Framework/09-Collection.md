@@ -252,6 +252,7 @@ foreach(var n in numberLst)
 ```cs
 using System.Collections;
 using System.Collections.Generic;
+
 public class Numbers : IEnumerable<Int32>
 {
     int[] data = {1, 2, 3, 4, 5};
@@ -280,6 +281,7 @@ public class Numbers : IEnumerable<Int32>
         void IDisposable.Dispose(){ }
     }
 }
+
 var numberLst = new Numbers();
 foreach(var n in numberLst)
 {
