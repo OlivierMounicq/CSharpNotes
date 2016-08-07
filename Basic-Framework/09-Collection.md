@@ -123,25 +123,34 @@ public class MyCollection : IEnumerable
 #####3rd example : using the _yield_ keyword to build a generic class implementing IEnumerable<T>
 
 ```cs
-public class SquaredNumbers : IEnumerable<int>
-{
-     public readonly int[] list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+using System.Collections;
+using System.Collections.Generic;
 
-     public IEnumerator<Int32> GetEnumerator()
-     {
-          foreach(var number in list)
-          {    
-               yield return (Int32)Math.Pow(number,2);   
-          }
-     }
+public class Numbers : IEnumerable<Int32>
+{
+    public readonly int[] list = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+    public IEnumerator<Int32> GetEnumerator()
+    {
+        foreach (var number in list)
+        {
+            yield return ((Int32)(Math.Pow(number, 2)));
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }
 
-var numbers = new SquaredNumbers();
+var numbers = new Numbers();
 
-for(int i = 0; i < 10; i++)
+foreach(var number in numbers)
 {
-    Console.WriteLine("{0} : {1}", numbers.list[i], numbers[i]);  
+     Console.WriteLine(number);
 }
+
 ```
 
 
