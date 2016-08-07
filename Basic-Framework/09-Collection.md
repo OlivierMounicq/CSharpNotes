@@ -21,6 +21,7 @@
 
 ####IEnumerator
 
+
 ```cs
 //Non generic
 public interface IEnumerator
@@ -38,6 +39,11 @@ public interface IEnumerator<T> : IEnumerator, IDisposable
 ```
 
 ####IEnumerable
+
+#####The interface
+
+IEnumerable like a IEnumerator provider
+
 ```cs
 //Non-generic
 public interface IEnumerable
@@ -52,6 +58,25 @@ public interface IEnumerable<T> : IEnumerable
 }
 ```
 
+
+#####An example
+
+```cs
+string quote = "Hello world!";
+IEnumerator enumeration = quote.GetEnumerator();
+
+while(enumeration.MoveNext())
+{
+     Console.Write(((char)enumeration.Current));
+}
+```
+
+
+And the output is :
+
+```cmd
+Hello world!
+```
 
 #####ICollection
 - Count
