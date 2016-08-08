@@ -467,9 +467,102 @@ int val = matrix.GetValue(0,0);
 
 #####Copying
 
-- intance method
+- intance methods
      * Clone  : return a new shallow-copied instance
      * CopyTo : copies a contiguous subset of the array
+- static methods :
+     * Copy : copies a contiguous of the array
+     * ConstrainedCopy : atomic operation. All elements have to be copied otherwise the copy will be rollbacked
+
+###List<T> and ArrayList
+
+- ArrayList and List<T> are dynamically sized
+- ArrayList is non generic and implements the IList interface
+- List<T> is generic and implements the IList<T> interface
+- List<T> and ArrayList use internally the arrays of objects
+- Appending elements is efficiency
+- Inserting elements could be slow
+- Best searching method : use the _BinarySearch_ on the sorted list otherwise each element must checked
+- List<T> is up to several times faster than ArrayList if T is a value type because List<T> avoids the overhead of boxing and unboxing elements
+- If the element type is _value_, you may choose a List<T> (better performance)
+- Choose ArrayList if you want to use reflection. The reflection is easier in with non-generic type
+- _O(n)_
+
+####ArrayList
+
+#####Casting
+
+```cs
+ArrayList al = new ArrayList();
+al.Add("hello");
+
+//The CLR will compile, but an exception will be thrown during the runtime
+int test = (int)al[0];
+```
+
+#####Cast an ArrayList into List<T>
+
+```cs
+ArrayList al = new ArrayList();
+al.AddRange(new[] {1, 2, 3}};
+List<int> list = al.Cast<int>().ToList();
+```
+
+###LinkedList<T>
+
+- generic doubly linked list
+- inserting is efficiency
+- Implements IEnumerable, IEnumerable<T>, ICollection, ICollection<T>
+- No access to element by index
+- The LinkedList<T> has internal fields to keep track of the number of elements, the head and the tail of the list
+
+###Queue and Queue<T>
+- FIFO
+- Enqueue / Dequeue methods
+- Peek : return the first element at head of the queue without to remove it
+- Cannot access directly to an item by index
+- Does not implement IList and ILIst<T> (no direct access is mandatory)
+- They are implemented internally using array
+- The queues maintain indexes to access directly to the head and tail of the collection 
+- Enqueuing and Dequeuing are quick operations
+
+
+###Stack & Stack<T>
+- LIFO
+- Push : add an item
+- Pop : retrieve and remove an item
+- Peek : retrieve without removing the item
+
+###BitArray
+- Dynamically sized collection of compacted bool values
+- More memory-efficient than a simple array of bool or a generic list of bool
+- Uses one bit for each values (otherwise the bool type uses one byte)
+
+
+###HashSet<T> ans SortedSet<T>
+- Contains method execute quickly using a hash-based lookup
+- Do not store duplicate elements
+- Silently ignore the requests to add duplicates
+- Cannot access element by index
+- SortedSet<T> keeps the elements in order
+- HashSet<T> is implemented with a hashtable that stores just keys
+- SortedSet<T> is implemented with a red/black tree
+- Both class implements ICollection<T>
+
+
+###Dictionaries
+
+- Unsorted dictionaries
+     * Dictionary<K,V> : hashtable / _O(1)_
+     * Hashtable : hashtable / _O(1)_ / non-generic dictionary
+     * ListDictionary : linked list / _O(n)_
+     * HybridDictionary
+     * OrderedDictionary : hashtable + array / _O(1)_
+- Sorted dictionnaries:
+     * SortedDictionary<K,V> : red/black tree / _O(log n)_
+     * SortedList<K,V> : 2 arrays / _O(log n)_
+     * SortedList : 2 arrays / _O(log n)_
+
 
 
 
