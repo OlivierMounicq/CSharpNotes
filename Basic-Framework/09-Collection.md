@@ -646,7 +646,7 @@ Namespace : System.Collections.ObjectModel
      * OnClear
      * OnClearComplete
 
-####```KeyedCollection<TKey, TItem>```
+####KeyedCollection&lt;TKey, TItem&gt;
 
 - Subclass of Collection<TItem>
 - Combines linear list with a hashtable
