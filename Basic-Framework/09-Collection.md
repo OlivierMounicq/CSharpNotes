@@ -35,7 +35,7 @@ public interface IEnumerator
 }
 
 //Generic
-public interface IEnumerator&lt;T&gt; : IEnumerator, IDisposable
+public interface IEnumerator<T> : IEnumerator, IDisposable
 {
      T Current {get;}
 }
@@ -78,9 +78,9 @@ public interface IEnumerable
 }
 
 //Generic
-public interface IEnumerable&lt;T&gt; : IEnumerable
+public interface IEnumerable<T> : IEnumerable
 {
-     IEnumrator&lt;T&gt; GetEnumerator();
+     IEnumerator<T> GetEnumerator();
 }
 ```
 
@@ -126,11 +126,11 @@ public class MyCollection : IEnumerable
 using System.Collections;
 using System.Collections.Generic;
 
-public class Numbers : IEnumerable&lt;Int32&gt;
+public class Numbers : IEnumerable<Int32>
 {
     public readonly int[] list = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    public IEnumerator&lt;Int32&gt; GetEnumerator()
+    public IEnumerator<Int32> GetEnumerator()
     {
         foreach (var number in list)
         {
@@ -158,7 +158,7 @@ foreach(var number in numbers)
 ```cs
 public class List
 {
-     public static IEnumerable&lt;Int32&gt; GetList()
+     public static IEnumerable<Int32> GetList()
      {
           yield return 1;
           yield return 2;
@@ -219,12 +219,12 @@ public class Numbers : IEnumerable
             
         public bool MoveNext()
         {
-            if(currentIdx &gt;= numbers.data.Length - 1)
+            if(currentIdx >= numbers.data.Length - 1)
             {
                 return false;
             }
                 
-            return ++currentIdx &lt; numbers.data.Length;
+            return ++currentIdx < numbers.data.Length;
         }
             
         public void Reset()
@@ -257,10 +257,10 @@ public class Numbers : IEnumerable&lt;Int32&gt;
 {
     int[] data = {1, 2, 3, 4, 5};
     
-    public IEnumerator&lt;Int32&gt; GetEnumerator(){ return new Enumerator(this); }
+    public IEnumerator<Int32> GetEnumerator(){ return new Enumerator(this); }
     IEnumerator IEnumerable.GetEnumerator(){ return new Enumerator(this); }
     
-    class Enumerator : IEnumerator&lt;Int32&gt;
+    class Enumerator : IEnumerator<Int32>
     {
         Numbers numbers;
         int currentIdx = -1;
@@ -270,13 +270,13 @@ public class Numbers : IEnumerable&lt;Int32&gt;
             this.numbers = pNumbers;   
         }
         
-        public int Current =&gt; this.numbers.data[currentIdx];
+        public int Current => this.numbers.data[currentIdx];
         
-        object IEnumerator.Current =&gt; this.Current;
+        object IEnumerator.Current => this.Current;
         
-        public bool MoveNext() =&gt; ++currentIdx &lt; this.numbers.data.Length;
+        public bool MoveNext() => ++currentIdx < this.numbers.data.Length;
         
-        public void Reset() =&gt; currentIdx = -1;
+        public void Reset() => currentIdx = -1;
         
         void IDisposable.Dispose(){ }
     }
@@ -307,7 +307,7 @@ public interface ICollection : IEnumerable
 #### Generic interface
 
 ```cs 
-public interface ICollection&lt;T&gt; : IEnumerable&lt;T&gt;, IEnumerable
+public interface ICollection<T> : IEnumerable<T>, IEnumerable
 {
      int Count { get; }
      
@@ -355,7 +355,7 @@ public interface IList : ICollection, IEnumerable
 ####The generic interface IList&lt;T&gt;
 
 ```cs
-public interface IList&lt;T&gt; : ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable
+public interface IList<T> : ICollection<T>, IEnumerable<T>, IEnumerable
 {
      T this [int index] { get; set; }
      int IndexOf (T item);
@@ -375,7 +375,7 @@ public interface IList&lt;T&gt; : ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IE
 This interface has been added in the framework __4.5__. It's like the IList&lt;T&gt; without the method to add and remove the items.
 
 ```cs
-public interface IReadOnlyList&lt;out T&gt; : IEnumerable&lt;T&gt;, IEnumerable
+public interface IReadOnlyList<out T> : IEnumerable<T>, IEnumerable
 {
      int Count { get; }
      T this[int index] { get; }
@@ -393,7 +393,7 @@ Arrays are not generic, so if you want to get the _generic interface_, you shoul
 ```cs
 int[] numbers = {1, 2, 3 };
 
-var enumerator = ((GetEnumerator&lt;int&gt;)numbers).GetEnumerator();
+var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
 
 ```
 
@@ -505,7 +505,7 @@ int test = (int)al[0];
 ```cs
 ArrayList al = new ArrayList();
 al.AddRange(new[] {1, 2, 3}};
-List&lt;int&gt; list = al.Cast&lt;int&gt;().ToList();
+List<int> list = al.Cast<int>().ToList();
 ```
 
 ###LinkedList&lt;T&gt;
