@@ -665,7 +665,7 @@ Namespace : System.Collections.ObjectModel
 | _O(log n)_ | ```SortedDictionary<K,V> ```|
 |            | ```SortedList ```           |
 |            | ```SortedList<K,V> ```      |
-| _O(n)      | ```List ```                 |
+| _O(n)_     | ```List ```                 |
 |            | ```List<T> ```              |
 |            | ```ListDictionary ```       |
 
