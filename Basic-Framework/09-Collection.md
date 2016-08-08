@@ -576,7 +576,7 @@ List<int> list = al.Cast<int>().ToList();
 
 - The underlying hashtable works by converting each element's key into an integer hashcode and the applying an algorithm to convert the hashcode into a hash key
 - By default, the methods _object.Equal_ and _GetHashCode_ are used to retrieve a value from its key
-- We could override the way to perform the equality : ```new Dictionary&lt;string, int&gt;(StringComparer.OrdinalIgnoreCase) ```
+- We could override the way to perform the equality : ```new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) ```
 - Increase performance by defining the expected size of the collection during the instantiation (via the constructor) to avoid the operation to resize the object.
 
 ####OrderedDictionary
