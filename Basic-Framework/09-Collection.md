@@ -253,7 +253,7 @@ foreach(var n in numberLst)
 using System.Collections;
 using System.Collections.Generic;
 
-public class Numbers : IEnumerable&lt;Int32&gt;
+public class Numbers : IEnumerable<Int32>
 {
     int[] data = {1, 2, 3, 4, 5};
     
