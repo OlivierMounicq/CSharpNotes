@@ -450,9 +450,25 @@ int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9} };
 => This method also initialiaze the elements
 
 ```cs
-Array.CreateInstance(typeof(string), 5);
+string[] myArray = Array.CreateInstance(typeof(string), 5);
 ````
 
+#####Set values by using __SetValue__ and get value by using __GetValue__
+
+```cs
+Array a = Array.CreateInstance(typeof(int), 5);
+a.SetValue(10,0); //a[0] = 10;
+
+int[,] matrix = new int[5,5];
+matrix.SetValue(1,0,0);
+
+int val = matrix.GetValue(0,0);
+```
+
+#####Copying
+
+- intance method
+-   -Clone
 
 
 
