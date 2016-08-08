@@ -397,6 +397,62 @@ var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
 
 ```
 
+####The Array class
+
+- Not resizable
+- The CLR assigns to the array a contiguous space in memory
+- Implement IList<T>
+- When the method _Call_ and _Remove_ of IList<T>  are called, an error is thrown
+- Only way to resize the array: using the static method _Resize_
+- _Resize_ method : creates another array and copies the former into the new. And the references to the array elsewhere in the program will still point to the original version
+- Array is a class => always reference type regardless of the array's element type
+- Clone method : the new array contains the references of the original array (only the references are copied), it's _shallow array_
+- Deep copy : you must loop through the array and clonde each element
+- The higher base class: Array and not object[] (because, for instance, an array with the value type like int[] cannot inherit of object[])
+- The aray are covariant
+- Clear() method does not affect the size of the array
+- _O(n)_
+
+
+####Equality
+
+```cs
+object[] a1 = { "string", 123, true };
+object[] a2 = { "string", 123, true };
+
+Console.WriteLine(a1 == a2); //False
+Console.WriteLine(a1.Equals(a2)); //False
+
+IStructuralEquatable se1 = a1;
+Console.WriteLine(se1.Equals(a2, StructuralComparisons.StructuralEqualityComparer)); //True
+```
+
+####Clone : shallow copy
+
+```cs
+StringBuilder[] builder2 = builders;
+StringBuilder[] shallowClone = (StringBuilder[]) builders.clone();
+```
+
+####Construction and indexing
+
+#####Instantiate a new array
+
+```cs
+int[] myArray = {1, 2, 3};
+int[] myArray = new int[5];
+
+int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9} };
+````
+
+#####Instantiate a new array by CreateInstance
+
+=> This method also initialiaze the elements
+
+```cs
+Array.CreateInstance(typeof(string), 5);
+````
+
 
 
 
