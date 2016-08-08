@@ -563,7 +563,108 @@ List<int> list = al.Cast<int>().ToList();
      * SortedList<K,V> : 2 arrays / _O(log n)_
      * SortedList : 2 arrays / _O(log n)_
 
+####Interface IDictionary<TKey, TValue>
+- The interface extends the ICollection<T>
+- Duplicate keys are forbidden (otherwise exception is thrown)
+- If the key does not exit, an error is thrown
 
+####Interface IDictionary
+
+- Request a nonexistent key via the indexer returns null (not threw exception)
+
+####Dictionary<K,V>
+
+- The underlying hashtable works by converting each element's key into an integer hashcode and the applying an algorithm to convert the hashcode into a hash key
+- By default, the methods _object.Equal_ and _GetHashCode_ are used to retrieve a value from its key
+- We could override the way to perform the equality : ```new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) ```
+- Increase performance by defining the expected size of the collection during the instantiation (via the constructor) to avoid the operation to resize the object.
+
+####OrderedDictionary
+
+- An OrderedDictionary is not a __sorted__ dictionary
+- Non generic dictionary that maintains elements in the same order that they were added
+- A combination of Hashtable and an ArrayList
+- Because this class inherits ArrayList, we can access to the method _RemoveAt_
+- No generic version
+
+####ListDictionary
+- Singly linked list to store the underlying data
+- Preserves the entry order of the items
+- Extremely slow with large list
+- Very efficiency with very small list (fewer than 10 items)
+- Non generic class
+- No generic version
+
+####HybridDictionary
+- For a small set of data, the underlying class is ListDictionary
+- For the large set of data, the underlying class will a HashTable
+- Low memory when the dictionary is small
+- Too much overhead to convert ListDictionary to HashTable, so the performances are not good
+- Non generic class
+- No generic version
+
+####SortedDictionary<TKey,TValue>
+- Uses a red/black tree
+- Must faster than SortedList<TKey, TValue>
+- The duplicate keys are not allowed
+
+####sortedList<T>
+- Implements internally with an ordered array pair providing fast via binary-chop search
+- Poor insertion performance
+- You can go directly to the _nth_ element in the sorting sequence
+- The duplicate keys are not allowed
+
+
+###CUSTOMIZABLE COLLECTIONS AND PROXIES
+
+Namespace : System.Collections.ObjectModel
+
+- Wrapper/proxy implemented IList<T>
+- Each Add, Remove and Clear operation is routed via a virtual method
+
+####Collection<T>
+
+- a constructor accepting an existing IList<T>, the supplied list is proxied and not copied, so it means that each modificaton in the Collection<T> will modify the list too
+- Generic class 
+- The methods are :
+     * protected virtual void ClearItems()
+     * protected virtual void InsertItem(int index, T item)
+     * protected virtual void RemoveItem(int index)
+     * protected virtual void SetItem(int index, T item)
+     * protected IList<T> Items { get; }
+
+####CollectionBase
+
+- non generic version of Collection<T>
+- the methods are:
+     * OnInsert
+     * OnInsertComplete
+     * OnSet
+     * OnSetComplete
+     * OnRemove
+     * OnRemoveComplete
+     * OnClear
+     * OnClearComplete
+
+####KeyedCollection<TKey, TItem>
+
+- Subclass of Collection<TItem>
+- Combines linear list with a hashtable
+- Does not implement the interface IDictionary
+- Does not support the concept of the key/value pair
+- Like Collection<Item> with a fast lookup key
+
+
+
+
+
+
+
+
+
+
+
+-----------------
 
 
 
