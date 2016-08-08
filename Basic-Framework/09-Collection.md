@@ -655,6 +655,19 @@ Namespace : System.Collections.ObjectModel
 - Like Collection&lt;Item&gt; with a fast lookup key
 
 
+###Complexity
+
+| Complexity | Class                       |
+|:-----------|:----------------------------|
+| _O(1)_     | ```Dictionary<K,>```        |
+|            | ```HashTable ```            |
+|            | ``ÒrderedDictionary ```     |
+| _O(log n)_ | ```SortedDictionary<K,V> ```|
+|            | ```SortedList ```           |
+|            | ```SortedList<K,V> ```      |
+| _O(n)      | ```List ```                 |
+|            | ```List<T> ```              |
+|            | ```ListDictionary ```       |
 
 
 
