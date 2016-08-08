@@ -468,8 +468,8 @@ int val = matrix.GetValue(0,0);
 #####Copying
 
 - intance method
--   -Clone
-
+     * Clone  : return a new shallow-copied instance
+     * CopyTo : copies a contiguous subset of the array
 
 
 
