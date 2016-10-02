@@ -3,7 +3,7 @@
 ###Reference type and parameter
 
 Beware : don't confound the reference/value type with the parameter!
-By default, the parameter are value parameter. It's mean, each time, you enter in new function, a copy of the reference (a memory address) is copied. 
+__By default, the parameter are value parameter.__ It's mean, each time, you enter in new function, the parameter (regardless the type) is a copy of the reference. 
 
 
 ```cs
