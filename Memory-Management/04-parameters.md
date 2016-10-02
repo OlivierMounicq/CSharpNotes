@@ -1,6 +1,10 @@
 #Parameters in C#
 
-###Reference type and paramter
+###Reference type and parameter
+
+Beware : don't confound the reference/value type with the parameter!
+By default, the parameter are value parameter. It's mean, each time, you enter in new function, a copy of the reference (a memory address) is copied. 
+
 
 ```cs
 public class Person
