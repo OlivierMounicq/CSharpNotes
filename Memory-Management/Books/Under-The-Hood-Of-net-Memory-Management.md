@@ -36,7 +36,7 @@ To keep track of everything, .net maintains a __stack__ data structure which it 
 - When a method is called, .net created a container (a stack frame) that contains all of the data necessary to complete the call, including parameters locally declared variables and addresses of the line of code to execute after the method finishes.
 - For every method call made in a call tree, the stack containers are stacked on the top of the other
 - When a method completes, its container is removed from the top of the stack and the excution returns to the next line of within the calling method
-- the frame at the top of the stack is always the oe-ne used by the current executing method.
+- the frame at the top of the stack is always the one used by the current executing method.
 
 ###Datatypes and their storages
 
