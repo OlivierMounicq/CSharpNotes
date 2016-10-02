@@ -61,8 +61,10 @@ The _reference types_ stored on the heap (LOH or SOH) are:
 - classes
 - interfaces
 - delegate
-- strings
+- strings (the string also are immutable objects)
 - instance of object
+- Array (even if the nested type is a value type)
+
 
 
 
