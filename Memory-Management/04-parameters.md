@@ -50,21 +50,21 @@ var p3 = new Person("Albert","Einstein");
 
 Console.WriteLine("====================================================");
 
-Console.WriteLine(p1.ToString());
-myClass.Change(p1);
-Console.WriteLine(p1.ToString());
+Console.WriteLine(p1.ToString()); //Albert Einstein
+myClass.Change(p1);               //Richard Einstein
+Console.WriteLine(p1.ToString()); //Richard Einstein
 
 Console.WriteLine("====================================================");
 
-Console.WriteLine(p2.ToString());
-myClass.ChangeNew(p2);
-Console.WriteLine(p2.ToString());
+Console.WriteLine(p2.ToString());  //Albert Einstein   
+myClass.ChangeNew(p2);             //Richard Feynmann
+Console.WriteLine(p2.ToString());  //Albert Einstein
 
 Console.WriteLine("====================================================");
 
-Console.WriteLine(p3.ToString());
-myClass.ChangeNewRef(p3);
-Console.WriteLine(p3.ToString());
+Console.WriteLine(p3.ToString());  //Albert Einstein
+myClass.ChangeNewRef(p3);          //Marie Curie
+Console.WriteLine(p3.ToString());  //Marie Curie
 ```
 
 [csharppad.com](http://csharppad.com/gist/4bd34d5e7f991ef4657786f531712d6e)
