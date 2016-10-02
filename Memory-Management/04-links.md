@@ -6,3 +6,5 @@
 
 [E2E: Erik Meijer and Patrick Dussud - Inside Garbage Collection](https://channel9.msdn.com/Shows/Going+Deep/E2E-Erik-Meijer-and-Patrick-Dussud-Inside-Garbage-Collection)
 
+[Parameters](http://jonskeet.uk/csharp/parameters.html)
+
