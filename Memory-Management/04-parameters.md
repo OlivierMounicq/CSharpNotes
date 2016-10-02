@@ -25,19 +25,19 @@ public class MyClass
     public void Change(Person p)
     {
         p.FirstName = "Richard";
-        p.ToString();
+        Console.WriteLine(p.ToString());
     }
     
     public void ChangeNew(Person p)
     {
         p = new Person("Richard","Feynman");
-        p.ToString();
+        Console.WriteLine(p.ToString());
     }
     
     public void ChangeNewRef(ref Person p)
     {
         p = new Person("Marie","Curie");
-        p.ToString();
+        Console.WriteLine(p.ToString());
     }
     
 }
@@ -48,18 +48,24 @@ var p1 = new Person("Albert","Einstein");
 var p2 = new Person("Albert","Einstein");
 var p3 = new Person("Albert","Einstein");
 
-p1.ToString();
+Console.WriteLine("====================================================");
+
+Console.WriteLine(p1.ToString());
 myClass.Change(p1);
-p1.ToString();
+Console.WriteLine(p1.ToString());
 
-p2.ToString();
-myClass.Change(p2);
-p2.ToString();
+Console.WriteLine("====================================================");
 
-p3.ToString();
-myClass.Change(p3);
-p3.ToString();
-````
+Console.WriteLine(p2.ToString());
+myClass.ChangeNew(p2);
+Console.WriteLine(p2.ToString());
 
+Console.WriteLine("====================================================");
 
+Console.WriteLine(p3.ToString());
+myClass.ChangeNewRef(p3);
+Console.WriteLine(p3.ToString());
+```
+
+[csharppad.com](http://csharppad.com/gist/4bd34d5e7f991ef4657786f531712d6e)
 
