@@ -6,4 +6,6 @@
 
 [03 - IDisposable](https://github.com/OMQ/CSharpNotes/blob/master/Memory-Management/03-IDisposable.md)
 
-[04 - Some links](https://github.com/OMQ/CSharpNotes/blob/master/Memory-Management/04-links.md)
+[04 - Parameters](https://github.com/OMQ/CSharpNotes/blob/master/Memory-Management/04-parameters.md)
+
+[05 - Some links](https://github.com/OMQ/CSharpNotes/blob/master/Memory-Management/05-links.md)
