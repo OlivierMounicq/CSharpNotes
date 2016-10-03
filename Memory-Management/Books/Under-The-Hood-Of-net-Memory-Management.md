@@ -66,6 +66,31 @@ The _reference types_ stored on the heap (LOH or SOH) are:
 - Array (even if the nested type is a value type)
 
 
+### Passing parameter
+
+By default, the type of the paramter is the value type (cf [paramaters](https://github.com/OMQ/CSharpNotes/blob/master/Memory-Management/04-parameters.md)
+
+### Boxing/unboxing
+
+Use the boxing to allocate a value type on the heap.
+
+_Boxing occurs automatically_
+
+By example, when a parameter of a method is an object, so if you pass a value type, the boxing will occur automatically.
+
+```cs
+ArrayList list = new ArrayList();
+
+//method  signature : Add(object value)
+
+int a = 12;
+list.Add(12); //a boxing occurs
+```
+
+__Beware__ : the performance could be worse by using the boxing.
+
+
+
 
 
 
