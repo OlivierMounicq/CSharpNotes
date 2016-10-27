@@ -30,7 +30,8 @@ So the _Dispose_ method is used to explain how to deallocate the unmanaged resou
 
 ####2.2.1 Finalize and destructor.
 
-You cannot create a _Finalize_ method which is called by the Garbage Collector. The only way is to to create a destructor. All the code inside the destructor will be copied in to the _Finalize_ method by the CLR.
+You cannot create and __call__ a _Finalize_ method which is called by the Garbage Collector. The only way is to to create a destructor. All the code inside the destructor will be copied in to the _Finalize_ method by the CLR.
+And the _Finalize_ is only called by the CLR. Never by the developper.
 
 ####2.2.2 Why to use the finalizer?
 
@@ -38,8 +39,14 @@ If the code does not call the Dispose (the developer has forgot to call the _Dis
 
 ####2.2.3 The rules
 
-Never dispose the managed ressources in the destructor/finalize method. (In this case, an exception could be throw).
+Avoid dispose the managed ressources in the destructor/finalize method. (In this case, an exception could be throw).
 
+###2.4 Destructor/Finalize vs Dispose.
+
+The main difference between them is the determistic and non determistic call.
+The developper decides to call the Dispose method: it's a determistic process.
+
+But the developper don't trigger the garbage collector, only the CLR decides when to trigger the garbage collector: it's a non determistic process.
 
 
 ###2.3 The worklow
@@ -50,7 +57,7 @@ So there are two ways to call the _Dispose_ method:
 
 But if the developer has called the _Disposible_ method in his/her code, it's useless to call the _Dispose_ method from the finalizer. When the method Dispose has been called, you must suppress the object in the finalize queue to gain performance.
 
-###3.The best practices / The pattern
+###3.The Dispose pattern
 
 
 ####3.1.When should you use and implement the IDisposable interface and the finalizer?
@@ -119,3 +126,5 @@ The protected method will be call either by the method of the object or by the i
 [Difference between Finalize and Dispose method](http://www.dotnet-tricks.com/Tutorial/netframework/P1MK271013-Difference-Between-Finalize-and-Dispose-Method.html)
 
 [Finalize vs Dispose](http://stackoverflow.com/questions/732864/finalize-vs-dispose)
+
+[Dispose pattern](https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx)
