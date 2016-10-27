@@ -30,7 +30,7 @@ So the _Dispose_ method is used to explain how to deallocate the unmanaged resou
 
 ####2.2.1 Finalize and destructor.
 
-You cannot create and __call__ a _Finalize_ method which is called by the Garbage Collector. The only way is to to create a destructor. All the code inside the destructor will be copied in to the _Finalize_ method by the CLR.
+You cannot create and __call__ a _Finalize_ method which is called by the Garbage Collector. The only way is to to create a destructor. All the code inside the destructor will be copied in the _Finalize_ method by the CLR.
 And the _Finalize_ is only called by the CLR. Never by the developper.
 
 ####2.2.2 Why to use the finalizer?
