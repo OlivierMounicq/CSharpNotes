@@ -15,7 +15,8 @@ There are three different kinds of resources:
 
 Actually the managed resources are totally managed by the garbage collector (the allocation and the deallocation). So when there is no reference pointing to object, the memory used by the object will be free by the garbage collector.
 But if the object owns unmanaged resource (like file, database connection, ...), you must delete the reference of unmanaged resource otherwise the object won't be deallocated.
-To deallocate explicitly the unmanaged resource, you have to create a _Dispose_ method (of the _IDisposable_ interface) to explain the deallocation of the unmanaged resource.
+
+To deallocate explicitly the unmanaged resource, you have to create and call a _Dispose_ method (of the _IDisposable_ interface) to explain the deallocation of the unmanaged resource.
 
 
 ##2. Dispose vs Finalize
@@ -33,27 +34,28 @@ You cannot create a _Finalize_ method which is called by the Garbage Collector. 
 
 ####2.2.2 Why to use the finalizer?
 
-If the code does not call the Dispose, the object won't be released. To avoid this problem, you can to call the _Dispose_ method from the destructor (consequently, from the finalizer)
-
+If the code does not call the Dispose (the developer has forgot to call the _Dispose_ method), the object won't be released. To avoid this problem, you can to call the _Dispose_ method from the destructor (consequently, from the finalizer)
 
 
 
 ###3.The best practices / The pattern
 
 
-####3.1.When should you use and implement the IDisposable interface?
+####3.1.When should you use and implement the IDisposable interface and the finalizer?
+
+
 
 
 ####3.2. How to use the IDisposable interface?
 
+```cs
 
 
 
-##2.IDisposable
+```
 
 
 
-The interface IDisposable is : 
 
 ```cs
 public interface IDisposable
