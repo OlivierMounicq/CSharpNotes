@@ -36,6 +36,12 @@ You cannot create a _Finalize_ method which is called by the Garbage Collector. 
 
 If the code does not call the Dispose (the developer has forgot to call the _Dispose_ method), the object won't be released. To avoid this problem, you can to call the _Dispose_ method from the destructor (consequently, from the finalizer)
 
+####2.2.3 The rules
+
+Never dispose the managed ressources in the destructor/finalize method. (In this case, an exception could be throw).
+
+
+
 ###2.3 The worklow
 
 So there are two ways to call the _Dispose_ method:
@@ -96,7 +102,7 @@ The protected method will be call either by the method of the object or by the i
 
 
 
-####Some url
+##4. Some url
 
 [IDisposable for Dummies #1 – Why? What?](http://blog.ilab8.com/2012/04/26/idisposable-for-dummies-1-why/)
 
@@ -111,3 +117,5 @@ The protected method will be call either by the method of the object or by the i
 [Back to basics : Dispose vs finalize](http://www.c-sharpcorner.com/UploadFile/nityaprakash/back-to-basics-dispose-vs-finalize/)
 
 [Difference between Finalize and Dispose method](http://www.dotnet-tricks.com/Tutorial/netframework/P1MK271013-Difference-Between-Finalize-and-Dispose-Method.html)
+
+[Finalize vs Dispose](http://stackoverflow.com/questions/732864/finalize-vs-dispose)
