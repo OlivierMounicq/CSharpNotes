@@ -43,10 +43,10 @@ Avoid dispose the managed ressources in the destructor/finalize method. (In this
 
 ###2.4 Destructor/Finalize vs Dispose.
 
-The main difference between them is the determistic and non determistic call.
-The developper decides to call the Dispose method: it's a determistic process.
+The main difference between them is the deterministic and non deterministic call.
+The developper decides to call the Dispose method: it's a deterministic process.
 
-But the developper don't trigger the garbage collector, only the CLR decides when to trigger the garbage collector: it's a non determistic process.
+But the developper is not able to trigger the garbage collector, only the CLR decides when to trigger the garbage collector: it's a non deterministic process.
 
 
 ###2.3 The worklow
@@ -107,9 +107,12 @@ Only the public method will be call either by the calling method or by the final
 
 The protected method will be call either by the method of the object or by the inherited class.
 
+##4.Abstract
 
+The _Dispose_ method is made to explain how to deallocate the unmananaged (and the managed) resource.
+If the developer forgot to call the _Dispose_ method in his/her code, the _Finalize_ method is made to call automatically (actually the CLR will do the job) the _Dispose_ method in order to deallocate the unmanaged resource and release the memory space used by the object.
 
-##4. Some url
+##5. Some url
 
 [IDisposable for Dummies #1 – Why? What?](http://blog.ilab8.com/2012/04/26/idisposable-for-dummies-1-why/)
 
