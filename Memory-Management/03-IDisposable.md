@@ -1,27 +1,55 @@
-##The interface IDisposable
+#The interface IDisposable
 
 
-####1. _Disposal_ vs Garbage Collector
+##1. Unmanaged/managed resources 
 
-#####1.1 The resource types
+###1.1 The resource types
 
-
-
-#####1.2 How 
-
-
-####3.The best practices / The pattern
+There are three different kinds of resources:
+- full managed resources
+- an object with unmanaged and manages resources
+- full managed resource object
 
 
-#####3.1.When should you use and implement the IDisposable interface?
+###1.2 Why to use the method Dispose ?
+
+Actually the managed resources are totally managed by the garbage collector (the allocation and the deallocation). So when there is no reference pointing to object, the memory used by the object will be free by the garbage collector.
+But if the object owns unmanaged resource (like file, database connection, ...), you must delete the reference of unmanaged resource otherwise the object won't be deallocated.
+To deallocate explicitly the unmanaged resource, you have to create a _Dispose_ method (of the _IDisposable_ interface) to explain the deallocation of the unmanaged resource.
 
 
-#####3.2. How to use the IDisposable interface?
+##2. Dispose vs Finalize
+
+###2.1 Dispose
+
+So the _Dispose_ method is used to explain how to deallocate the unmanaged resource.
+
+
+###2.2 Finalize & destructor
+
+####2.2.1 Finalize and destructor.
+
+You cannot create a _Finalize_ method which is called by the Garbage Collector. The only way is to to create a destructor. All the code inside the destructor will be copied in to the _Finalize_ method by the CLR.
+
+####2.2.2 Why to use the finalizer?
+
+If the code does not call the Dispose, the object won't be released. To avoid this problem, you can to call the _Dispose_ method from the destructor (consequently, from the finalizer)
 
 
 
 
-####2.IDisposable
+###3.The best practices / The pattern
+
+
+####3.1.When should you use and implement the IDisposable interface?
+
+
+####3.2. How to use the IDisposable interface?
+
+
+
+
+##2.IDisposable
 
 
 
