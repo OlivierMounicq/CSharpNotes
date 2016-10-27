@@ -36,7 +36,13 @@ You cannot create a _Finalize_ method which is called by the Garbage Collector. 
 
 If the code does not call the Dispose (the developer has forgot to call the _Dispose_ method), the object won't be released. To avoid this problem, you can to call the _Dispose_ method from the destructor (consequently, from the finalizer)
 
+###2.3 The worklow
 
+So there are two ways to call the _Dispose_ method:
+- the developer calls in his/her code the _Dispose_ method
+- the finalizer/destructor calls the the _Dispose_ method.
+
+But if the developer has called the _Disposible_ method in his/her code, it's useless to call the _Dispose_ method from the finalizer. When the method Dispose has been called, you must suppress the object in the finalize queue to gain performance.
 
 ###3.The best practices / The pattern
 
@@ -84,16 +90,9 @@ public class BaseClass : IDisposable
 
 ```
 
+Only the public method will be call either by the calling method or by the finalizer. If the public _Dispose_ method is called, so you can suppress the object from the finalize queue.
 
-
-
-```cs
-public interface IDisposable
-{
-  void Dispose();
-}
-```
-
+The protected method will be call either by the method of the object or by the inherited class.
 
 
 
