@@ -49,8 +49,38 @@ If the code does not call the Dispose (the developer has forgot to call the _Dis
 ####3.2. How to use the IDisposable interface?
 
 ```cs
+public class BaseClass : IDisposable
+{
+  private bool disposed = false;
+  
+  public Dispose()
+  {
+    Dispose(true);
+    GC.SuppressFinalize(this);
+  }
 
+  protected virtual void Dispose(bool disposing)
+  {
+    if(!disposed)
+    {
+      if(disposing)
+      {
+        //TODO : clean up the managed resource
+        //Consequently this code cannot be called by the destructor/finalizer
+      }
+    
+      //TODO : clean up the unmanaged resource
+    }
+    
+    disposed = true;
+  }
 
+  ~BaseClass()
+  {
+    Dispose(false);
+  }
+
+}
 
 ```
 
