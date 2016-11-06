@@ -1,4 +1,4 @@
-#Parameters in C#
+#Parameters in C\#
 
 ###Reference type and parameter
 
