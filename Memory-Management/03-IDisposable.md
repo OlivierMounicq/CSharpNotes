@@ -65,10 +65,53 @@ So there are two ways to call the _Dispose_ method:
 
 But if the developer has called the _Disposible_ method in his/her code, it's useless to call the _Dispose_ method from the finalizer. When the method Dispose has been called, you must suppress the object in the finalize queue to gain performance.
 
-###3.The Dispose pattern
+###3.Dispose properties
+
+The properties are:
+- you can call the _Dispose_ method even if the object has been disposed
+- if I call another method on a disposed object, an _ObjectDisposedException_ will be thrown
 
 
-####3.1.When should you use and implement the IDisposable interface and the finalizer?
+```cs
+using System;
+using System.IO.
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    var stream = new StreamWriter(@"C:\dummyfolder\dummy.txt", false);
+    
+    using(stream)
+    {
+      stream.WriteLine("Hello world");
+    }
+  
+    //The Dispose method has been called (see the using keyword)
+    
+    stream.Dispose(); //No error
+    
+    try
+    {
+      stream.WriteLine("I try to write!");
+     }
+     catch(ObjectDisposedException ex)
+     {
+        Console.WriteLine("I try to use a method of a disposed object");
+     }  
+  
+     stream.Dipose(); //NO error
+     
+     Console.ReadLine();
+  }
+}
+```
+
+
+
+###4.The Dispose pattern
+
+####4.1.When should you use and implement the IDisposable interface and the finalizer?
 
 - Unmanaged resource : Dispose + Finalizer 
 - Managed resource : Dispose
@@ -76,7 +119,7 @@ But if the developer has called the _Disposible_ method in his/her code, it's us
 Never use the Finalizer method in the case of the full managed resource: the CLR does not need an explanation to free up the memory. Otherwise, the garbage collector will add the object in Finalizer queue, apply the useless methods defined in Finalizer and remove the objec from the Finalizer queue: you waste the time of the Garbage Collector.
 
 
-####3.2. How to use the IDisposable interface?
+####4.2. How to use the IDisposable interface?
 
 ```cs
 public class BaseClass : IDisposable
@@ -118,12 +161,12 @@ Only the public method will be call either by the calling method or by the final
 
 The protected method will be call either by the method of the object or by the inherited class.
 
-##4.Abstract
+##5.Abstract
 
 The _Dispose_ method is made to explain how to deallocate the unmananaged and the managed resource.
 If the developer forgot to call the _Dispose_ method in his/her code, the _Finalize_ method is made to call automatically (actually the CLR will do the job) the _Dispose_ method in order to deallocate the unmanaged resource and release the memory space used by the object.
 
-##5. Some url
+##6. Some url
 
 [IDisposable for Dummies #1 – Why? What?](http://blog.ilab8.com/2012/04/26/idisposable-for-dummies-1-why/)
 
