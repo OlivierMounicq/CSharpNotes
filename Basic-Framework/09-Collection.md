@@ -579,6 +579,187 @@ List<int> list = al.Cast<int>().ToList();
 - We could override the way to perform the equality : ```new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) ```
 - Increase performance by defining the expected size of the collection during the instantiation (via the constructor) to avoid the operation to resize the object.
 
+####Dictionary&lt;K,V&gt; where K is a custom type
+
+When the key type is a cutom type, you must override the method _GetHashCode_ and _Equals_.
+
+By example:
+
+```cs
+public class Person
+{
+     public string FirstName { get; set; }
+     
+     public string LastName { get; set; }
+
+     public Person(string firstName, string lastName)
+     {
+          this.FirstName = firstName;
+          this.LastName = lastName;
+     }
+}
+
+public class Test
+{
+     public static void Foo()
+     {
+          var dict = new Dictionary<Person, Int32>();
+          
+          var einstein1 = new Person("Albert","Einstein");
+          var einstein2 = new Person("Albert","Einstein");
+          
+          dict.Add(einstein1, 1);
+          dict.Add(einstein2, 2); //no error!
+          
+          Console.WriteLine("Key quantity : {0}", dict.Keys.Count());
+     }
+}
+
+Test.Foo();
+```
+[@csharppad.com](http://csharppad.com/gist/367cd9ba5f75f4e38558ba9c5f188472)
+
+So this below code won't raise error because the objects _einstein1_ and _einstein2_ have not the same memory reference, so the default method _Equals_ returns false. And thus, we can insert two key with the same value.
+
+Consequently, if want to get a value, we must use the right reference:
+
+```cs
+public class Person
+{
+     public string FirstName { get; set; }
+     
+     public string LastName { get; set; }
+
+     public Person(string firstName, string lastName)
+     {
+          this.FirstName = firstName;
+          this.LastName = lastName;
+     }
+}
+
+public class Test
+{
+     public static void Foo()
+     {
+          var dict = new Dictionary<Person, Int32>();
+          
+          var einstein1 = new Person("Albert","Einstein");
+          var einstein2 = new Person("Albert","Einstein");
+          
+          dict.Add(einstein1, 1);
+          dict.Add(einstein2, 2); //no error!
+          
+          Console.WriteLine("Key quantity : {0}", dict.Keys.Count());
+          
+          Console.WriteLine("The value : {0}", dict[einstein2]); //No problem
+          
+          Console.WriteLine("The value : {0}", dict[new Person("Albert","Einstein")]); //Problem : the key is not in the dictionary
+          
+     }
+}
+
+Test.Foo();
+```
+[@csharppad.com](http://csharppad.com/gist/2119414361bdd1dc07f4f5a63c9d4fdc)
+
+So to avoid those problem, we have to override the methods _EqualsTo_ and _GetHashCode_:
+
+
+```cs
+public class Person
+{
+     public string FirstName { get; set; }
+     
+     public string LastName { get; set; }
+
+     public Person(string firstName, string lastName)
+     {
+          this.FirstName = firstName;
+          this.LastName = lastName;
+     }
+     
+     public override bool Equals(object obj)
+     {
+          return ((Person)obj).FirstName = this.FirstName && ((Person)obj).LastName == this.LastName;
+     }
+     
+     public override int GetHashCode()
+     {
+          return this.FirstName.GetHashCode() ^ this.LastName.GetHashCode();
+     }
+}
+
+public class Test
+{
+     public static void Foo()
+     {
+          var dict = new Dictionary<Person, Int32>();
+          
+          var einstein1 = new Person("Albert","Einstein");
+          var einstein2 = new Person("Albert","Einstein");
+          
+          dict.Add(einstein1, 1);
+          dict.Add(einstein2, 2); //ERROR!
+          
+          Console.WriteLine("Key quantity : {0}", dict.Keys.Count());
+     }
+}
+
+Test.Foo();
+```
+[@csharppad.com](http://csharppad.com/gist/f000870dea2a66f8732d887d19190bc2)
+
+__Remark__ : baeware when you override the _GetHashCode_ methods because you could face to performance problem. Choose carefully the right method.
+
+And finally, the dictionary uses the inner values in the key objects and not the reference:
+
+
+```cs
+public class Person
+{
+     public string FirstName { get; set; }
+     
+     public string LastName { get; set; }
+
+     public Person(string firstName, string lastName)
+     {
+          this.FirstName = firstName;
+          this.LastName = lastName;
+     }
+     
+     public override bool Equals(object obj)
+     {
+          return ((Person)obj).FirstName = this.FirstName && ((Person)obj).LastName == this.LastName;
+     }
+     
+     public override int GetHashCode()
+     {
+          return this.FirstName.GetHashCode() ^ this.LastName.GetHashCode();
+     }
+}
+
+public class Test
+{
+     public static void Foo()
+     {
+          var dict = new Dictionary<Person, Int32>();
+          
+          var einstein1 = new Person("Albert","Einstein");
+          dict.Add(einstein1, 1);
+          
+          einstein1.FirstName = "Richard";
+          einstein1.LastName = "Feynmann";
+          dic.Add(einstein1, 2); //No error
+          
+          Console.WriteLine("Key quantity : {0}", dict.Keys.Count());
+     }
+}
+
+Test.Foo();
+```
+
+[@csharppad.com](http://csharppad.com/gist/5ea35d14b9102298920b446d7abd5d25)
+
 ####OrderedDictionary
 
 - An OrderedDictionary is not a __sorted__ dictionary
