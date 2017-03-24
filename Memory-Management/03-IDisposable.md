@@ -1,13 +1,13 @@
 #The interface IDisposable
 
 
-##1. Unmanaged/managed resources 
+## 1. Unmanaged/managed resources 
 
-###1.1 What is a resource?
+### 1.1 What is a resource?
 
 A resource is living outside of the process. So a resource is external
 
-###1.2 The resource types
+### 1.2 The resource types
 
 There are three different kinds of resources:
 - full managed resources : this resource are allocated on the CLR's heap memory (the memory space and their field are managed by the CLR).
@@ -15,7 +15,7 @@ There are three different kinds of resources:
 - full unmanaged resource object : the resource lives outside of the CLR's heap memory (native resource).
 
 
-###1.3 Why to use the method Dispose ?
+### 1.3 Why to use the method Dispose ?
 
 Actually, there are two cases to use Dispose method:
 - using dispose method with managed resource : you decide when to free up memory space. It's deterministic. Otherwise, if the CLR handdles the resource's memory destruction, the workflow will be undeterministic. (you don't when the garbage collector will release the memory space).
@@ -27,29 +27,29 @@ But if the object owns unmanaged resource (like file, database connection, ...),
 To deallocate explicitly the unmanaged resource, you have to create and call a _Dispose_ method (of the _IDisposable_ interface) to explain the deallocation of the unmanaged resource.
 
 
-##2. Dispose vs Finalize
+## 2. Dispose vs Finalize
 
-###2.1 Dispose
+### 2.1 Dispose
 
 So the _Dispose_ method is used to explain how to deallocate the unmanaged/managed resource.
 
 
-###2.2 Finalize & destructor
+### 2.2 Finalize & destructor
 
-####2.2.1 Finalize and destructor.
+#### 2.2.1 Finalize and destructor.
 
 You cannot create and __call__ a _Finalize_ method which is called by the Garbage Collector. The only way is to to create a destructor. All the code inside the destructor will be copied in the _Finalize_ method by the CLR.
 And the _Finalize_ is only called by the CLR. Never by the developper.
 
-####2.2.2 Why to use the finalizer?
+#### 2.2.2 Why to use the finalizer?
 
 If the code does not call the Dispose (the developer has forgotten to call the _Dispose_ method), the object won't be released. To avoid this problem, you can to call the _Dispose_ method from the destructor (consequently, from the finalizer).
 
-####2.2.3 The rules
+#### 2.2.3 The rules
 
 Avoid dispose the managed ressources in the destructor/finalize method. (In this case, an exception could be throw).
 
-###2.4 Destructor/Finalize vs Dispose.
+### 2.4 Destructor/Finalize vs Dispose.
 
 The main difference between them is the deterministic and non deterministic call.
 The developper decides to call the Dispose method: it's a deterministic process.
@@ -57,7 +57,7 @@ The developper decides to call the Dispose method: it's a deterministic process.
 But the developper is not able to trigger the garbage collector, only the CLR decides when to trigger the garbage collector: it's a non deterministic process.
 
 
-###2.3 The worklow
+### 2.3 The worklow
 
 So there are two ways to call the _Dispose_ method:
 - the developer calls in his/her code the _Dispose_ method
