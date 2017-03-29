@@ -1,4 +1,4 @@
-#The interface IDisposable
+# The interface IDisposable
 
 
 ## 1. Unmanaged/managed resources 
