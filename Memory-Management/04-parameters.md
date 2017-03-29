@@ -1,6 +1,6 @@
-#Parameters in C&#35;
+# Parameters in C&#35;
 
-###Reference type and parameter
+### Reference type and parameter
 
 Beware : don't confound the reference/value type with the parameter!
 __By default, the parameter are value parameter.__ It's mean, each time, you enter in new function, the parameter (regardless the type) is a copy of the reference. 
