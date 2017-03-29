@@ -1,4 +1,4 @@
-#Memory management in the .net applications
+# Memory management in the .net applications
 
 [01 - Memory Management](https://github.com/OMQ/CSharpNotes/blob/master/Memory-Management/01-Memory.md)
 
