@@ -93,10 +93,15 @@ The CLR instantiate them on the SOH but not ``` Double[]``` which is instantiate
 |Integrated support to the processor | Multithreading |
 | No persistence (the objects are destroyed at the end of the method responsible of the creation | Suitable to allocate memory and pass it to another pointer |
 |Fixed size (StackOverflowException) | Growing size (OutOfMemoryException) |
-## 6. The object
 
-The double array is instantiated on the LOH (not on the SOH).
 
+## 6. The heap allocation process
+
+The allocation performs by the using of the ``` new ``` keyword and the allocation follows this workflow:
+- 1. Calculate the number of bytes required for the type's field (by adding the fields inherited from the base types)
+- 2. Add the bytes required for the the object's overhead . Each object has __two overhead fields__ : a type object pointer and a sync block index.
+* 32 bits : each of these fields requires 32 bits (8 bytes)
+* 64 bits : each of these fields requires 64 bits (16 bytes)
 
 
 
