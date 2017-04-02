@@ -3,7 +3,8 @@
 [Memory Management and Garbage Collection in the .NET Framework](https://msdn.microsoft.com/en-us/library/hh156531(v=vs.110).aspx)  
 [Basic memory housekeeping net memory management](http://content.atalasoft.com/h/i/58205464-basic-memory-housekeeping-net-memory-management-part-1)  
 [E2E: Erik Meijer and Patrick Dussud - Inside Garbage Collection](https://channel9.msdn.com/Shows/Going+Deep/E2E-Erik-Meijer-and-Patrick-Dussud-Inside-Garbage-Collection)  
-[The Top 5 .NET Memory Management Misconceptions](https://www.simple-talk.com/dotnet/net-performance/the-top-5-net-memory-management-misconceptions/)
+[The Top 5 .NET Memory Management Misconceptions](https://www.simple-talk.com/dotnet/net-performance/the-top-5-net-memory-management-misconceptions/)  
+[Object Overhead: The Hidden .NET Memory Allocation Cost](https://www.simple-talk.com/dotnet/net-framework/object-overhead-the-hidden-net-memory-allocation-cost/)
 
 ### Garbage Collector
 
