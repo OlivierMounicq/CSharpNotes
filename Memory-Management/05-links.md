@@ -12,5 +12,10 @@
 [Parameters](http://jonskeet.uk/csharp/parameters.html)  
 [Parameter passing in C#](http://www.leerichardson.com/2007/01/parameter-passing-in-c.html)
 
+### Videos
+
+[Learning .NET Memory Management @ RedGate](https://www.youtube.com/watch?v=k09bkM3_gsE&list=PLhFdCK734P8AfPwF2HxvcrlnbGv29sKyP)  
+
+
 
 
