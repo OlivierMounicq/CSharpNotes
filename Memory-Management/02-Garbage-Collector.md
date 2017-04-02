@@ -1,4 +1,4 @@
-## Garbage Collector
+# Garbage Collector
 
 ### Some data
 
@@ -26,6 +26,8 @@ There are different thresholds which are triggering the garbage collector:
 - Gen1 hits ~ 2 MB (at this point, the GC collects Gen0 and Gen1)
 - Gen2 hits ~ 10 MB (at this point, the GC collects Gen0, Gen1 and Gen2)
 - system memory is low
+- The CLR is unloading an AppDomain
+- The CLR is shutting down
 
 When the Gen2 collection runs:
 - the entire SOH is compacted
