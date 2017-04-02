@@ -18,15 +18,27 @@ Everything on the heap has an address.
 
 #### 2.1.1 The Small Object Heap (SOH)
 
+##### 2.1.1.1 Continuous sapce memory
 It is a continuous heap without hole (no fragmentation). Each time, the GC runs, this memory space will be compacted. 
 Therefore, once allocated an object cannot be resized on the continuous heap. For this reason, the string are immutable: the object cannot be changed and a new version is created instead.   
 => The heap is filled with temporary objects (and the GC must run more often to clean memory).
+
+##### 2.1.1.2 The generation
+
 
 
 
 
 
 #### 2.1.2 The Large Object Heap (LOH)
+
+##### 2.1.2.1 Non continuous memory space
+
+
+##### 2.1.2.2 The generation Gen2
+
+The object in the LOH are considered to be part of the generation 2.
+
 
 
 ## 3. The stack
@@ -100,8 +112,9 @@ The CLR instantiate them on the SOH but not ``` Double[]``` which is instantiate
 The allocation performs by the using of the ``` new ``` keyword and the allocation follows this workflow:
 - 1. Calculate the number of bytes required for the type's field (by adding the fields inherited from the base types)
 - 2. Add the bytes required for the the object's overhead . Each object has __two overhead fields__ : a type object pointer and a sync block index.
-  * 2 bits : each of these fields requires 32 bits (8 bytes)
+  * 32 bits : each of these fields requires 32 bits (8 bytes)
   * 64 bits : each of these fields requires 64 bits (16 bytes)
+- 3. The NextObjPtr 
 
 
 
