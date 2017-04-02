@@ -25,3 +25,11 @@ There are different thresholds which are triggering the garbage collector:
 - Gen0 hits ~ 256 K
 - Gen1 hits ~ 2 MB (at this point, the GC collects Gen0 and Gen1)
 - Gen2 hits ~ 10 MB (at this point, the GC collects Gen0, Gen1 and Gen2)
+- system memory is low
+
+When the Gen2 collection runs:
+- the entire SOH is compacted
+- the LOH is collected.
+
+
+
