@@ -19,4 +19,9 @@ The GC divides the memory into three tiers _memory space generation_ :
 - the managed heap __SOH__ (Small Object Heap) : generations G0 and G1
 - the managed heap __LOH__ (Large Object Heap) : the generation G2
 
+#### Garbage collector triggering
 
+There are different thresholds which are triggering the garbage collector:
+- Gen0 hits ~ 256 K
+- Gen1 hits ~ 2 MB (at this point, the GC collects Gen0 and Gen1)
+- Gen2 hits ~ 10 MB (at this point, the GC collects Gen0, Gen1 and Gen2)
