@@ -31,5 +31,15 @@ When the Gen2 collection runs:
 - the entire SOH is compacted
 - the LOH is collected.
 
+#### GC & SOH
+
+When the GC runs on the SOH, all rooted objects are copied to compact the memory space. The object copy takes time.
+
+#### GC & LOH
+
+To copy large object takes time, therefore the GC won't copy to compact the lOH's memory space.
+
+
+
 
 
