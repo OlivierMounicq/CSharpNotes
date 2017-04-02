@@ -16,7 +16,17 @@ They are _4 sections of memory_  creating for the storage:
 
 Everything on the heap has an address.
 
+#### 2.1.1 The Small Object Heap (SOH)
 
+It is a continuous heap without hole (no fragmentation). Each time, the GC runs, this memory space will be compacted. 
+Therefore, once allocated an object cannot be resized on the continuous heap. For this reason, the string are immutable: the object cannot be changed and a new version is created instead.   
+=> The heap is filled with temporary objects (and the GC must run more often to clean memory).
+
+
+
+
+
+#### 2.1.2 The Large Object Heap (LOH)
 
 
 ## 3. The stack
