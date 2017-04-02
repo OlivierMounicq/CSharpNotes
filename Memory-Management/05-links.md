@@ -15,6 +15,7 @@
 ### Videos
 
 [Learning .NET Memory Management @ RedGate](https://www.youtube.com/watch?v=k09bkM3_gsE&list=PLhFdCK734P8AfPwF2HxvcrlnbGv29sKyP)  
+[5 Misconceptions about .NET Memory Management](https://www.youtube.com/watch?v=tP_9kWH814A)  
 
 
 
