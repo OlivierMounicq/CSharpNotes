@@ -84,6 +84,11 @@ The _reference types_ stored on the heap (LOH or SOH) are:
 |Fixed size (StackOverflowException) | Growing size (OutOfMemoryException) |
 
 
+## 6. The object
+
+The double array is instantiated on the LOH (not on the SOH).
+
+
 
 
 
