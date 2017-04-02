@@ -100,8 +100,8 @@ The CLR instantiate them on the SOH but not ``` Double[]``` which is instantiate
 The allocation performs by the using of the ``` new ``` keyword and the allocation follows this workflow:
 - 1. Calculate the number of bytes required for the type's field (by adding the fields inherited from the base types)
 - 2. Add the bytes required for the the object's overhead . Each object has __two overhead fields__ : a type object pointer and a sync block index.
-** 32 bits : each of these fields requires 32 bits (8 bytes)
-** 64 bits : each of these fields requires 64 bits (16 bytes)
+ ** 32 bits : each of these fields requires 32 bits (8 bytes)
+ ** 64 bits : each of these fields requires 64 bits (16 bytes)
 
 
 
