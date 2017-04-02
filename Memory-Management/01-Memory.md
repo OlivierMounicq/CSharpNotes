@@ -81,7 +81,7 @@ The _reference types_ stored on the heap (LOH or SOH) are:
 - the static variable (even if the static variable type is a value type)
 - the array (even if the nested variable type is a value type)
 
-The CLR instantiate them on the SOH but not Double[] which is instantiated on the LOH.
+The CLR instantiate them on the SOH but not ```cs Double[] which is instantiated on the LOH.
 
 ## 5. The stack vs the heap
 
@@ -93,8 +93,6 @@ The CLR instantiate them on the SOH but not Double[] which is instantiated on th
 |Integrated support to the processor | Multithreading |
 | No persistence (the objects are destroyed at the end of the method responsible of the creation | Suitable to allocate memory and pass it to another pointer |
 |Fixed size (StackOverflowException) | Growing size (OutOfMemoryException) |
-
-
 ## 6. The object
 
 The double array is instantiated on the LOH (not on the SOH).
