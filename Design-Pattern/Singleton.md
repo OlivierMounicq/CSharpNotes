@@ -1,6 +1,6 @@
-###Singleton
-
-####Singleton without MultiThreading context
+### Singleton
+ 
+#### Singleton without MultiThreading context
 
 ```cs
 public class Singleton
@@ -26,9 +26,9 @@ public class Singleton
 
 
 
-####Singleton in multithreading context
+#### Singleton in multithreading context
 
-#####A classical method
+##### A classical method
 
 
 ```cs
@@ -91,7 +91,7 @@ public class Singleton
 ```
 And we have to add a new check and not just inverse the lock statement with the check statement. Because if we inverse the lock with the checking, two threads may access to the code in order instantiate the class as we could see: 
 
-NEVER DO THAT IN A MULTI-THREADING CONTEXT:
+__NEVER DO THAT IN A MULTI-THREADING CONTEXT:__
 
 ```cs
 public class Singleton
