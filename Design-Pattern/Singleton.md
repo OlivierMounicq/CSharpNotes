@@ -121,3 +121,10 @@ public class Singleton
 ```
 
 see [Double-checked locking](https://en.wikipedia.org/wiki/Double-checked_locking)
+
+### Drawbacks
+
+Now the singleton is not considered as a design pattern but as an anti-pattern.  
+Among these reasons, they are:
+ - the singleton is a _global_ variable : it means that any statement in the program could update the value
+ - we cannot test the singleton by using the dependency injection: actually we cannot inject a mock object because the constructor is private.
