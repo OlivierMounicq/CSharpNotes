@@ -1,6 +1,6 @@
-### Singleton
+# Singleton
 
-#### Singleton vs static
+### Singleton vs static
 
 - singleton can extend a base class
 - singleton can implement an interface
@@ -8,7 +8,7 @@
 - singleton is OO pattern (inhertitance, polymorphisme)
 - singleton can be treated as a normal object
  
-#### Singleton without MultiThreading context
+### Singleton without MultiThreading context
 
 ```cs
 public class Singleton
@@ -34,9 +34,9 @@ public class Singleton
 
 
 
-#### Singleton in multithreading context
+### Singleton in multithreading context
 
-##### A classical method
+#### A classical method
 
 
 ```cs
@@ -65,7 +65,7 @@ public class Singleton
 ```
 
 
-##### Singleton with double-checked locking
+#### Singleton with double-checked locking
 
 With the previous Sigleton pattern, after to instanciate the class Singleton, each time we lock to check if the class have been already created. To avoid to lose time to check, we decide to make a double check. 
 
