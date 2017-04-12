@@ -1,4 +1,12 @@
 ### Singleton
+
+#### Singleton vs static
+
+- singleton can extend a base class
+- singleton can implement an interface
+- singleton can be initialized lazily or asynchronously while a static class is generally initialized when it is first loaded
+- singleton is OO pattern (inhertitance, polymorphisme)
+- singleton can be treated as a normal object
  
 #### Singleton without MultiThreading context
 
