@@ -1,26 +1,26 @@
-#LINQ
+# LINQ
 
 Langage INtegrated Query
 
-###Definitions
+### Definitions
 
 - sequences : a collection
 - element : an item in a sequence
 
-###Lambda expression
+### Lambda expression
 
 A lambda expression is transformed by the compilater 
 - either in a _delegate_
 - or an expression _tree_ 
 
 
-###Interfaces
+### Interfaces
 
 We can query a _sequence_ if it implements one this interface:
 - IEnumerable : for the _local_ query
 - IQueryable : made to query the database by using either _Linq to Sql_ or _Entity Framework_
 
-###Local query vs database query
+### Local query vs database query
 
 Local query:
 - _IEnumerable<T>_
@@ -31,7 +31,7 @@ Database query (Linq2Sql or Entity Framework):
 - lambda expression => Expression
 
 
-###AsEnumerable, AsQueryable
+### AsEnumerable, AsQueryable
 
 (IEnumerable<T>).AsQueryable => IQueryable<T>
 
@@ -39,7 +39,7 @@ or
 
 (IQueryable<T>).AsEnumerable() => IEnumerable<T>
 
-###Transform a db query to a local query to apply some operator
+### Transform a db query to a local query to apply some operator
 
 The db query will be transformed into a SQL query. And all C# operators/method have not equivalent in SQL. 
 For instance, the regular expressio does not exist in SQl, so if you want to execute this db query, the CLR won't be able to transform the regex into a SQL statement. So in this case, we can mix the db query with a local query by this way by using the _AsEnumerable_ method:
@@ -55,7 +55,7 @@ var dbQuery = dataContext.Persons.Where(p => regex.Matches(p.LastName).Count > 1
 var dbQuery = dataContext.Persons.AsEnumerable().Where(p => regex.Matches(p.LastName).Count > 1);
 ```
 
-###Delegate vs Expression tree
+### Delegate vs Expression tree
 
 ```cs
 //local query
@@ -65,7 +65,7 @@ public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> sour
 public static IQueryable<TSource> Where<TSource>(this IQueryable<TSource> source, Expression<Func<TSource,bool>> predicate)
 ```
 
-###Fluent syntax vs query expression
+### Fluent syntax vs query expression
 
 ```cs
 //Fluent syntax:
@@ -90,14 +90,14 @@ The operator that we could use with _query syntax_:
 |           | ThenByDescending  |           |
 
 
-####Mix the fluent syntax with the query syntax
+#### Mix the fluent syntax with the query syntax
 
 ```cs
 int qty = (from n in names where n.Contains("a") select n).Count();
 ```
 
 
-###The extension method
+### The extension method
 
 The LINQ operators are the _extension methods_.
 
@@ -116,7 +116,7 @@ IEnumerable<string> query = Enumerable.Select(
 
 
 
-###Defered execution
+### Defered execution
 
 The query is executed when the method _MoveNext()_ of the iterator is called.
 
@@ -156,13 +156,13 @@ Cécile DeWitt-Morette
 
 ```
 
-###Inner mechanism
+### Inner mechanism
 
 The CLR use the _Decorator_ design patter. Each pattern will be a decorator.
 
 ###Captured variable
 
-####For loop
+#### For loop
 An error will throw, because the variable _i_ is capture by both loop.
 
 
@@ -250,7 +250,7 @@ The value of i : 5
 Hll wrld! I m  C# pplctn
 ```
 
-####Foreach loop
+#### Foreach loop
 
 The foreach loop does not run like the For loop.
 
@@ -287,6 +287,6 @@ Hll wrld! I m  C# pplctn
 __Remark #1: __ It does work with c# 4.0
 
 __Remark #2:__ It works with the foreach because the iteration variable is __immutable__ in the foreach loop.
-###Links
+### Links
 
 [Understanding IEnumerable and IQueryable in C#](http://blog.falafel.com/understanding-ienumerable-iqueryable-c/)
