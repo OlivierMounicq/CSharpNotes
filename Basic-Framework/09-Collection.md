@@ -1,4 +1,4 @@
-###The namespace
+### The namespace
 
 | namespace                       |The collections                           |
 |:--------------------------------|:-----------------------------------------|
@@ -9,7 +9,7 @@
 | System.Collections.Concurrent   | Thread-safe collections                  |
 
 
-###The interfaces
+### The interfaces
 
 | Non Generic        | Generic                     | Features         | Implemented in  |
 |:-------------------|:----------------------------|:-----------------|:----------------|
@@ -19,11 +19,11 @@
 |IDictionary / IList | IDictionary&lt;K,V&gt; / IList&lt;T&gt; | Rich features    |                 |
 
 
-###IEnumerator / IEnumerable
+### IEnumerator / IEnumerable
 
-####IEnumerator
+#### IEnumerator
 
-#####The non-generic and generic interfaces
+##### The non-generic and generic interfaces
 
 ```cs
 //Non generic
@@ -41,7 +41,7 @@ public interface IEnumerator<T> : IEnumerator, IDisposable
 }
 ```
 
-#####IDispose & IEnumerator&lt;T&gt;
+##### IDispose & IEnumerator&lt;T&gt;
 
 The interface _IEnumerator_ inherits of the _IDispose_. So, when we use the _foreach_ loop, the method _Dispose()_ is called. So the resources are released after the _foreach_ loop:
 
@@ -64,9 +64,9 @@ using(var enumerator = myDisposableItemList.GetEnumerator())
 ```
 
 
-####IEnumerable
+#### IEnumerable
 
-#####The interface
+##### The interface
 
 IEnumerable like a IEnumerator provider
 
@@ -85,7 +85,7 @@ public interface IEnumerable<T> : IEnumerable
 ```
 
 
-#####1st example
+##### 1st example
 
 ```cs
 string quote = "Hello world!";
@@ -103,7 +103,7 @@ And the output is :
 Hello world!
 ```
 
-#####2nd example : using the _yield_ keyword to buid a non generic class implementing IEnumerable
+##### 2nd example : using the _yield_ keyword to buid a non generic class implementing IEnumerable
 
 ```cs
 public class MyCollection : IEnumerable
@@ -120,7 +120,7 @@ public class MyCollection : IEnumerable
 ```
 
 
-#####3rd example : using the _yield_ keyword to build a generic class implementing IEnumerable&lt;T&gt;
+##### 3rd example : using the _yield_ keyword to build a generic class implementing IEnumerable&lt;T&gt;
 
 ```cs
 using System.Collections;
@@ -153,7 +153,7 @@ foreach(var number in numbers)
 
 ```
 
-#####4th example: the easiest way by using the _yield_ keyword
+##### 4th example: the easiest way by using the _yield_ keyword
 
 ```cs
 public class List
@@ -174,7 +174,7 @@ foreach(var n in List.GetList())
 }
 ```
 
-#####5th example : implement the IEnumerator interface
+##### 5th example : implement the IEnumerator interface
 
 ```cs
 using System.Collections;
@@ -247,7 +247,7 @@ foreach(var n in numberLst)
 5
 ```
 
-#####6th example : implement the generic IEnumerator
+##### 6th example : implement the generic IEnumerator
 
 ```cs
 using System.Collections;
@@ -289,9 +289,9 @@ foreach(var n in numberLst)
 }
 ```
 
-###ICollection & ICollection&lt;T&gt;
+### ICollection & ICollection&lt;T&gt;
 
-####Non generic interface
+#### Non generic interface
 
 ```cs
 public interface ICollection : IEnumerable
@@ -321,20 +321,20 @@ public interface ICollection<T> : IEnumerable<T>, IEnumerable
 }
 ```
 
-####The features
+#### The features
 
 The features implemented into a collection is that the set of item is accountable.
 
-####Difference between the non-generic and generic interfaces
+#### Difference between the non-generic and generic interfaces
 
 - no _Add_ method in the non-generic method
 - no _Remove_ method in the non-generic method
 - no synchronization method in the generic method
 
 
-###IList & IList&lt;T&gt;
+### IList & IList&lt;T&gt;
 
-####Non-generic interface IList
+#### Non-generic interface IList
 
 ```cs
 public interface IList : ICollection, IEnumerable
@@ -352,7 +352,7 @@ public interface IList : ICollection, IEnumerable
 }
 ```
 
-####The generic interface IList&lt;T&gt;
+#### The generic interface IList&lt;T&gt;
 
 ```cs
 public interface IList<T> : ICollection<T>, IEnumerable<T>, IEnumerable
@@ -364,13 +364,13 @@ public interface IList<T> : ICollection<T>, IEnumerable<T>, IEnumerable
 }
 ```
 
-####Difference between IList & IList&lt;T&gt;
+#### Difference between IList & IList&lt;T&gt;
 
 - the interface IList must add the missing feature in ICollection interface : Insert & Remove
 - the method _Add_ returns an integer 
 
 
-###IReadOnlyList&lt;T&gt;
+### IReadOnlyList&lt;T&gt;
 
 This interface has been added in the framework __4.5__. It's like the IList&lt;T&gt; without the method to add and remove the items.
 
@@ -384,9 +384,9 @@ public interface IReadOnlyList<out T> : IEnumerable<T>, IEnumerable
 
 __Remark : __ It will be logical if the IList will inherit from IReadOnlyList. But the cost to modify the inheritance schema will be to much. Everybody will have to recompile its solution.
 
-###Arrays
+### Arrays
 
-####Get the generic interface
+#### Get the generic interface
 
 Arrays are not generic, so if you want to get the _generic interface_, you should do that:
 
@@ -397,7 +397,7 @@ var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
 
 ```
 
-####The Array class
+#### The Array class
 
 - Not resizable
 - The CLR assigns to the array a contiguous space in memory
@@ -414,7 +414,7 @@ var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
 - _O(n)_
 
 
-####Equality
+#### Equality
 
 ```cs
 object[] a1 = { "string", 123, true };
@@ -427,16 +427,16 @@ IStructuralEquatable se1 = a1;
 Console.WriteLine(se1.Equals(a2, StructuralComparisons.StructuralEqualityComparer)); //True
 ```
 
-####Clone : shallow copy
+#### Clone : shallow copy
 
 ```cs
 StringBuilder[] builder2 = builders;
 StringBuilder[] shallowClone = (StringBuilder[]) builders.clone();
 ```
 
-####Construction and indexing
+#### Construction and indexing
 
-#####Instantiate a new array
+##### Instantiate a new array
 
 ```cs
 int[] myArray = {1, 2, 3};
@@ -465,7 +465,7 @@ matrix.SetValue(1,0,0);
 int val = matrix.GetValue(0,0);
 ```
 
-#####Copying
+##### Copying
 
 - intance methods
      * Clone  : return a new shallow-copied instance
@@ -474,7 +474,7 @@ int val = matrix.GetValue(0,0);
      * Copy : copies a contiguous of the array
      * ConstrainedCopy : atomic operation. All elements have to be copied otherwise the copy will be rollbacked
 
-###List&lt;T&gt; and ArrayList
+### List&lt;T&gt; and ArrayList
 
 - ArrayList and List&lt;T&gt; are dynamically sized
 - ArrayList is non generic and implements the IList interface
@@ -488,9 +488,9 @@ int val = matrix.GetValue(0,0);
 - Choose ArrayList if you want to use reflection. The reflection is easier in with non-generic type
 - _O(n)_
 
-####ArrayList
+#### ArrayList
 
-#####Casting
+##### Casting
 
 ```cs
 ArrayList al = new ArrayList();
@@ -500,7 +500,7 @@ al.Add("hello");
 int test = (int)al[0];
 ```
 
-#####Cast an ArrayList into List&lt;T&gt;
+##### Cast an ArrayList into List&lt;T&gt;
 
 ```cs
 ArrayList al = new ArrayList();
@@ -508,7 +508,7 @@ al.AddRange(new[] {1, 2, 3}};
 List<int> list = al.Cast<int>().ToList();
 ```
 
-###LinkedList&lt;T&gt;
+### LinkedList&lt;T&gt;
 
 - generic doubly linked list
 - inserting is efficiency
@@ -516,7 +516,7 @@ List<int> list = al.Cast<int>().ToList();
 - No access to element by index
 - The LinkedList&lt;T&gt; has internal fields to keep track of the number of elements, the head and the tail of the list
 
-###Queue and Queue&lt;T&gt;
+### Queue and Queue&lt;T&gt;
 - FIFO
 - Enqueue / Dequeue methods
 - Peek : return the first element at head of the queue without to remove it
@@ -527,19 +527,19 @@ List<int> list = al.Cast<int>().ToList();
 - Enqueuing and Dequeuing are quick operations
 
 
-###Stack & Stack&lt;T&gt;
+### Stack & Stack&lt;T&gt;
 - LIFO
 - Push : add an item
 - Pop : retrieve and remove an item
 - Peek : retrieve without removing the item
 
-###BitArray
+### BitArray
 - Dynamically sized collection of compacted bool values
 - More memory-efficient than a simple array of bool or a generic list of bool
 - Uses one bit for each values (otherwise the bool type uses one byte)
 
 
-###HashSet&lt;T&gt; ans SortedSet&lt;T&gt;
+### HashSet&lt;T&gt; ans SortedSet&lt;T&gt;
 - Contains method execute quickly using a hash-based lookup
 - Do not store duplicate elements
 - Silently ignore the requests to add duplicates
@@ -550,7 +550,7 @@ List<int> list = al.Cast<int>().ToList();
 - Both class implements ICollection&lt;T&gt;
 
 
-###Dictionaries
+### Dictionaries
 
 - Unsorted dictionaries
      * Dictionary&lt;K,V&gt; : hashtable / _O(1)_
@@ -563,23 +563,23 @@ List<int> list = al.Cast<int>().ToList();
      * SortedList&lt;K,V&gt; : 2 arrays / _O(log n)_
      * SortedList : 2 arrays / _O(log n)_
 
-####Interface IDictionary&lt;TKey, TValue&gt;
+#### Interface IDictionary&lt;TKey, TValue&gt;
 - The interface extends the ICollection&lt;T&gt;
 - Duplicate keys are forbidden (otherwise exception is thrown)
 - If the key does not exit, an error is thrown
 
-####Interface IDictionary
+#### Interface IDictionary
 
 - Request a nonexistent key via the indexer returns null (not threw exception)
 
-####Dictionary&lt;K,V&gt;
+#### Dictionary&lt;K,V&gt;
 
 - The underlying hashtable works by converting each element's key into an integer hashcode and the applying an algorithm to convert the hashcode into a hash key
 - By default, the methods _object.Equal_ and _GetHashCode_ are used to retrieve a value from its key
 - We could override the way to perform the equality : ```new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) ```
 - Increase performance by defining the expected size of the collection during the instantiation (via the constructor) to avoid the operation to resize the object.
 
-####Dictionary&lt;K,V&gt; where K is a custom type
+#### Dictionary&lt;K,V&gt; where K is a custom type
 
 When the key type is a cutom type, you must override the method _GetHashCode_ and _Equals_.
 
@@ -760,7 +760,7 @@ Test.Foo();
 
 [@csharppad.com](http://csharppad.com/gist/5ea35d14b9102298920b446d7abd5d25)
 
-####OrderedDictionary
+#### OrderedDictionary
 
 - An OrderedDictionary is not a __sorted__ dictionary
 - Non generic dictionary that maintains elements in the same order that they were added
@@ -768,7 +768,7 @@ Test.Foo();
 - Because this class inherits ArrayList, we can access to the method _RemoveAt_
 - No generic version
 
-####ListDictionary
+#### ListDictionary
 - Singly linked list to store the underlying data
 - Preserves the entry order of the items
 - Extremely slow with large list
@@ -776,7 +776,7 @@ Test.Foo();
 - Non generic class
 - No generic version
 
-####HybridDictionary
+#### HybridDictionary
 - For a small set of data, the underlying class is ListDictionary
 - For the large set of data, the underlying class will a HashTable
 - Low memory when the dictionary is small
@@ -784,26 +784,26 @@ Test.Foo();
 - Non generic class
 - No generic version
 
-####SortedDictionary&lt;TKey,TValue&gt;
+#### SortedDictionary&lt;TKey,TValue&gt;
 - Uses a red/black tree
 - Must faster than SortedList&lt;TKey, TValue&gt;
 - The duplicate keys are not allowed
 
-####sortedList&lt;T&gt;
+#### sortedList&lt;T&gt;
 - Implements internally with an ordered array pair providing fast via binary-chop search
 - Poor insertion performance
 - You can go directly to the _nth_ element in the sorting sequence
 - The duplicate keys are not allowed
 
 
-###CUSTOMIZABLE COLLECTIONS AND PROXIES
+### CUSTOMIZABLE COLLECTIONS AND PROXIES
 
 Namespace : System.Collections.ObjectModel
 
 - Wrapper/proxy implemented IList&lt;T&gt;
 - Each Add, Remove and Clear operation is routed via a virtual method
 
-####Collection&lt;T&gt;
+#### Collection&lt;T&gt;
 
 - a constructor accepting an existing IList&lt;T&gt;, the supplied list is proxied and not copied, so it means that each modificaton in the Collection&lt;T&gt; will modify the list too
 - Generic class 
@@ -814,7 +814,7 @@ Namespace : System.Collections.ObjectModel
      * protected virtual void SetItem(int index, T item)
      * protected IList&lt;T&gt; Items { get; }
 
-####CollectionBase
+#### CollectionBase
 
 - non generic version of Collection&lt;T&gt;
 - the methods are:
@@ -827,7 +827,7 @@ Namespace : System.Collections.ObjectModel
      * OnClear
      * OnClearComplete
 
-####KeyedCollection&lt;TKey, TItem&gt;
+#### KeyedCollection&lt;TKey, TItem&gt;
 
 - Subclass of Collection&lt;TItem&gt;
 - Combines linear list with a hashtable
@@ -836,7 +836,7 @@ Namespace : System.Collections.ObjectModel
 - Like Collection&lt;Item&gt; with a fast lookup key
 
 
-###Complexity
+### Complexity
 
 | Complexity | Class                       |
 |:-----------|:----------------------------|
