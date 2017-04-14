@@ -1,7 +1,7 @@
 
-####1.Fields
+#### 1.Fields
 
-#####1.1 Field modifiers
+##### 1.1 Field modifiers
 
 |Type | Modifier name |
 |:----|:--------------|
@@ -11,7 +11,7 @@
 | Read-only modifier | readonly |
 | Threading modifier | volatile |
 
-#####1.2 Filed initialization
+##### 1.2 Filed initialization
 
 Field initializers run __before__ contructor. (The same mechanism for the static class)
 
@@ -20,7 +20,7 @@ For instance:
 public string FirstName = "Olivier";
 ```
 
-#####1.3 Get/Set & CLR
+##### 1.3 Get/Set & CLR
 
 During the compilation, the CLR transforms the getter and the setter into two methods called get_XXX and set_XXX where XXX is the name of the field:
 
@@ -54,9 +54,9 @@ Console.WriteLine(b.myStr); //B
 
 ```
 
-#####1.5 Constants
+##### 1.5 Constants
 
-######1.5.1 Properties of the constants
+###### 1.5.1 Properties of the constants
 
 The properties of a constant are : 
 - A _constant_ is a static field whose value can never change. 
@@ -66,7 +66,7 @@ The properties of a constant are :
 - A constant is more restrictive than a _static readonly_ field.
 - A constant can not be static (see the allowed access modifiers)
 
-######1.5.2 Access modifiers
+###### 1.5.2 Access modifiers
 
 | Access modifiers | Keywords |
 |:-----------------|:---------|
@@ -74,16 +74,16 @@ The properties of a constant are :
 | Inheritance modifiers | new |
 
 
-######1.5.3 Difference between const and readonly
+###### 1.5.3 Difference between const and readonly
 
 - A readonly variable could be set in the constructor
 - A readonly variable could be a reference type
 - A readonly variable could be set at the run time
 - A readonly variable could be static
 
-####2.Methods
+#### 2.Methods
 
-#####2.1 Method modifiers
+##### 2.1 Method modifiers
 
 |Type | Modifier name |
 |:----|:--------------|
@@ -94,7 +94,7 @@ The properties of a constant are :
 | Unmanaged code modifiers | unsafe, extern |
 | Asynchronous code modifier | async | 
 
-#####2.2 Access modifiers
+##### 2.2 Access modifiers
 
 |Access modifier | Purpose |
 |:----|:--------------|
@@ -105,7 +105,7 @@ The properties of a constant are :
 | protected internal | The type or member can be accessed by any code in the assembly in which it is declared, or from within a derived class in another assembly.Access from another assembly must take place within a class declaration that derives from the class in which the protected internal element is declared, and it must take place through an instance of the derived class type |
 
 ##### 2.3 Unmanaged code modifiers
-######2.3.1 Extern
+###### 2.3.1 Extern
 
 The extern modifier is used to declare a method that is implemented externally.A common use of the extern modifier is with the DllImport attribute when you are using Interop services to call into unmanaged code.In this case, the method must also be declared as static, as shown in the following example:
 
@@ -158,7 +158,7 @@ void MyMethod(out int x){...} //Compile-time error
 | params  | A method parameter can take a variable number of arguments.|
 
 
-######2.5.2 Examples
+###### 2.5.2 Examples
 
 ```cs
 public class MyClass
@@ -182,18 +182,18 @@ Console.WriteLine("Result 1 : {0}", res1); //Result 1 : 3
 Console.WriteLine("Result 2 : {0}", res2); //Result 2 : 15
 ```
 
-####3 Constructor
+#### 3 Constructor
 
 ##### 3.1 Constructor of the instances
 
-######3.1.1 Constructor modifiers
+###### 3.1.1 Constructor modifiers
 
 | Modifiers | Keywords |
 |:----------|----------|
 | Access modifiers | public, internal, private, proctected |
 | Unmanaged code modifiers | unsafe extern|
 
-######3.1.2 Implicit parameterless constructor
+###### 3.1.2 Implicit parameterless constructor
 
 For classes, the compiler automatically generates a _parameterless public constructor_ if and only if you do not define any constructor.
 However, as soon as you define at least one constructor, the parameterless constructor is no longer automatically generated.
@@ -228,7 +228,7 @@ var b= new B(); //Compile-time error
 
 ##### 3.2 Static Constructor
 
-######3.2.1 Properties
+###### 3.2.1 Properties
 
 The properties of a static constructor are:
 - a static constructor executes once per type.
@@ -240,13 +240,13 @@ The properties of a static constructor are:
 - - Instantiate the type
 - - Accessing a static member in the type
 
-######3.2.2 The static constructor modifiers
+###### 3.2.2 The static constructor modifiers
 
 | Modifiers | Keywords |
 |:----------|----------|
 | Unmanaged code modifiers | unsafe extern|
 
-######3.2.3 Examples
+###### 3.2.3 Examples
 
 In this example, the static constructor has been invoked when we want to get the value of the field Count.
 
@@ -340,7 +340,7 @@ The instance constructor is invoked
 The instance constructor is invoked
 ```
 
-####4. Access modifier by default
+#### 4. Access modifier by default
 
 |Type | Access modifier by default |
 |:----|:--------------|
@@ -384,9 +384,9 @@ Nested-type and member accessibilities
 
 [What are the default access modifier in C#](http://stackoverflow.com/questions/2521459/what-are-the-default-access-modifiers-in-c)
 
-####5. Abstract class
+#### 5. Abstract class
 
-#####5.1 Properties
+##### 5.1 Properties
 
 The properties of an absract class are:
 - an abstract class can have a constructor
@@ -420,7 +420,7 @@ var myClass = new MyClass();
 Console.WriteLine(myClass.GetClassName()); //MyClass
 
 ```
-#####5.2 Abstract class vs interface
+##### 5.2 Abstract class vs interface
 
 Obvioulsy, defining an abstract class with abstract members has the same effect to defining an interface.
 But the purposes are differents:
@@ -431,17 +431,17 @@ But the purposes are differents:
 - an abstract classes can have protected parts, static methods, etc.
 - Abstract classes can add more functionality without destroying the child classes that were using the old version. In an interface, creation of additional functions will have an effect on its child classes, due to the necessary implementation of interface methods to classes.
 
-####6 Inheritance
+#### 6 Inheritance
 
-#####6.1 Constructor and field initialization order
-
-
-#####6.2 Constructor rules
+##### 6.1 Constructor and field initialization order
 
 
+##### 6.2 Constructor rules
 
 
-#####6.3 Do not call overridable methods from a constructor
+
+
+##### 6.3 Do not call overridable methods from a constructor
 
 cf see [CA2214: Do not call overridable methods in constructors](https://msdn.microsoft.com/en-us/library/ms182331.aspx?f=255&MSPPError=-2147217396)
 
@@ -490,14 +490,14 @@ As we can see both constructor call the virtual method of instance : the one of 
 But the field named IsInitalized has been 
 
 
-####7 Overriding / Hidding
-#####7.1 Virtual / Override
+#### 7 Overriding / Hidding
+##### 7.1 Virtual / Override
 
-######7.1.1 Defintion 
+###### 7.1.1 Defintion 
 
 The _virtual_ keyword is used to modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived class.
 
-######7.1.2 Example
+###### 7.1.2 Example
 
 ```cs
 public class A
@@ -534,15 +534,15 @@ Console.WriteLine(c.GetClassName()); //C
 Console.WriteLine(d.GetClassName()); //D
 ```
 
-######7.1.3 virtual vs abstract
+###### 7.1.3 virtual vs abstract
 
 -An __abstract function__ has to have no functionality. You're basically saying, any child class MUST give their own version of this method, however it's too general to even try to implement in the parent class.
 
 -A __virtual function__, is basically saying look, here's the functionality that may or may not be good enough for the child class. So if it is good enough, use this method, if not, then override me, and provide your own functionality.
 
-#####7.2 Overriding vs Hidding
+##### 7.2 Overriding vs Hidding
 
-######7.2.1 The keywords
+###### 7.2.1 The keywords
 The overriding (on instance):
 - abstract /ovrerride
 - virtual/override
@@ -550,7 +550,7 @@ The overriding (on instance):
 The hidding:
 - new / virual
 
-######7.2.2 Difference between the overriding and the hidding
+###### 7.2.2 Difference between the overriding and the hidding
 
 The _overriding_ is: 
 - Used in polymorphism implementation 
@@ -566,7 +566,7 @@ The _hidding_ is:
 - It is compile-time polymorphism
 - Causes early binding (at the compile time)
 
-######7.2.3 Example
+###### 7.2.3 Example
 
 __Overrding example__
 
@@ -621,16 +621,16 @@ Console.WriteLine(bAsA.GetClassName()); //OverridingA
 ```
 
 
-####8 Casting
+#### 8 Casting
 
-#####8.1 Definitions
+##### 8.1 Definitions
 
 - _upcast_ to a base class reference (always succeed)
 - _downcast_ to a subclass reference (not always succeed : InvalidCastException)
 
-#####8.2 _as_ operator
+##### 8.2 _as_ operator
 
-######8.2.1 Limitation
+###### 8.2.1 Limitation
 
 We can only use the _as_ operator with reference type or nullable type.
 
@@ -643,7 +643,7 @@ long y = x as long; //KO
 
 ```
 
-######8.2.1 The raised exception
+###### 8.2.1 The raised exception
 
 Beware before to use the operator _as_ :
 
