@@ -1,6 +1,6 @@
-###Structure
+### Structure
 
-####Properties
+#### 1. Properties
 - struct can contain data members and function members
 - struct are _value type_
 - struct do not require heap allocation
@@ -16,16 +16,16 @@
 
 The simple value type (int, double, bool..) provided by the C# are in fact the structure.
 
-####Differences between Struct and Class
+#### 2. Differences between Struct and Class
 - classes require heap allocation and struct do not require heap allocation
 - class has a referential identity, not the struct
 
 
-####When should I use the structure?
+#### 3. When should I use the structure?
 We can use struture for:
 - the data with a light memory footprint 
 
-####Examples
+#### 4. Examples
 ```cs
     public struct Person : IComparable
     {
@@ -76,8 +76,8 @@ We can use struture for:
         
 ```
 
-####Use cases
-#####Initialization
+#### 5. Use cases
+##### 5.1 Initialization
 
 ```cs
 public struct Person
@@ -93,7 +93,7 @@ Console.WriteLine(person.LastName); //string.Empty
 
 ```
 
-#####Nullable structure
+##### 5.2 Nullable structure
 You can set a structure as null by using Nullable<T>.
 
 ```cs
