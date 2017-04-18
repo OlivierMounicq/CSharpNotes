@@ -15,4 +15,13 @@ Joshua Kerievsky
 
 
 [Test-Driven Development](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=pd_sim_14_5?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
+Kent Beck
+
+[Software Craftman : Professionalism, Pragmatism, Pride](https://www.amazon.fr/Software-Craftsman-Professionalism-Pragmatism-Pride/dp/0134052501/ref=pd_sim_14_2?_encoding=UTF8&psc=1&refRID=PG1KHX892MB7A8BSS5VD)  
+Sandro Mancuso  
+
+[Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.fr/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=pd_sim_14_1?_encoding=UTF8&psc=1&refRID=PG1KHX892MB7A8BSS5VD)  
+Robert C. Martin  
+
+
 
