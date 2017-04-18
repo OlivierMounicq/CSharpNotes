@@ -22,6 +22,9 @@ Michael Feathers
 [Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.fr/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/ref=pd_sim_14_9?_encoding=UTF8&psc=1&refRID=8SWX009MJ9N0XC1B4JVB)  
 Eric Evans
 
+
+[Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://www.amazon.fr/Clean-Architecture-Robert-C-Martin/dp/0134494164/ref=pd_sim_14_35?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
+Robert C. Martin
   
 ### Test-Driven
 
@@ -31,7 +34,24 @@ Joshua Kerievsky
 
 
 [Test-Driven Development](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=pd_sim_14_5?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
-Kent Beck
+Kent Beck  
+
+[The Art of Unit Testing](https://www.amazon.fr/Art-Unit-Testing-Roy-Osherove/dp/1617290890/ref=pd_sim_14_24?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
+ Roy Osherove  
+ 
+ 
+ ### C#
+ 
+ [Adaptive Code via C#: Agile coding with design patterns and SOLID principles](https://www.amazon.fr/Adaptive-Code-via-patterns-principles/dp/0735683204/ref=pd_sim_14_38?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
+ Gary Mclean  
+ 
+ 
+[Agile Principles, Patterns, and Practices in C#](https://www.amazon.fr/Agile-Principles-Patterns-Practices-C/dp/0131857258/ref=pd_sim_14_32?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
+Robert C. Martin  
+
+
+
+ 
 
 
 
