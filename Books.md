@@ -19,6 +19,9 @@ Robert C. Martin
 [Working effectively with legacy code](https://www.amazon.fr/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052/ref=pd_bxgy_14_img_3?_encoding=UTF8&psc=1&refRID=EW2C5FYG4J926VRKPR0S)  
 Michael Feathers  
 
+[Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.fr/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215/ref=pd_sim_14_9?_encoding=UTF8&psc=1&refRID=8SWX009MJ9N0XC1B4JVB)  
+Eric Evans
+
   
 ### Test-Driven
 
