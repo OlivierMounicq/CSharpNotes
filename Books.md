@@ -26,6 +26,11 @@ Eric Evans
 [Clean Architecture: A Craftsman's Guide to Software Structure and Design](https://www.amazon.fr/Clean-Architecture-Robert-C-Martin/dp/0134494164/ref=pd_sim_14_35?_encoding=UTF8&psc=1&refRID=A01N9X4KPA764NJ3KTED)  
 Robert C. Martin
   
+  
+[DDDViteFait](http://blog.infosaurus.fr/public/docs/DDDViteFait.pdf)  
+French translation  
+
+  
 ### Test-Driven
 
 [Refactoring to patterns](https://www.amazon.fr/Refactoring-Patterns-Joshua-Kerievsky/dp/0321213351) 
