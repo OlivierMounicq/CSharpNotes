@@ -49,7 +49,7 @@ C:\my projects\Hello World\ildasm.exe /out=hello.il hello.exe
 C:\my projects\Hello World\notepad hello.il
 ```
 
-##### Compile the IL code
+##### Compile the IL code (the IL roundtripping)
 
 You could modify the IL code file and generate a new executable file (.exe):
 
