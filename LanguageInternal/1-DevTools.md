@@ -27,3 +27,11 @@ csc.exe /nologo hello.cs
   - Target language of C#, VB.net, ...
   - JIT compiled into native code
   
+### Tools to inspect the IL
+
+We can use the ILDASM application to modify the IL code: IL Roundtripping.
+- Ships with Visual Studio and .NET framework SDK
+- IL roundtripping with ILASM (textual language for IL)
+
+
+
