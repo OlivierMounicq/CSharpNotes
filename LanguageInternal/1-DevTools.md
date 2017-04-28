@@ -49,6 +49,15 @@ C:\my projects\Hello World\ildasm.exe /out=hello.il hello.exe
 C:\my projects\Hello World\notepad hello.il
 ```
 
+##### Compile the IL code
+
+You could modify the IL code file and generate a new executable file (.exe):
+
+```bat
+C:\my projects\Hello World\ilasm.exe /exe hello.il
+```
+
+
 ### .NET Reflector
 - Built by _Red Gate_
 - Decompiler of IL into C#, VB.net, ...
