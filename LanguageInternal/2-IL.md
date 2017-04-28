@@ -6,7 +6,7 @@
 public static 
 
 
-```cs
+```
 
 So the intermediate language of a such program is :
 
