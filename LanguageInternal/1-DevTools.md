@@ -42,6 +42,12 @@ We can use the ILDASM application to modify the IL code: IL Roundtripping.
 C:\my projects\Hello World\ildasm.exe hello.exe
 ```
 
+##### Emit the IL code into an output file
+
+```bat
+C:\my projects\Hello World\ildasm.exe /out=hello.il hello.exe
+C:\my projects\Hello World\notepad hello.il
+```
 
 ### .NET Reflector
 - Built by _Red Gate_
