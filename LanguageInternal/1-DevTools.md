@@ -27,11 +27,29 @@ csc.exe /nologo hello.cs
   - Target language of C#, VB.net, ...
   - JIT compiled into native code
   
-### Tools to inspect the IL
+###  ILDASM application
+
+ILDASM is a tools to inspect the IL.
 
 We can use the ILDASM application to modify the IL code: IL Roundtripping.
 - Ships with Visual Studio and .NET framework SDK
 - IL roundtripping with ILASM (textual language for IL)
+
+
+##### How to use ILDASM application
+
+```bat
+C:\my projects\Hello World\ildasm.exe hello.exe
+```
+
+
+### .NET Reflector
+- Built by _Red Gate_
+- Decompiler of IL into C#, VB.net, ...
+
+### ILSpy
+- Open source alternative of .NET Reflector
+
 
 
 
