@@ -17,7 +17,7 @@ So the intermediate language of a such program is :
   //Code size
   .maxstack 8
   
-  IL_0000: nop //non-optimized build
+  IL_0000: nop //non-optimized build : by default, there is no optimization until you set a compilation flag
   IL_0001: ldstr "Hello, world"
   IL_0006: call void [mscorlib]System.Console::WriteLine(string)
   IL_000b: nop
