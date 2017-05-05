@@ -27,3 +27,9 @@ In order to get morer details about the runtime staten you could also use the __
 Some commands:
 - !help : to get all commands
 - 
+
+### CDB.EXE
+
+```bat
+C:\my projects\Hello World\cdb.exe hello.exe
+```
