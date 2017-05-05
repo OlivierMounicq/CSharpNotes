@@ -22,4 +22,8 @@ In order to get morer details about the runtime staten you could also use the __
 - WinDbg.exe (with a GUI) and cdb.exe (a console application)
 - SOS (Son Of Strike), PSSCOR4 (Product Service Support), SOSEX, CLRMD extension extensions
 
+### dbg.exe
 
+Some commands:
+- !help : to get all commands
+- 
