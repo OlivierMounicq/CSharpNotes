@@ -111,6 +111,9 @@ public virtual bool Equals(object o);
 
 ### Avoiding Boxing and Reflection
 
+- Override ```Equals```
+- overload ```Equals```
+
 ```cs
 struct Point2D : IEquatable<Point2D>
 {
