@@ -1,4 +1,4 @@
-####Operator ++
+#### Operator ++
 
 ```cs
 int count = 1;
@@ -10,7 +10,7 @@ Console.WriteLine(100*++count);
 //300
 ```
 
-####Numeric operator on short
+#### Numeric operator on short
 
 This code produce a compile time error : 
 
@@ -33,7 +33,7 @@ short z;
 z = (short)(x + y);
 ```
 
-####A method to calculate the age
+#### A method to calculate the age
 
 
 ```cs
@@ -148,4 +148,16 @@ Factorial(5) //120
 
 ```
 
+#### The override of the opertor == and !=
+
+When you want to override an operator (== or !=), you have to override the other one.
+
+#### Interface IEqutable
+
+
+#### How to get the number of the GC collections ?
+
+```cs
+GC.CollectionCount(int idGeneration);
+```
 
