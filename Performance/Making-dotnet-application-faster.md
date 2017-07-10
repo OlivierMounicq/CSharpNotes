@@ -88,8 +88,8 @@ Declared by ```System.Object``` and overridden by ```System.ValueType```
 //In System.ValueType, simplified version
 public override bool Equals(object o)
 {
- if(o == null) return false; //there is no point by executing this statement
- if(o.GetType() != GetType()) return false; //there is no point by executing this statement
+ if(o == null) return false; //there is no point by executing this statement !
+ if(o.GetType() != GetType()) return false; 
   if(CanCompareBits(this)) return FastEqualsCheck(this, o);
   foreach(FieldInfo f in GetType().GetFields()){
     if(!f.GetValue(this).Equals(f.GetValues(o)) return false;
