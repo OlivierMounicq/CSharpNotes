@@ -26,6 +26,14 @@ Heap objects (reference type) have two header fields:
 | Second Object Field    |
 
 
+<table>
+  <tr>
+  <td>Object Header Word </td>
+  <td>Method Table pointer</td>
+  <td>First Object Field</td>
+  <td>Second Object Field</td>
+  </tr>
+</table>  
 
 Object Header Word
 - 4 bytes long (32 bits) or 8 bytes long (64 bits)
