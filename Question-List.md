@@ -152,8 +152,11 @@ Factorial(5) //120
 
 When you want to override an operator (== or !=), you have to override the other one.
 
-#### Interface IEqutable
+#### Interface IEquatable
 
+```cs
+public interface IEquatable<T>
+```
 
 #### How to get the number of the GC collections ?
 
@@ -161,3 +164,6 @@ When you want to override an operator (== or !=), you have to override the other
 GC.CollectionCount(int idGeneration);
 ```
 
+#### How generate a hash code ?
+
+The common way to generate the hash code is to use a pair of prime number.
