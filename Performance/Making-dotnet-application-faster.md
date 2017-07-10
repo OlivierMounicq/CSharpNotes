@@ -123,3 +123,54 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
+### Final Tuning
+
+#### Add equality operators
+
+```cs
+struct Point2D
+{
+	public static bool operator==(Point2D a, Point2D b)...
+	public static bool operator!=(Point2D a, Point2D b)...
+}
+```
+You have to implement both operator (equal and not equal) otherwise the compiler will trigger an error.
+
+
+### Add GetHashCode
+
+
+
+
+### The code
+
+#### First version: the worse performance
+
+```cs
+
+
+
+```
+
+#### Second version: the best performance
+
+```cs
+struct Point2D : IEquatable<Point2D>
+{
+	public int X;
+	public int Y;
+	
+	public override bool Equals(object obj)
+	{
+		if(!(obj is Point2D)) return false;
+		Point2D other = (Point2D)obj;
+		return  X == other.X a&& Y == other.Y;
+	}
+
+	public bool Equals(Point2D other)
+	{
+		return X == other.X && Y == other.Y;
+	}
+}
+```
+
