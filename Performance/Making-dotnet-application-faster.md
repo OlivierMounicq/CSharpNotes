@@ -26,13 +26,13 @@ Heap objects (reference type) have two header fields:
 | Second Object Field    |
  
 
-Object Header Word
+__Object Header Word__
 - 4 bytes long (32 bits) or 8 bytes long (64 bits)
 - helps to synchronise mechanism (with lock statement) 
 - GC maintains a list of free block 
 - HashCode (if the dashcode has not been overriding) 
 
-Method Table Pointer
+__Method Table Pointer__
 - it helps the compiler to look up the method version and implement Polymorphism, the reflection service 
 
 
@@ -45,8 +45,8 @@ Value types (stack objects) don’t have headers.
 Using the Value Types
 
 Use value types when performance is critical:
-	- creating a large number of objects and keep then in the memory in the same time
-	- creating a large collection
+* creating a large number of objects and keep then in the memory in the same time
+* creating a large collection
 
 
 For instance:
