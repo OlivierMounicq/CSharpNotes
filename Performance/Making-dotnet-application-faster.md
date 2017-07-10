@@ -157,8 +157,8 @@ You have to implement both operator (equal and not equal) otherwise the compiler
 ```cs
 struct Point2D : IEquatable<Point2D>
 {
-  public int X;
-  public int Y;
+  	public int X;
+  	public int Y;
 	
 	public override bool Equals(object obj)
 	{
