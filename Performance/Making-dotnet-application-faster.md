@@ -139,8 +139,25 @@ You have to implement both operator (equal and not equal) otherwise the compiler
 
 ### Add GetHashCode
 
-Used by ```Dictionary```, ```HashSet``` and other collections.
+* Used by ```Dictionary```, ```HashSet``` and other collections.
+* Declared by ```System.Object```overriden by System.ValueType
+* Must be consistent with ```Equals``` : A.Equals(B) => A.GetHashCode() == B.GetHashCode()
 
+```cs
+struct Point2D : IEquatable<Point2D>
+{
+  	public int X;
+  	public int Y;
+	
+	public override int GetHashCode()
+	{
+		int hash = 19;
+		hash = hash * 29 + X;
+		hash = hash * 29 + Y;
+		return hash;
+	}
+}
+```
 
 ### The code
 
