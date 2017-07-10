@@ -27,12 +27,10 @@ Heap objects (reference type) have two header fields:
 
 
 <table>
-  <tr>
-  <td>Object Header Word </td>
-  <td>Method Table pointer</td>
-  <td>First Object Field</td>
-  <td>Second Object Field</td>
-  </tr>
+  <tr><td>Object Header Word </td></tr>
+  <tr><td>Method Table pointer</td></tr>
+  <tr><td>First Object Field</td></tr>
+  <tr><td>Second Object Field</td></tr>
 </table>  
 
 Object Header Word
