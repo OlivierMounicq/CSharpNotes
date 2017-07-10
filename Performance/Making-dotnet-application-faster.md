@@ -2,8 +2,8 @@
 
  - Reference type offer a set of managed services : locks, inheritance, and more
  - Values type : 
-  -- you cannot use lock, inheritance and more! But 
-  -- you could avoid the pressure on the garbage collector because instantiate on the stack
+  - you cannot use lock, inheritance and more! But 
+  - you could avoid the pressure on the garbage collector because instantiate on the stack
 
 Additional difference between Reference type and Value type
 - parameter passing :
