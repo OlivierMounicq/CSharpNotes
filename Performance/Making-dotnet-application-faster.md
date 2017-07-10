@@ -99,3 +99,24 @@ public override bool Equals(object o)
 }
 ```
 
+### Boxing
+
+Equal parameter must be boxing because the parameter of the Equals method is an object:
+
+```cs
+public virtual bool Equals(object o);
+```
+
+
+
+### Avoiding Boxing and Reflection
+
+```cs
+struct Point2D : IEquatable<Point2D>
+{
+	public int X, Y;
+	public override bool Equals(object o){...}
+	public bool Equals(Point2D p){...}
+}
+```
+
