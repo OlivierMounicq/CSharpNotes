@@ -82,7 +82,7 @@ The basic value type implementation is inadequate : if you use an array of Struc
 ``` List<T>.Contains ``` call Equals
 
 Equal method
-Declared by System.Object and overridden by System.ValueType
+Declared by ```System.Object``` and overridden by ```System.ValueType
 
 ```cs
 //In System.ValueType, simplified version
