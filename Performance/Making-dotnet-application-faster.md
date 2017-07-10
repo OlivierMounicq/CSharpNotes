@@ -139,7 +139,7 @@ You have to implement both operator (equal and not equal) otherwise the compiler
 
 ### Add GetHashCode
 
-
+Used by ```Dictionary```, ```HashSet``` and other collections.
 
 
 ### The code
@@ -147,9 +147,11 @@ You have to implement both operator (equal and not equal) otherwise the compiler
 #### First version: the worse performance
 
 ```cs
-
-
-
+struct Point2D : IEquatable<Point2D>
+{
+  	public int X;
+  	public int Y;
+}
 ```
 
 #### Second version: the best performance
