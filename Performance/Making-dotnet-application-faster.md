@@ -18,15 +18,15 @@ Additional difference between Reference type and Value type
 
 Heap objects (reference type) have two header fields:
 
-———————————
-| Object Header Word     |   
-———————————
-| Method Table pointer    | 
-———————————
-| First Object Field          |
-———————————
-| Second Object Field     |
-———————————
+|:-----------------------|
+| Object Header Word     |
+|------------------------|
+| Method Table pointer   |
+|------------------------|
+| First Object Field     |
+|------------------------|
+| Second Object Field    |
+|------------------------|
 
 
 Object Header Word
