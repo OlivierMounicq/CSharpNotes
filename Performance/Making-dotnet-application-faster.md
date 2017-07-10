@@ -79,7 +79,7 @@ The basic value type implementation is inadequate : if you use an array of Struc
 
 ### Origin of Equals
 
-List<T>.Contains call Equals
+```cs List<T>.Contains ``` call Equals
 
 Equal method
 Declared by System.Object and overridden by System.ValueType
