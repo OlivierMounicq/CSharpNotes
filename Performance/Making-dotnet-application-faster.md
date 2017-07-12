@@ -193,3 +193,4 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
+[01](CSharpNotes/Performance/img/Making-dotnet-application-faster-01.png)
