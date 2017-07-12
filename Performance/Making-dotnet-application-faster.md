@@ -247,7 +247,13 @@ Relies on profile information collected at runtime
  
 [performance improvements in ryujit in .net core and .net framework](https://blogs.msdn.microsoft.com/dotnet/2017/06/29/performance-improvements-in-ryujit-in-net-core-and-net-framework/)  
 [github.com/dotnet/announcements/issues/10](https://github.com/dotnet/announcements/issues/10)
-  
+
+#### How to set the JIT version
+
+```bat
+c: set COMPLUS_AltJit = *
+```
+
 ### Managed Profile-Guided Optimization (MPGO)
  
 Introduced in .NET 4.5
