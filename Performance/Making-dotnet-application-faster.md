@@ -213,7 +213,7 @@ NGen precompiles .NET assemblies to native code
 * Precompiled assemblies stored in C:\Windows\Assembly\NativeImages
 * Fall back to original if stale
 
-_Automatic NGen in Windows and CLR 4.5_
+<u>Automatic NGen in Windows and CLR 4.5</u>
  
 Enable by default in the windows services
 
