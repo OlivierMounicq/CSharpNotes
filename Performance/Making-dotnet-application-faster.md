@@ -64,10 +64,7 @@ Array of “struct Point” => 10 000 000 objects = 80 000 000 bytes
 
 Memory reduction : 1/4 
 
-
-
-
-
+![01](https://github.com/OMQ/CSharpNotes/blob/master/Performance/img/Making-dotnet-application-faster-01.png)
 
 
 What is even worse : to access two continuous points need cache
@@ -193,4 +190,4 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
-![01](https://github.com/OMQ/CSharpNotes/blob/master/Performance/img/Making-dotnet-application-faster-01.png)
+
