@@ -223,7 +223,7 @@ Enable by default in the windows services
  
 * Usually, methods are compiled to native when invoke
 * Multi-core background JIT in CLR 4.5
-** Opt in using System.Runtime.ProfileOPtimization class
+	* Opt in using System.Runtime.ProfileOPtimization class
 
 ```cs
 Using System.Runtime;
