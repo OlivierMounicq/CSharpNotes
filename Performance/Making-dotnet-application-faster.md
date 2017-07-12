@@ -104,7 +104,7 @@ Equal parameter must be boxing because the parameter of the Equals method is an 
 public virtual bool Equals(object o);
 ```
 
-
+![01](https://github.com/OMQ/CSharpNotes/blob/master/Performance/img/Making-dotnet-application-faster-01.png)
 
 ### Avoiding Boxing and Reflection
 
