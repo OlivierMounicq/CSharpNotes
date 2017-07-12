@@ -236,4 +236,20 @@ A method already precompiled in another thread could be used directly without to
  
 Relies on profile information generated at runtime : that information is used to determine which methods are likely to be invoked.
  
+### RuyJIT
  
+A rewrite of the JIT Compiler
+* Faster compilation (throughput)
+* Better code (quality)
+ 
+And it fixes some issues like pool code generation, ..etc.   
+Relies on profile information collected at runtime
+ 
+[performance improvements in ryujit in .net core and .net framework](https://blogs.msdn.microsoft.com/dotnet/2017/06/29/performance-improvements-in-ryujit-in-net-core-and-net-framework/)  
+[github.com/dotnet/announcements/issues/10](https://github.com/dotnet/announcements/issues/10)
+  
+### Managed Profile-Guided Optimization (MPGO)
+ 
+Introduced in .NET 4.5
+* Improves precompiled assemblies’ disk layout
+* Places hot code and data closer together on disk 
