@@ -190,4 +190,50 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
+## Startup costs
 
+### Cold Startup
+
+Start the application for the first time since you boot your system.  
+The common cost is the disk I/O : load assemblies, windows dll, data file (and after all assemblies/file are available in the cache for others applcations).  
+
+### Warm Startup
+You launch your application again after to close it.
+
+* JIT Compilation (warming :  the cost)
+* Signature validation
+* DLL rebasing
+* Initialization
+
+### Improving Startup Time with NGen
+ 
+NGen precompiles .NET assemblies to native code
+Ø  Ngen install MyApp.exe
+* Includes dependencies
+* Precompiled assemblies stored in C:\Windows\Assembly\NativeImages
+* Fall back to original if stale
+
+_Automatic NGen in Windows and CLR 4.5_
+ 
+Enable by default in the windows services
+
+
+
+### Multi-Core Background JIT
+ 
+* Usually, methods are compiled to native when invoke
+* Multi-core background JIT in CLR 4.5
+** Opt in using System.Runtime.ProfileOPtimization class
+
+```cs
+Using System.Runtime;
+ 
+ProfileOptimization.SetProfileRoot(folderName);
+ProfileOptimization.StartProfileRoot(folderName);
+``` 
+ 
+A method already precompiled in another thread could be used directly without to use JIT to get the native code of the method
+ 
+Relies on profile information generated at runtime : that information is used to determine which methods are likely to be invoked.
+ 
+ 
