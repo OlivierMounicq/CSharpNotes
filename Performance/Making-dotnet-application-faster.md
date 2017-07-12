@@ -251,7 +251,7 @@ Relies on profile information collected at runtime
 #### How to set the JIT version
 
 ```bat
-c: set COMPLUS_AltJit = *
+c:\program> set COMPLUS_AltJit = *
 ```
 
 ### Managed Profile-Guided Optimization (MPGO)
