@@ -356,5 +356,6 @@ fixed (byte* p = &source)
 
 __Beware__ : by pinning the object, the GC won't be able to compact the SOH memory.
 
+If there is an error during the pinning, the object won't be pinning and the keywork ```fixed``` acts as try/catch block.
 
 
