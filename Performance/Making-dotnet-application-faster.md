@@ -358,7 +358,7 @@ __Beware__ : by pinning the object, the GC won't be able to compact the SOH memo
 
 If there is an error during the pinning, the object won't be pinning and the keywork ```fixed``` acts as try/catch block.
 
-*** Directly manipulate memory
+### Directly manipulate memory
 
 ```cs
 //copy the first element of the array
@@ -369,4 +369,26 @@ int x = *(int*)p;
 ```
 
 With the pointer, yo can access to memeory zone out of the array: it requires ```unsafe``` block and "Allow unsafe code".
+
+### Copying memory using pointers
+
+* Mimicking ```Àrray.Copy``` or ```Buffer.BlockCopy```  
+* Better to copy more than one byte per iteration
+
+```cs
+fixed (byte* p =&src);
+fixed (byte* q =&dst);
+{
+	long* pSrc = (long*)p;
+	long* pDst = (long*)q;
+	
+	for(int i = 0; i < dst.Length/8; i++)
+	{
+		*pDst = *pSrc;
+		++pDst; ++pSrc;
+	}
+}
+```
+
+* Might be interresting to unroll the loop
 
