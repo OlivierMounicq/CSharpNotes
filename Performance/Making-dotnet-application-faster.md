@@ -351,7 +351,10 @@ fixed (byte* p = &source)
 {
  ...
 }
-
+//In the following code, the source object won't be pinning
 ```
+
+__Beware__ : by pinning the object, the GC won't be able to compact the SOH memory.
+
 
 
