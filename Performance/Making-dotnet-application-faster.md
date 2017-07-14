@@ -288,7 +288,7 @@ Windows SuperFetch can not be disambled.
 
 Windows SuperFetch is a windows service.
 
-###Precompiling Serialization Assemblies
+### Precompiling Serialization Assemblies
 
 #### Serialization often creates dynamic methods on the first use
 
