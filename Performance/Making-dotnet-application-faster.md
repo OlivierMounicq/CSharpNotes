@@ -361,6 +361,9 @@ If there is an error during the pinning, the object won't be pinning and the key
 *** Directly manipulate memory
 
 ```cs
+//copy the first element of the array
 *p = (byte)12;
+
+//cast of the first element into an INT
 int x = *(int*)p;
 ```
