@@ -259,3 +259,72 @@ c:\program> set COMPLUS_AltJit = *
 Introduced in .NET 4.5
 * Improves precompiled assemblies’ disk layout
 * Places hot code and data closer together on disk 
+
+## Improving Cold Startup
+
+### I/O cost are &#35;1 thing to improve
+
+#### ILMerge (Microsoft research)
+
+A.dll + B.dll + C.exe => ILMerge => Merged C.exe
+
+#### Executable packers
+
+Example : Rugland Packer (RPX), available on CodePlex
+
+
+NTFS File compression
+
+#### Placing strong-named assemblies in the GAC
+
+The CLR has to verify the intergry of the dll (it has to calulate the hash code of each page). 
+This step could be skipped if the dll is loaded from the GAC because the CLR considers the GAC like a trusted, secrure location.
+
+#### Windows SuperFetch
+
+It prefetchs code and data by considering the previous application runnings.
+
+Windows SuperFetch can not be disambled.
+
+Windows SuperFetch is a windows service.
+
+###Precompiling Serialization Assemblies
+
+#### Serialization often creates dynamic methods on the first use
+
+```cs
+void Dynamic_Serialize_MyClass(MyClass c, BinaryWriter w)
+{
+	w.WriteInt32(c.X);
+	w.WriteSingle(c.Y)
+	w.WriteUInt16(c.Z);
+}
+```
+
+#### These methods can be precompiled
+
+* __SGen.exe__ creates precompiled serialization assemblies for XmlSerializer.
+* Protobuf-net has a precompilation tool
+
+
+## Precompiling Regexes
+
+By default, the Regex class interprets the regular expression when you match it.  
+Regex can generate IL code instead of using interpretation:
+
+```cs
+Regex r = new Regex(pattern, RegexOptions.Compiled);
+```
+
+Even better, you can precompile regular expression to an assembly:
+
+
+```cs
+var info = new RegexCompilationInfo(
+	@"[0-9]+", RegexOptions.None,
+	"Digits", "Utils", true);
+Regex.CompileToAssembly(
+	new[] { info }, new AssemblyName("RegexLib, ..."));
+```
+
+```Digits``` is the class name, ```Utils``` is the namespace
