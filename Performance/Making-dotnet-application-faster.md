@@ -372,7 +372,7 @@ With the pointer, yo can access to memeory zone out of the array: it requires ``
 
 ### Copying memory using pointers
 
-* Mimicking ```Àrray.Copy``` or ```Buffer.BlockCopy```  
+* Mimicking ```Array.Copy``` or ```Buffer.BlockCopy```  
 * Better to copy more than one byte per iteration
 
 ```cs
