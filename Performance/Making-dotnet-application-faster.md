@@ -328,3 +328,30 @@ Regex.CompileToAssembly(
 ```
 
 ```Digits``` is the class name, ```Utils``` is the namespace
+
+
+## Pointers
+
+### Why to use pointers in C# ?
+
+* Interoperability with Win32 and other DLLs
+* Performance in specific scenarios
+
+### Pointers and pinning
+
+Accessing to an array:
+* we want to go from ```byte[]``` to ```byte*``` 
+* When getting a pointer to a heap object, what if the GC moves it during the compaction phase (in the SOH)? : actually, there will be a conflict : the GC change the adress memory of the object but it is not aware about the pointer which is an external reference for it.
+
+So to use pointer, we have to pin the object:
+
+```cs
+byte[] source = ...;
+fixed (byte* p = &source)
+{
+ ...
+}
+
+```
+
+
