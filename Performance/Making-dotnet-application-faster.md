@@ -367,3 +367,6 @@ If there is an error during the pinning, the object won't be pinning and the key
 //cast of the first element into an INT
 int x = *(int*)p;
 ```
+
+With the pointer, yo can access to memeory zone out of the array: it requires ```unsafe``` block and "Allow unsafe code".
+
