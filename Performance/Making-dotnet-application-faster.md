@@ -376,16 +376,19 @@ With the pointer, yo can access to memeory zone out of the array: it requires ``
 * Better to copy more than one byte per iteration
 
 ```cs
-fixed (byte* p =&src);
-fixed (byte* q =&dst);
+public static unsafe void Copy(byte[] src, byte[] dst)
 {
-	long* pSrc = (long*)p;
-	long* pDst = (long*)q;
-	
-	for(int i = 0; i < dst.Length/8; i++)
+	fixed (byte* p =&src[0]);
+	fixed (byte* q =&dst[0]);
 	{
-		*pDst = *pSrc;
-		++pDst; ++pSrc;
+		long* pSrc = (long*)p;
+		long* pDst = (long*)q;
+
+		for(int i = 0; i < dst.Length/8; i++)
+		{
+			*pDst = *pSrc;
+			++pDst; ++pSrc;
+		}
 	}
 }
 ```
