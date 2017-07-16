@@ -1,6 +1,6 @@
+# 1.Implementing Value Types correctly
 
-
-# 1.Why Value Type ?
+## 1.1 Why Value Type ?
 
  * Reference type offer a set of managed services : locks, inheritance, and more
  * Values type : 
@@ -14,9 +14,9 @@ Additional difference between Reference type and Value type
 * equality 
 
 
-## Object Layout
+## 1.2 Object Layout
 
-### Reference Type
+### 1.2.1 Reference Type
 
 Heap objects (reference type) have two header fields:
 
@@ -38,7 +38,7 @@ __Method Table Pointer__
 - it helps the compiler to look up the method version and implement Polymorphism, the reflection service 
 
 
-### Value Type
+### 1.2.2 Value Type
 
 Value types (stack objects) don’t have headers. 
 => As the value type has not the header, so they cannot use the managed services.
@@ -72,11 +72,11 @@ Memory reduction : 1/4
 What is even worse : to access two continuous points need cache
 
 
-## Basic Value Type
+## 1.3 Basic Value Type
 
 The basic value type implementation is inadequate : if you use an array of Struct, we don’t enhance anymore the memory performance. But there are two operations that we could enhance: comparing and hashing object.
 
-### Origin of Equals
+### 1.3.1 Origin of Equals
 
 ``` List<T>.Contains ``` call Equals
 
@@ -98,7 +98,7 @@ public override bool Equals(object o)
 }
 ```
 
-### Boxing
+### 1.3.2 Boxing
 
 Equal parameter must be boxing because the parameter of the Equals method is an object:
 
@@ -108,7 +108,7 @@ public virtual bool Equals(object o);
 
 ![01](https://github.com/OMQ/CSharpNotes/blob/master/Performance/img/Making-dotnet-application-faster-02.png)
 
-### Avoiding Boxing and Reflection
+### 1.3.3 Avoiding Boxing and Reflection
 
 - Override ```Equals```
 - overload ```Equals```
@@ -122,9 +122,9 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
-### Final Tuning
+### 1.3.4 Final Tuning
 
-#### Add equality operators
+#### 1.3.4.1 Add equality operators
 
 ```cs
 struct Point2D
@@ -136,7 +136,7 @@ struct Point2D
 You have to implement both operator (equal and not equal) otherwise the compiler will trigger an error.
 
 
-### Add GetHashCode
+#### 1.3.4.2 Add GetHashCode
 
 * Used by ```Dictionary```, ```HashSet``` and other collections.
 * Declared by ```System.Object```overriden by System.ValueType
@@ -158,9 +158,9 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
-### The code
+### 1.3.5 The code
 
-#### First version: the worse performance
+#### 1.3.5.1 First version: the worse performance
 
 ```cs
 struct Point2D : IEquatable<Point2D>
@@ -170,7 +170,7 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
-#### Second version: the best performance
+#### 1.3.5.2 Second version: the best performance
 
 ```cs
 struct Point2D : IEquatable<Point2D>
@@ -192,14 +192,16 @@ struct Point2D : IEquatable<Point2D>
 }
 ```
 
-## Startup costs
+# 2. Applying precompilation
 
-### Cold Startup
+## 2.1 Startup costs
+
+### 2.1.1 Cold Startup
 
 Start the application for the first time since you boot your system.  
 The common cost is the disk I/O : load assemblies, windows dll, data file (and after all assemblies/file are available in the cache for others applcations).  
 
-### Warm Startup
+### 2.1.2 Warm Startup
 You launch your application again after to close it.
 
 * JIT Compilation (warming :  the cost)
@@ -207,7 +209,7 @@ You launch your application again after to close it.
 * DLL rebasing
 * Initialization
 
-### Improving Startup Time with NGen
+## 2.2 Improving Startup Time with NGen
  
 NGen precompiles .NET assemblies to native code
 Ø  Ngen install MyApp.exe
@@ -221,7 +223,7 @@ Enable by default in the windows services
 
 
 
-### Multi-Core Background JIT
+## 2.3 Multi-Core Background JIT
  
 * Usually, methods are compiled to native when invoke
 * Multi-core background JIT in CLR 4.5
@@ -238,7 +240,7 @@ A method already precompiled in another thread could be used directly without to
  
 Relies on profile information generated at runtime : that information is used to determine which methods are likely to be invoked.
  
-### RuyJIT
+## 2.4 RuyJIT
  
 A rewrite of the JIT Compiler
 * Faster compilation (throughput)
@@ -250,39 +252,39 @@ Relies on profile information collected at runtime
 [performance improvements in ryujit in .net core and .net framework](https://blogs.msdn.microsoft.com/dotnet/2017/06/29/performance-improvements-in-ryujit-in-net-core-and-net-framework/)  
 [github.com/dotnet/announcements/issues/10](https://github.com/dotnet/announcements/issues/10)
 
-#### How to set the JIT version
+### 2.4.1  How to set the JIT version
 
 ```bat
 c:\program> set COMPLUS_AltJit = *
 ```
 
-### Managed Profile-Guided Optimization (MPGO)
+## 2.5 Managed Profile-Guided Optimization (MPGO)
  
 Introduced in .NET 4.5
 * Improves precompiled assemblies’ disk layout
 * Places hot code and data closer together on disk 
 
-## Improving Cold Startup
+## 2.6 Improving Cold Startup
 
-### I/O cost are &#35;1 thing to improve
+* 2.6.1 I/O cost are &#35;1 thing to improve
 
-#### ILMerge (Microsoft research)
+### 2.6.1 ILMerge (Microsoft research)
 
 A.dll + B.dll + C.exe => ILMerge => Merged C.exe
 
-#### Executable packers
+### 2.6.2 Executable packers
 
 Example : Rugland Packer (RPX), available on CodePlex
 
 
 NTFS File compression
 
-#### Placing strong-named assemblies in the GAC
+### 2.6.3 Placing strong-named assemblies in the GAC
 
 The CLR has to verify the intergry of the dll (it has to calulate the hash code of each page). 
 This step could be skipped if the dll is loaded from the GAC because the CLR considers the GAC like a trusted, secrure location.
 
-#### Windows SuperFetch
+### 2.6.4 Windows SuperFetch
 
 It prefetchs code and data by considering the previous application runnings.
 
@@ -290,9 +292,9 @@ Windows SuperFetch can not be disambled.
 
 Windows SuperFetch is a windows service.
 
-### Precompiling Serialization Assemblies
+## 2.7 Precompiling Serialization Assemblies
 
-#### Serialization often creates dynamic methods on the first use
+### 2.7.1 Serialization often creates dynamic methods on the first use
 
 ```cs
 void Dynamic_Serialize_MyClass(MyClass c, BinaryWriter w)
@@ -303,13 +305,13 @@ void Dynamic_Serialize_MyClass(MyClass c, BinaryWriter w)
 }
 ```
 
-#### These methods can be precompiled
+### 2.7.2 These methods can be precompiled
 
 * __SGen.exe__ creates precompiled serialization assemblies for XmlSerializer.
 * Protobuf-net has a precompilation tool
 
 
-## Precompiling Regexes
+## 2.8 Precompiling Regexes
 
 By default, the Regex class interprets the regular expression when you match it.  
 Regex can generate IL code instead of using interpretation:
@@ -331,15 +333,16 @@ Regex.CompileToAssembly(
 
 ```Digits``` is the class name, ```Utils``` is the namespace
 
+# 3. Using unsafe code and Pointers
 
-## Pointers
+## 3.1 Pointers
 
-### Why to use pointers in C# ?
+### 3.1.1 Why to use pointers in C# ?
 
 * Interoperability with Win32 and other DLLs
 * Performance in specific scenarios
 
-### Pointers and pinning
+### 3.1.2 Pointers and pinning
 
 Accessing to an array:
 * we want to go from ```byte[]``` to ```byte*``` 
@@ -360,7 +363,7 @@ __Beware__ : by pinning the object, the GC won't be able to compact the SOH memo
 
 If there is an error during the pinning, the object won't be pinning and the keywork ```fixed``` acts as try/catch block.
 
-### Directly manipulate memory
+### 3.1.3 Directly manipulate memory
 
 ```cs
 //copy the first element of the array
@@ -372,7 +375,7 @@ int x = *(int*)p;
 
 With the pointer, yo can access to memeory zone out of the array: it requires ```unsafe``` block and "Allow unsafe code".
 
-### Copying memory using pointers
+### 3.1.4 Copying memory using pointers
 
 * Mimicking ```Array.Copy``` or ```Buffer.BlockCopy```  
 * Better to copy more than one byte per iteration
@@ -398,9 +401,9 @@ public static unsafe void Copy(byte[] src, byte[] dst)
 * Might be interresting to unroll the loop
 
 
-### Reading Structure
+## 3.2 Reading Structure
 
-#### Marshal.PtrToStructure
+### 3.2.1 Marshal.PtrToStructure
 
 * ```System.Runtime.InteropServices.Marshal``` is designed for the interopearbility scenarios
 *  The method ```Marshal.PtrToStructure``` is useful to read structure from unmanaged memory.
@@ -420,7 +423,7 @@ finally
 }
 ```
 
-#### Using pointers
+### 3.2.2 Using pointers
 
 * Pointers can help by casting 
 
@@ -432,7 +435,7 @@ fixed(byte* p = &data[offset])
 }
 ```
 
-#### Generic approach
+### 3.2.3 Generic approach
 
 * Unfortunately, ```T*``` does not work : T must be blittable. 
 * We can generate a method for each ```T``` and call it when necessary
@@ -440,9 +443,9 @@ fixed(byte* p = &data[offset])
 	* CSharpCodeProvider
 	* Roslyn
 	
-## Choosing a collection
+# 4 Choosing a collection
 
-### Array
+## 4.1 Array
 
 * Flat, sequential, statically sized 
 * very fast to access to elements
@@ -455,7 +458,7 @@ Pros:
 * you know the size in advance
 * you don't need to look up elements often
 
-### List&lt;T&gt;
+## 4.2 List&lt;T&gt;
 
 * Dynamic (resizable) array
 	* Double its size with each expansion
@@ -471,14 +474,14 @@ Pros:
 * No specialization lookup facility
 * Still no per-element overhead (because based on an array)
 
-### LinkedList&lt;T&gt;
+## 4.3 LinkedList&lt;T&gt;
 
 * Doubly-linked list : each element knows its previous and next element
 * Vey flexible collections for insertions/deletions : to insert/delete you only need to update the next and previous pointer.
 * Still requires linear time (O(n)) for lookup
 * Very big space overhead per element (each element has a next and previous pointers)
 
-### Trees
+## 4.4 Trees
 
 * ```SortedDictionary<K,V>``` and ```SortedSet<T>``` are implemented with a balanced binary search tree
 	* efficient lookup by key
@@ -490,7 +493,7 @@ Pros:
 * Big space overhead per element (several addtional fields)	
 * Trade-off between the memory (which is big) and the efficiency
 
-### Associative collection
+## 4.5 Associative collection
  
  * ```Dictionary<K,V>``` and ```HashSet<T>``` use hashing to arrange the elements
  * Insertion, deletion and lookup work in _constant_ time _O_(1)
@@ -500,7 +503,7 @@ Pros:
 	* Smaller than trees in most cases
 	
 
-## Comparison of Built-in Collections
+## 4.6 Comparison of Built-in Collections
 
 | Collection | Space overhead | Lookup | Insertion | Deletion | Special |
 |:-----------|:---------------|:-------|:----------|:---------|:--------|
@@ -510,26 +513,28 @@ Pros:
 | Hashet Dictionary | Medium | _O_(1) | _O_(1) | _O_(1) | |
 
 
-### Scenarios
+## 4.7 Scenarios
 
-#### Word frequency in a large body of text
+### 4.7.1 Word frequency in a large body of text
 
 * Best choice : ```Dictionary<K,V>``` 
 * Second choice : ```SortDictionary<K,V>```
 
-#### Queue of orders in restaurant
+### 4.7.2 Queue of orders in restaurant
 
 * ```LinkedList<T>```
 
 (The build-in queue uses an array.)
 
-#### Continuous process : buffer of continuous log
+### 4.7.3 Continuous process : buffer of continuous log
 
 * ```List<T>```  : the element is appended at the end of the list
 
-### Why custom collection ?
+### 4.7.4 Why custom collection ?
 
-Find union
+For instance : Find union algorithm
+
+
 
 
 
