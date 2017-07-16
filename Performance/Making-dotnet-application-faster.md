@@ -479,9 +479,12 @@ Pros:
 ### Trees
 
 * ```SortedDictionary<K,V>``` and ```SortedSet<T>``` are implemented with a balanced binary search tree
+	* efficient lookup by key
+	* Sorted by key
+	* The key has to implement the interface ```IComparable<T>```
+	
 
 
-* based on binary tree datasctructure
 
 
 
