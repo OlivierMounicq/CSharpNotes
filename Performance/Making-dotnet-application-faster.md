@@ -481,7 +481,23 @@ Pros:
 * ```SortedDictionary<K,V>``` and ```SortedSet<T>``` are implemented with a balanced binary search tree
 	* efficient lookup by key
 	* Sorted by key
-	* The key has to implement the interface ```IComparable<T>```
+	* The key has to implement the interface ```IComparable<T>``` 
+* All fundamental operations take _O_(log<sub>2</sub>(n)) times
+	* For example, log<sub>2</sub>(100 000 000) is less than 27
+	* Great for storing dynamic data that is queried often
+* Big space overhead per element (several addtional fields)	
+* Trade-off between the memory (which is big) and the efficiency
+
+### Associative collection
+ 
+ * ```Dictionary<K,V>``` and ```HashSet<T>``` use hashing to arrange the elements
+ * Insertion, deletion and lookup work in _constant_ time _O_(1)
+ 	* GetHashCode must be well-distributed for this to happen
+* Medium memory overhead
+	* Combination of arrays and linked list
+	* Smaller than trees in most cases
+	
+
 	
 
 
