@@ -459,6 +459,30 @@ Pros:
 	* Double its size with each expansion
 	* For 100 000 000 insertions : [log<sub>2</sub> 100 000 000] = 27 expansions
 	* 
+* Each time, there is an insertion into the list:
+	* a new array is created by allocation
+	* all elements of the former array are copied to the new array
+	* the GC has to clean the former array used by the List class.
+	
+* Extension not at the end of the list is very expensive
+	* good only to append data
+* No specialization lookup facility
+* Still no per-element overhead (because based on an array)
+
+### LinkedList&lt;T&gt;
+
+* Doubly-linked list : each element knows its previous and next element
+* Vey flexible collections for insertions/deletions : to insert/delete you only need to update the next and previous pointer.
+* Still requires linear time (O(n)) for lookup
+* Very big space overhead per element (each element has a next and previous pointers)
+
+### Trees
+
+* ```SortedDictionary<K,V>``` and ```SortedSet<T>``` are implemented with a balanced binary search tree
+
+
+* based on binary tree datasctructure
+
 
 
 
