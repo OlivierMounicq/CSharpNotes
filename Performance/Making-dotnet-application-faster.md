@@ -498,7 +498,16 @@ Pros:
 	* Smaller than trees in most cases
 	
 
-	
+## Comparison of Built-in Collections
+
+| Collection | Space overhead | Lookup | Insertion | Deletion | Special |
+|:-----------|:---------------|:-------|:----------|:---------|:--------|
+| Array      | None           | _O_(n) | N/A       | N/A      |         |
+| LinkedList | Medium         | _O_(n) | _O_(1)    | _O_(1)   |         |
+| SortedDictionnary SortedSet | Very big | _O_(log<sub>2</sub>(n)) | _O_(log<sub>2</sub>(n)) | Sorted |
+| Hashet Dictionary | Medium | _O_(1) | _O_(1) | _O_(1) | |
+
+
 
 
 
