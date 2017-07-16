@@ -697,9 +697,48 @@ Parallel.For(
 ); 
 ```
 
+### 5.6.4 Lock-free operations 
 
+* Atomic hardware primitives from the ```Interlocked``` class 
+  * ```Interlocked.Increment```, ```Interlocked.Decrement```, ```Interlocked.Add``` .... 
+* Especially useful : ```Interlocked.CompareExchange``` 
 
+```cs
+//Performs "shared * = x" atomically
+static void AtomicMultiply(ref int shared, int x)
+{
+    int old, result
+    do
+    {
+        old = shared;
+	result = old * x;
+    }
+    while(old != Interlocked.CompareExchange(ref shared, old, result));	
+}
+```
 
+### 5.6.5 Example : get the prime numbers
+
+#### 5.6.5.1 : Using lock keyword
+
+```cs
+public static List<uint> AllPrimesParallelWithLock(uint from, uint to)
+{
+    List<uint> result = new List<uint>();
+    Parallel.For((int)from, (int)to, i => 
+    {
+        if(IsPrime((uint)i))
+	{
+	    lock(result)
+	    {
+	        result.Add((uint)i);
+            }
+        }	    
+    });
+
+    return result;	
+}
+```
 
 
 
