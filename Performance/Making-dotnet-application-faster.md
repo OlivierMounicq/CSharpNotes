@@ -740,6 +740,38 @@ public static List<uint> AllPrimesParallelWithLock(uint from, uint to)
 }
 ```
 
+#### 5.6.5.2 : Using aggregation based approach
+
+```cs
+public static List<uint> AllPrimesParallelAggregated(uint from, uint to)
+{
+    List<uint> result = new List<uint>();
+    Parallel.For((int)from, (int)to, i => 
+    {
+        () => new List<uint>(), //Local state initializer
+	(i, pls, local) =>
+	{
+	    if(IsPrime((uint)i))
+	    {
+	        local.Add((uint)i);
+	    }
+	    return local;	
+	},
+	local => 
+	{
+	    lock(result)
+	    {
+	        result.AddRange(local);
+	    }
+	
+	
+	}
+    });
+    
+    return result;	
+}
+```
+
 
 
 
