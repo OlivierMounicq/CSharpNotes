@@ -429,3 +429,34 @@ fixed(byte* p = &data[offset])
 	return *pHeader;
 }
 ```
+
+#### Generic approach
+
+* Unfortunately, ```T*``` does not work : T must be blittable. 
+* We can generate a method for each ```T``` and call it when necessary
+	* Reflection.Emit
+	* CSharpCodeProvider
+	* Roslyn
+	
+## Choosing a collection
+
+### Array
+
+* Flat, sequential, statically sized 
+* very fast to access to elements
+* No per-element overhead
+* Very efficient if the element type is a value type
+* foundation for many other collection classes
+
+Pros:
+* accessing sequentially to element
+* you know the size in advance
+* you don't need to look up elements often
+
+### ```List<T>```
+
+* Dynamic (resizable) array
+
+
+
+
