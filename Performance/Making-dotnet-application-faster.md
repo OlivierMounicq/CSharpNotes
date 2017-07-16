@@ -536,6 +536,98 @@ For instance : Find union algorithm
 
 
 
+# 5. Make your code as parallel as necessary but no more
+
+## 5.1 Defintions
+
+### 5.1.2 The concepts
+
+* __Parallelism__ : running multiple threads in parallel
+* __Concurrency__ : doing multiple things at once
+* __Asynchrony__ : without blocking's the caller thread
+
+### 5.1.3 The workloads
+
+
+* CPU-bound : data parallelism
+* I/O-bound : I/O parallelism
+* mixed
+
+## 5.2 Data parallelism
+
+* Parallelize operation on a collection of items
+* TPL takes care of thread management
+
+### 5.2.1 Parallel loops
+
+#### 5.2.1.1 Parallel.For
+
+```cs
+Parallel.For(from, to, i => {
+	//loop body
+	...;
+});
+```
+
+#### 5.2.1.2 Parallel.ForEach
+
+```cs
+Parallel.ForEach(enumerable, element => {
+	//loop body
+	...;
+});
+```
+
+#### 5.2.1.3 Customization
+
+* breaking early
+* limit parallelism
+* Aggregation
+
+## 5.3 I/O-Bound workloads and Asynchronous I/O
+
+* data parallelism is suited for CPU-bound workloads
+	* CPU are not good at sitting and waiting for I/O
+* Asynchronous I/O operations
+	* Asynchronous file read
+	* Asynchronous HTTP POST
+* Multiple outstanding I/O operations per thread
+
+## 5.4 Asynchronous in C# 5: async and await
+
+### 5.4.1 async and await
+
+```cs
+async Task<Weather> GetWeatherAsync(string city)
+{
+	string url = Helpers.EncoreRequestUrl(city);
+	string respose = await m_http.GetStringAsync(url);
+	returns Helpers.ParseWeather(response);
+}
+```
+
+### 5.4.2 Awaiting task and IAsyncOperation
+
+* await support 
+	* The TPL class
+	* IAsyncOperation Windows Runtime interface
+	
+```cs
+//In System.Net.Http.HttpClient
+public Task<string> GetStringAsync(string requestUri);
+
+//In Windows.Web.Http.HttpClient
+public IAsyncOperationWithProgresss<String, HttpProgress> GetStringAsync(Uri uri)
+```
+
+
+
+
+
+
+
+
+
 
 
 
