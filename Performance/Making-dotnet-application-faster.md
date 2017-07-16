@@ -395,3 +395,37 @@ public static unsafe void Copy(byte[] src, byte[] dst)
 
 * Might be interresting to unroll the loop
 
+
+### Reading Structure
+
+#### Marshal.PtrToStructure
+
+* ```System.Runtime.InteropServices.Marshal``` is designed for the interopearbility scenarios
+*  The method ```Marshal.PtrToStructure``` is useful to read structure from unmanaged memory.
+	* ``` Object PtrToStructure(Type type, IntPtr address)``` 
+* the GC can pin an object in memory and give us the pointer to it:
+
+```xs
+GCHandle handle = GCHandle.Alloc(obj, GCHandleType.Pinned);
+try
+{
+	IntPtr address = handle.AddrOfPinnedObject();
+}
+finally
+{
+	//You are responsable about the object pinning
+	handle.Free();
+}
+```
+
+#### Using pointers
+
+* Pointers can help by casting 
+
+```cs
+fixed(byte* p = &data[offset])
+{
+	TcpHeader* pHeader = (TcpHeader*)p;
+	return *pHeader;
+}
+```
