@@ -661,6 +661,47 @@ while(taskList.Count > 0)
 }
 ```
 
+## 5.6 Getting rid of locks
+
+### 5.6.1 Synchronization and Amdahl's law
+
+* When using parallelism, shared resources require synchronization
+* Amdahl's law 
+  * if the fraction P of application requires synchronization, the maximum possible speedup is:
+  
+  
+  * E.g, for P=0.5 (50%), the maximum speedup is 2x.
+
+* Scalability is critical as the number of CPU increases.  
+
+### 5.6.2 Concurrent data structures
+
+* Thread safe data structure in the TPL
+  * ConcurrentDictionary (use lock in internally)
+  * ConcurrentStack
+  * ConcurrentBag
+* ConcurrentStack and ConcurrentBag have several free-lock paths and use low level atomic synchronization primitive
+* use them instead of a lock around the standard collections
+
+### 5.6.3 Aggregation
+
+* Collect intermediate results into thread-local structure
+
+```cs
+Parallel.For(
+    from,
+    to,
+    () => produce thread Local state,
+    (i, _, local) => do work and return the new Local State,
+    local => combine local states into global state
+); 
+```
+
+
+
+
+
+
 
 
 
