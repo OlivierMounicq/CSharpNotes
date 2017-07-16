@@ -453,10 +453,12 @@ Pros:
 * you know the size in advance
 * you don't need to look up elements often
 
-### ```List<T>```
+### List&lt;T&gt;
 
 * Dynamic (resizable) array
-
+	* Double its size with each expansion
+	* For 100 000 000 insertions : [log<sub>2</sub> 100 000 000] = 27 expansions
+	* 
 
 
 
