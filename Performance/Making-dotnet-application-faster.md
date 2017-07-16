@@ -620,6 +620,49 @@ public Task<string> GetStringAsync(string requestUri);
 public IAsyncOperationWithProgresss<String, HttpProgress> GetStringAsync(Uri uri)
 ```
 
+## 5.5 Parallelizing I/O requests
+
+Start a few outstanding I/O operations and then...  
+
+* __Wait-All__ : Process results when all operations are done :```Task.WhenAll(taskList)``` 
+* __Wait-Any__ : Process each operation's result when available : ```Task.WhenAny(taskList)``` 
+
+### 5.5.1 Task.WhenAll
+
+```cs
+List<Task<string>> taskList = new List<Task<string>>[]{
+  m_http.GetStringAsync(url1),
+  m_http.GetStringAsync(url2),
+  m_http.GetStringAsync(url3)  
+};
+
+Task<string[]> all = Task.WhenAll(taskList);
+string[] results = await all;
+
+//Process the result
+```
+
+
+### 5.5.2 Task.WhenAny
+
+```cs
+List<Task<string>> taskList = new List<Task<string>>[]{
+  m_http.GetStringAsync(url1),
+  m_http.GetStringAsync(url2),
+  m_http.GetStringAsync(url3)  
+};
+
+while(taskList.Count > 0)
+{
+  Task<Task<string>> any = Task.WhenAny(taskList);
+  Task<string> completedTask = await any;
+  //Process the result in the completedTask.Result
+  taskList.Remove(completedTask);
+}
+```
+
+
+
 
 
 
