@@ -757,14 +757,12 @@ public static List<uint> AllPrimesParallelAggregated(uint from, uint to)
 	    }
 	    return local;	
 	},
-	local => 
+	local =>  //local to global state combinator
 	{
 	    lock(result)
 	    {
 	        result.AddRange(local);
 	    }
-	
-	
 	}
     });
     
