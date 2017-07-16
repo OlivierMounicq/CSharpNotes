@@ -1,4 +1,6 @@
-## Why Value Type ?
+
+
+# 1.Why Value Type ?
 
  * Reference type offer a set of managed services : locks, inheritance, and more
  * Values type : 
@@ -523,7 +525,13 @@ Pros:
 
 #### Continuous process : buffer of continuous log
 
-* ```List<T>``` 
+* ```List<T>```  : the element is appended at the end of the list
+
+### Why custom collection ?
+
+Find union
+
+
 
 
 
