@@ -770,6 +770,14 @@ public static List<uint> AllPrimesParallelAggregated(uint from, uint to)
 }
 ```
 
+# Summary
+
+* Using value types correctly
+* Applying precompilation
+* using unsafe code and pointers
+* choosing collection wisely
+* Parallelism and asynchrony
+
 
 
 
