@@ -779,7 +779,9 @@ public static List<uint> AllPrimesParallelAggregated(uint from, uint to)
 * Parallelism and asynchrony
 
 
+# URL
 
+[MPGO](https://eknowledger.wordpress.com/2012/04/27/clr-4-5-managed-profile-guided-optimization-mpgo/)
 
 
 
