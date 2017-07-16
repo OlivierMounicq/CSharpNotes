@@ -508,6 +508,22 @@ Pros:
 | Hashet Dictionary | Medium | _O_(1) | _O_(1) | _O_(1) | |
 
 
+### Scenarios
+
+#### Word frequency in a large body of text
+
+* Best choice : ```Dictionary<K,V>``` 
+* Second choice : ```SortDictionary<K,V>```
+
+#### Queue of orders in restaurant
+
+* ```LinkedList<T>```
+
+(The build-in queue uses an array.)
+
+#### Continuous process : buffer of continuous log
+
+* ```List<T>``` 
 
 
 
