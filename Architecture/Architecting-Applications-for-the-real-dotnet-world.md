@@ -489,4 +489,13 @@ _ORM handles CRUD, transaction and concurrency._
 4. Use ORM 
 5. Manual mapping : use raw ADO.NET to map by hand
 
+### 5.5 The DAL patterns
 
+#### 5.5.1 ORM (Object Relational Mapping)
+
+- Change tracking : track changes and generate corresponding SQL
+- Identity map : get object from memory if available to assure single instance and avoid DB call
+- Lazy-loading : get data just-in time
+- eager fetching : load related data automatically
+- cascades: cascade related change
+- Unit of work tracking : track objects in a transaction, coordinate writing changes and resolve concurrency issues
