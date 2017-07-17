@@ -457,6 +457,26 @@ _ORM handles CRUD, transaction and concurrency._
     <td valign="top">Table per class <br/>Table per concrete class <br/> Table per class family</td>
     <td valign="top">Native support</td>
   </tr>
+  <tr>
+    <td valign="top">Associations</td>
+    <td valign="top">Associatee to Associator</td>
+    <td valign="top">Associator to Associatee</td>
+  </tr>
+  <tr>
+    <td valign="top">Identity</td>
+    <td valign="top">Key required: Identical row is considered corruption</td>
+    <td valign="top">Location in memory</td>
+  </tr>
+  <tr>
+    <td valign="top">Queries</td>
+    <td valign="top">SQL</td>
+    <td valign="top">Query-By-Example<br/>Query-by-API<br/>Query-by-Language (LINQ)</td>
+  </tr>
+  <tr>
+    <td valign="top">Partial results</td>
+    <td valign="top">No problems. Select desired columns</td>
+    <td valign="top">1. Allow nullable fields <br> Ignore domain restriction <br/>2. Always return fully hydrated object <br/>3. Lazy loaded fields</td>
+  </tr>  
 </table>
 
 
