@@ -439,6 +439,8 @@ _ORM handles CRUD, transaction and concurrency._
 
 ### 5.4 Object relational mismatch
 
+#### 5.4.1 Summary
+
 | Relational DB  | Object models  |
 |:---------------|:---------------|
 | Tables         | Class          |
@@ -478,5 +480,13 @@ _ORM handles CRUD, transaction and concurrency._
     <td valign="top">1. Allow nullable fields <br> Ignore domain restriction <br/>2. Always return fully hydrated object <br/>3. Lazy loaded fields</td>
   </tr>  
 </table>
+
+#### 5.4.2 Options to deal with object relational mismatch
+
+1. No object : write procedural code
+2. Store objects in DB : db4o or NoSQL (and you could inject the information from the NoSQL to a relational DB)
+3. Use relational model in code : e.g. Table Module or Active Record
+4. Use ORM 
+5. Manual mapping : use raw ADO.NET to map by hand
 
 
