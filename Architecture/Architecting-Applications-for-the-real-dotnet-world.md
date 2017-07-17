@@ -182,5 +182,127 @@ __Cons__
 - long-term commitment
 - DB mapping overhead
 
+## 3. Service Layer
 
+### 3.1 Goal
+
+Service layer helps coordinate interactions among your domain objects and provides ac coarse grained API (the consumer does not need to understand the detail behind)  
+
+### 3.2 Service Layer in a nutshell
+
+- usually sits between the presentation and the business logic
+- typically called by presentation	
+- really a facade pattern (encapsulate a complicated object to wrap it up in something easier to understand)
+- takes requests from one layer and sends to another
+- conceptually similar to transaction script
+- can centralize handling cross-cutting edge
+
+Service Layer should be thin
+
+### 3.3 Roles 
+
+Core role:
+- adapt data into format the representation layer requires
+- delegate work to business objects
+
+Potential roles
+- security (authorization, managing user roles)
+- logging 
+- searching
+- notification
+- binding
+- managing transaction
+- data validation
+
+The service layer is __like a boss__
+- does not perform any task directly
+- orchestrates interactions between business object
+- just like boss who organizes work between people. Accomplish task through others.
+
+The service layer is __a boundary__
+- separates the presentation layer from the business layer
+
+The service layer is __a shield__
+- shields the presentation layer from business logic complexity
+- supplies generic and common interface
+- keeps layer loosely coupled
+
+
+### 3.4 Fine vs grain coarse API
+
+- course grained : Facade pattern
+- Manages interactions among domain layer objects
+- Encapsulate business logic - abstract away details
+- sharable - optionally a web service  
+
+### 3.5 When ? Where ?
+
+When to use a service layer ?
+- Multiple UIs : centralize all your logic 
+- Multiple consumer of business logic
+- Complex interactions among domain objects
+
+Where is it called ?
+- Services are traditionally invoked from the perception layer 
+	— WebForm : the code behind
+	— MVC : controller
+
+### 3.6 Implementation and technologies
+
+To implement the service layer, we could use different technologies:
+- WCF
+- WebAPI
+- ServiceStack
+_ POCOs (Plain Old CLR Objects) via a shared library
+
+
+### 3.7 Web Service vs Shared Library
+
+#### 3.7.1 Web Service pros
+
+- Immediate bug fixes for all clients
+- Clients can easily upgrade when desired (when versioned API offered) : we can support multiple versions of the web service simultaneously.
+-  consumers can not decompile the code
+- Autonomous : can scale service hardware separately (you can have a tier with just a web service )
+- Tech agostic : a java client can consume a .net web service if the endpoint returns a JSON or XML response.
+- enforce the operation of concerns : UI cannot “route around”
+- highly scalable
+- centralised deployments
+
+#### 3.7.2 Shared library pros
+
+- Native code called in the process : higher performance
+- no serialisation overhead
+- No internet connection required
+- No risk of centralized service going down and impacting all consumers
+- No risk of public abuse (no people gaining unauthorized access)
+- Simplest thing that could possibly work : thus default to this.
+    
+### 3.8 What should the service layer return ?
+
+There are 3 options:
+- __Data Transfert Object__ (DTO) :  a class with no method inside
+- __Copy of domain entities without behaviour__ :  no calling method with your domain 
+- __Domain entity__ :  you expose your domain entity out the service layer
+
+### 3.9
+
+#### 3.9.1 What is a DTO ?
+
+“Object that carries data across an application’s boundaries with the primary goal of minimising round trips”. Martin Fowler
+
+A class with data only, no methods.  
+Avoid coupling between UI and domain layers.
+
+### 3.9.2 When using DTO ?
+
+1. circular reference : DTO can solve the problem when you want to save the data. For instance N user <-> N adresses : you cannot save those objects.  
+2. Domain is not on same physical tier as service  
+3. Domain object would mean bloated response : a DTO can provide only the properties needed by the UI or the data are too complex to be binding to UI  
+
+### 3.10 Summary
+
+- service layer is an intermediary
+- not all applications need a service layer
+- DTOs are useful but optional
 
