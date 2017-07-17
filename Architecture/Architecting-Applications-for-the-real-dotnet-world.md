@@ -597,3 +597,44 @@ public interface IUserRepository
 
 ```
 
+##### 5.2.2.3 ORM behind a Repository? Is that nuts ?
+
+Not necessarily. Different purposes.  
+
+__Repository__  
+Abstract and encapsulate _everything_ storage related.  
+Architectural pattern
+
+__ORM__  
+Abstract access to any supported _relational database_  
+When behind a repository, simply an implementation detail
+
+=> You can use either. Or both.
+
+#### 5.5.3 Stored procedure
+
+##### 5.5.3.1 Pros/Cons
+_Pros_:
+- Avoid multiple calls to the DB
+_ Help protect from SQL injection (but ORMs or ADO.NET do)
+- Can place query generation/tweaks in hands of DBA
+- Limit data access
+
+
+_Cons_:
+- Vendor lock-in : The Oracle stored procedure cannot run in the SQL Server database
+- Stored procedure are not typically faster
+- Risk for business logic to slip in. Code in BLL is :
+    - Easier to enhance and maintain
+    - Easier to test
+    - Easier to debug
+
+##### 5.5.3.2 Stored Procedure or not
+
+Question to ask:
+- How much work is it to change a Stored Procedure vs code in your organization ?
+- Is your database under source control ? The Stored Procedure must be saved in a source control
+- How automated is your deployment process ?
+- __Risk__ : Are we placing business logic in Stored Procedure ? Separate concerns
+
+
