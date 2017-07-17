@@ -285,7 +285,7 @@ There are 3 options:
 - __Copy of domain entities without behaviour__ :  no calling method with your domain 
 - __Domain entity__ :  you expose your domain entity out the service layer
 
-### 3.9
+### 3.9 DTO
 
 #### 3.9.1 What is a DTO ?
 
@@ -294,7 +294,7 @@ There are 3 options:
 A class with data only, no methods.  
 Avoid coupling between UI and domain layers.
 
-### 3.9.2 When using DTO ?
+#### 3.9.2 When using DTO ?
 
 1. circular reference : DTO can solve the problem when you want to save the data. For instance N user <-> N adresses : you cannot save those objects.  
 2. Domain is not on same physical tier as service  
