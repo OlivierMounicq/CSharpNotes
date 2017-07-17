@@ -493,9 +493,107 @@ _ORM handles CRUD, transaction and concurrency._
 
 #### 5.5.1 ORM (Object Relational Mapping)
 
+##### 5.5.1.1 Properties
+
 - Change tracking : track changes and generate corresponding SQL
 - Identity map : get object from memory if available to assure single instance and avoid DB call
 - Lazy-loading : get data just-in time
 - eager fetching : load related data automatically
 - cascades: cascade related change
 - Unit of work tracking : track objects in a transaction, coordinate writing changes and resolve concurrency issues
+
+##### 5.5.1.2 ORM honors DRY
+
+For instance, if I add a column in a table in the database, you have to do :
+1. DataBase
+2. Class property
+3. Select statements
+4. Insert statements
+5. Update statements
+6. Delete statements
+7. Custom marshalling code (the code which manages the data exchange between the database and the application)
+
+But if you use NHibertnate, you will have to do:
+1. Update database
+2. Class property
+3. update .hbm.xml file
+
+##### 5.5.1.3 Should I ORM ?
+
+_Pros_
+* Faster development
+* RDMS agnostic
+* Typesafe interface
+* avoid writing SQL
+* SQL injection protection
+* Security, performance, caching, mapping Out Of The BOX (OOTB)
+* Documentation
+
+_Cons_:
+* performance penalty
+* learning curve
+* trusting third party with SQL (the SQL generation)
+* Do you own the schema ?
+* DBAs lose the control (on the SQL which is generated)
+* Leaky abstraction : very difficult to determine the root cause
+* Security concerns (in finance, generally, the developer cannot write in the database so they won't use the ORM power)
+
+#### 5.5.2 Repository pattern
+
+Repository pattern = clean API
+
+##### 5.2.2.1 Properties
+
+- Hides data access behind an interface
+- Isolates domain objects from the database access code
+- Object-oriented view of the persistence layer
+- Groups common queries
+- Centralizes query construction
+- Encapsulates he object persisted in a data store and the operations performed over them
+
+##### 5.2.2.2 Coarse grainded
+
+With the _repository pattern_, the DAL act as Service Layer by aggregating the common commands.
+
+##### 5.2.2.3 Why hide the DB behind an interface ?
+
+1. Unit testing
+  * you can avoid to hit the database during the unit testing
+  * you could also use a in-memory database to enhance performances of the unit tests.
+2. Database independance (regarding the BLL)
+3. Abstract complexity of multiple data sources (Database, file, ...)
+
+##### 5.2.2.4 Pros/Cons
+
+_Pros_:
+- Total persistence ignorance
+- Clear separation of concerns
+- Swap DB technologies
+- Abstract ultiple data sources
+- Can completely switch DB paradigms
+- Support unit testing : it is very easy to mock up the database by using an in-memory version of the database
+-Support concurrent developments
+- Avoids duplicate queries
+- Strict control over queries
+- Object oriented API
+- Centralizes access rules
+- Caching (and can centralizes it)
+
+_Cons_
+- Reduces ORM power
+- API explosion risk : to many methods (GetUserByFirstName, GetUserByLastNameDescending...)
+- Easy to leak persistence specific info if you are not careful => __how coarse grained to make your API ?__
+- Yet another layer = more work
+
+An example to reduce the methods exposed by the API
+
+```cs
+public interface IUserRepository
+{
+    void Add(User newUser);
+    void Remove(User user);
+    IQueryable<User> Find(Expression<Func<User, bool>> predicate);
+}
+
+```
+
