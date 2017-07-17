@@ -306,3 +306,94 @@ Avoid coupling between UI and domain layers.
 - not all applications need a service layer
 - DTOs are useful but optional
 
+## 4 Presentation Layer
+
+### 4.1 The frameworks
+
+Autonomous view : WebForm / WinForm
+Model 2 : MVC
+MVVM : WPF / Silverlight / Client-Side JS
+
+### 4.2 Presentation Layer Architectural Goals 
+
+- Separate data from the view : Data => M in the MVC or MVP and View => V
+- support concurrent development :  a team for the View and another team for the model
+- minimise the logic : maximize logic and reuse
+
+The presentation layer should contain presentation specific logic which should be very thin. (only validation and display)
+
+### 4.3 What belongs in the Presentation Layer ?
+
+- User Interface (V)
+- View model : the data to display and to manipulate (M) (In the WebForm, the code behind operates as the model)
+-  basic data validation
+- UI specific formatting
+- Logic to control UI behaviours:
+  * 1. Marshall data into/ out of the UI
+  * 2. Hide, show, and move the components
+  * 3. Capture and display errors
+
+### 4.4 Selecting a presentation Layer
+
+Client:
+* WPF : routed UI
+* Modern UI (formerly called Metro)
+* WinForms
+
+Web:
+* MVC
+* WebForms
+* Javascript MVVM
+
+#### 4.4.1 The WebForms
+
+_Pros:_
+- Rapid development
+- Approachable
+- Leverage  rich libraries
+
+_Cons:_
+- Complex abstraction
+- Performance pitfalls (beware with the view state)
+- tricky to test (since the constructor for the WebForm page class cannot be overridden => move as much as possible out the code behind file )
+
+#### 4.4.2 Why MVC ?
+
+_Pros_
+- Control
+- less abstraction
+- separation of concerns
+
+_Cons_
+- More control => work
+- learning curve 
+- more files
+
+#### 4.4.3 Why Client-Side ?
+
+_Pros_
+- rich interactivity
+- declarative (the bind is declared)
+- Argument server rendering
+- speeding the page load
+
+_Cons_
+- require JS skills
+- Deployment & errors
+- no compile-time error
+- another layer : YAGNI
+
+#### 4.4.4 Server side vs Client-side rendering
+
+_Server-side_
+- Faster initial render
+- Less taxing on old browser (the browser has to parse the JS => the browser hase to work to render the UI)
+- Simplified SEO : the index engine can parse the complete UI code not like the JS dynamic page
+
+_Client-side_
+- Faster after render : you don’t need to use a complete post back to refresh the page
+-  Rich interactions
+- Reduced payload
+
+
+
