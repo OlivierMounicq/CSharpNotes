@@ -446,6 +446,17 @@ _ORM handles CRUD, transaction and concurrency._
 | Rows           | Instance       |
 
 
-
+<table>
+<th>
+<td>Issue</td>
+<td>DataBase</td>
+<td>Object Model </td>
+</th>
+<tr>
+<td>Inheritance</td>
+<td>Table per class <br/>Table per concrete class <br/> Table per class family</td>
+<td>Native support</td>
+</tr>
+</table>
 
 
