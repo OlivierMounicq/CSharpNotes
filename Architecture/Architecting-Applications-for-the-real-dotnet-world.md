@@ -396,4 +396,66 @@ _Client-side_
 - Reduced payload
 
 
+## 5 Data Access Layer
+
+### 5.1 What is the DAL ?
+
+- Talks to DB
+- Abstract always SQL
+- Handles transaction
+- Adapt object model to relational model
+
+### 5.2 Business Layer selection impacts DAL
+
+#### 5.2.1 The different kind of BBL
+
+Business Layer:
+- Transaction script (procedural method)  each method is triggered by the UI, it is UI-centered 
+- Table module : this packages data and behavior together => this approach uses ADO.net (with DataSets and DataTable) / Table centric view
+- Active Record : table row centric view
+- DDD : only pattern which is truly persistent ignorant and it has no knowledge about the DAL
+
+Finally:
+* Table Module and Active Record mix business logic with data access.
+* Transaction script and DDD : Data Access is a separate decision
+* DDD : pure discreet business logic 
+
+#### 5.2.3 The problem : How to move data between DataBase and .NET objects ?
+
+=>  Map SQL results to .NET data types !
+
+With the DDD, we have to do this : __DB Table <-> Data mapper <-> DDD objects__
+
+#### 5.3.3 The data mapper
+
+
+### 5.3 The DAL Reponsibilities
+
+- CRUD
+- Transaction : batch of work (Unit of work)
+- Concurrency : manage the conflicts
+
+_ORM handles CRUD, transaction and concurrency._
+
+### 5.4 Object relational mismatch
+
+| Relational DB  | Object models  |
+|:---------------|:---------------|
+| Tables         | Class          |
+| Columns        | Properties     |
+| Rows           | Instance       |
+
+
+-------------------------------------------------------------
+ Centered   Default           Right Left
+  Header    Aligned         Aligned Aligned
+----------- ------- --------------- -------------------------
+   First    row                12.0 Example of a row that
+                                    spans multiple lines.
+
+  Second    row                 5.0 Here's another one. Note
+                                    the blank line between
+                                    rows.
+-------------------------------------------------------------
+
 
