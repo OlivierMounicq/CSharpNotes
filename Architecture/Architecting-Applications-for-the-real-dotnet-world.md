@@ -122,7 +122,65 @@ __drawbacks__
 - break the Single Responsibility Principle 
 - becomes painful as logic complexity grows
 
-#### 2.2.2 2<sup>nd</sup> 
+#### 2.2.2 2<sup>nd</sup> BLL approach : Table module
+
+- Each class represents a table : the class is the abstraction over the a database table
+- the class implements DataTable, DataSet
+- the table module approach is gone out of the vogue as Entity Framework has become the most popular 	option for the DAL
+
+__Drawbacks__
+- considered a legacy approach
+- this approach does tightly bind your business logic together with your data access layer.
+- the structure of your DataTable will traditionally match your database schema.
+
+#### 2.2.3 3<sup>rd</sup> BLL approach : Active Record
+
+- each instance represents a DB row
+- class knows how to persist itself
+- contain business logic
+- can add static methods to work on all table records
+- often implemented using : Entity Framework / Linq-to-SQL / Subsonic / Castle ActiveRecord (abstraction over NHibernate)
+
+__Pros__
+- Simple and obvious
+- Speedy dev and changes
+- compliments CRUD app
+- good for simple domain
+- No OR mismatch
+- Honors YAGNI
+
+__Drawbacks__
+- Rigid : Domain model = DB => if the database model changes, you have to update the business logic layer
+- leads to god object (anti-pattern)
+- low cohesion : break Single Responsibility Principle : by definition, this pattern mixes the data access with the business logic
+- hard to test because the the BBL is highly tied to the database. It’s very difficult to inject a DB mock
+- tricky transaction: each instance knows how to save itself, so it can be difficult to manage the transaction
+
+
+#### 4<sup>th</sup> BLL approach : DDD
+
+What if I designed my classes without worrying what the database looks like ?  
+How would I design my object model to best solve the business problem ?  
+
+The big idea : structure your business logic however you desire without feeling constrained about the database structure.	
+
+For instance:
+_DB Tables_ : Customer / Address / Purchase  
+_Classes_ : Member (with list of addresses) / Order  
+
+__Pros__
+- Manage complexity
+- Leverage design patterns
+- Speak business language
+- Abstract ugly DB schema
+- Compliments large team
+- Reusable
+ 
+__Cons__
+- learning curve
+- time-consuming design
+- long-term commitment
+- DB mapping overhead
 
 
 
