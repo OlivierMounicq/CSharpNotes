@@ -65,7 +65,7 @@ Date(fast) [Missed deadline] / cost (cheap) [Blown budget] / Quality (good) [Tec
 - uptime : multiply the server to avoid the downtime during the maintenance
 - reusable : the tiers dedicated to the database could be use by different application hosted on different tiers
 
-<u>Drawbacks of the tiers</u>
+<u>Drawbacks of the tiers</u>  
 - performance costs
 - increased complexity
 
