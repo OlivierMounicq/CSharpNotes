@@ -47,6 +47,13 @@ internal class Program
         Console.SetWindowSize(20,2);
         Timer timer = new Timer(TimerProcedure, null, TimeSpan.Zero, TimeSpan.FromSecond(1));
         Console.ReadLine();
+        timer.ToString(); //to avoid the frozen timer in the debug mode
+        //Or
+        GC.KeepAlive(timer);
     }
 }
 ```
+
+In the debug mode, the JIT compiler tells the GC that the local variable lifetime as to extended until the end of the methods.
+
+The method ```GC.KeepAlive``` extends the local root's scope
