@@ -667,3 +667,16 @@ Question to ask:
 
 
 
+### 6.y Moving to level 2 : focus on the pain
+
+| Pain                                        | Potential solution             |
+|:--------------------------------------------|:-------------------------------|
+| Redundant queries / DML                     |  Repository pattern            |
+| Inability to unit test without hitting DB   | Repository pattern             |
+| Difficulty styling erver-side controls      | MVC, KO, Angular               |
+| Excessive postbacks to support response UI  | KO, Angular                    |
+| Fat controller / Redundance BL Interactions | Service Layer                  |
+| Other clients desire service                | SOA or shared library          |
+| Data access performance                     | Micro ORM (Dapper, ORMLite...) |
+| Ugly data schema / Multiple Datasources     | Repository Pattern             |
+| Complex business logic                      | DDD                            |
