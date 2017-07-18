@@ -638,3 +638,32 @@ Question to ask:
 - __Risk__ : Are we placing business logic in Stored Procedure ? Separate concerns
 
 
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+### 6.x Feature comparison
+
+| Feature                        | Level 1 | Level 2 | Level 3 |
+|:-------------------------------|:--------|:--------|:--------|
+|Centralized Data Access         |         |    ?    |    X    |
+| Mockable Data Access           |         |    ?    |    X    |
+| Central Lifetime management    |         |    ?    |    X    |
+| Separation of concerns         |         |    ?    |    X    |
+| Domain-Driven Design           |         |    ?    |    X    |
+| Unit testing friendly          |         |    ?    |    X    |
+| Large team friendly            |         |    ?    |    X    |
+| Service Oriented               |         |    ?    |    X    |
+| Honors SOLID principles        |         |    ?    |    X    |
+| Single-page App (SAP) friendly |         |    ?    |    X    |
+| Sinplest thing / YAGNI         |     X   |    ?    |         |
+
+
+
