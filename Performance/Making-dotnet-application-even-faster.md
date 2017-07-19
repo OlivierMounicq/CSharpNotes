@@ -57,3 +57,44 @@ internal class Program
 In the debug mode, the JIT compiler tells the GC that the local variable lifetime as to extended until the end of the methods.
 
 The method ```GC.KeepAlive``` extends the local root's scope
+
+### 1.4 Workstation GC
+
+* There are multiple GC flavors
+* Workstation GC is "kind of" suitable for client apps (WPF, console, service....)
+  * The default for almost .net applications
+  * unless the application runs inside ASP.NET
+* GC runs on a single thread (concurrent or non concurrent)
+* Concurrent workstation GC
+  * Special GC thread : it is not triggered when the memory is full, it tries to optimize the garbage collection
+  * Runs concurrently with application thread, only shot suspension
+* Non-concurrent workstation GC:
+  * No special GC thread
+  * One of the app threads does the GC
+  * All threads re suspended during GC
+  
+#### 1.4.1 Server GC
+
+* One GC thread per logical processor, all working at once
+* Separate heap area for each logical processor
+* until the CLR 4.5, server GC was non-concurrent
+* in CLR 4.5, server becomes concurrent
+  * Now a reasonable default for many nigh-memory apps
+ 
+#### 1.4.2 Configuration
+
+* Configure preferred flavor in __app.config__
+  * ignored if invalid
+  
+```xml
+<?xml version = "1.0" encoding="UTF-8" ?>
+<configuration>
+    <runtime>
+        <gcServer enabled="true|false" />
+        <gcConcurrent enabled="true|false" />
+    </runtime>
+</configuration>
+```
+
+  
+  
