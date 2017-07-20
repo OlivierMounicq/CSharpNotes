@@ -15,27 +15,36 @@ There are three different kinds of resources:
 - full unmanaged resource object : the resource lives outside of the CLR's heap memory (native resource).
 
 
-### 1.3 Why to use the method Dispose ?
+### 1.3 Why to use the Finalizer
 
-First, the Dispose method is __never called by the GC__. We use Dispose method to prepare the instance to be ready to delete by GC. Generally, we use ```using``` keyword to call automatically the ```Dispose``` method.
+The GC pushes all object with a ```Finalize``` method in a special queue : _Finalize queue_. And there is a thread dedicated to this queue. Its goal is simply : calling the ```Dispose``` method for each object in this queue and pop up the object from this queue.
+
+### 1.4 Why to use the method Dispose ?
+
+First, the Dispose method is __never called by the GC__. We use Dispose method to prepare the instance to be ready-deleted. Generally, we use ```using``` keyword to call automatically the ```Dispose``` method.
 
 Actually, there are two cases to use Dispose method:
-- using dispose method with managed resource : actually, 
+- using dispose method with managed resource : actually you want to clean the object before its deletion by the GC. But don't forget: even you call the ```Dispose``` method, you won't trigger garbage collection.
+- using to dispose the unmanaged resource with also using the ```Finalize``` method to set up the security in order to be sure that the unmanaged resources will always be destroyed. (the CLR does not the manage the space of the unmanaged resource, so we must define explicitly the workflow to clean up the memory)
 
-you decide when to free up memory space. It's deterministic. Otherwise, if the CLR handdles the resource's memory destruction, the workflow will be undeterministic. (you don't when the garbage collector will release the memory space).
-- using to dispose the unmanaged resource with also using the Finalize method to set up the security in order to be sure that the unmanaged resources will always be destroyed. (the CLR does not the manage the space of the unmanaged resource, so we must define explicitly the workflow to clean up the memory)
+Actually the managed resources are totally managed by the garbage collector (the allocation and the deallocation). So when there is no reference pointing to object, the memory used by the object will be free by the garbage collector.  
+But if the object owns unmanaged resource (like file, database connection, ...), you must delete __explicitly__ the reference of unmanaged resource otherwise the object won't be deallocated (because the reference from the unmanaged resource is considered as a root keeping the object in the memory).
 
-Actually the managed resources are totally managed by the garbage collector (the allocation and the deallocation). So when there is no reference pointing to object, the memory used by the object will be free by the garbage collector.
-But if the object owns unmanaged resource (like file, database connection, ...), you must delete the reference of unmanaged resource otherwise the object won't be deallocated.
-
-To deallocate explicitly the unmanaged resource, you have to create and call a _Dispose_ method (of the _IDisposable_ interface) to explain the deallocation of the unmanaged resource.
+To deallocate explicitly the unmanaged resource, you have to create and __call__ a ```Dispose``` method (of the ```IDisposable``` interface) to explain the deallocation of the unmanaged resource. 
 
 
 ## 2. Dispose vs Finalize
 
-### 2.1 Dispose
+### 2.1 Summary
 
-So the _Dispose_ method is used to explain how to deallocate the unmanaged/managed resource.
+So the methods:
+- ```Dispose``` is mandatory for the objects using unmanaged resources and we explain how to close/clean/delete the unmanaged resource
+- ```Finalize``` method is used to force the ```Dispose``` method calling in the case the developer has forgotten to call explicitly the ```Dispose``` method in his/her code.
+
+So there are two cases for the object with unmanaged resource reference:
+- either the developer call explicitly or by using the ```using``` keyword the ```Dipose```method => everythin is OK for the GC: it can to delete the object
+- the developer forgot to call the ```Dispose``` method : in this case, we have to use the Finalizer. All objects with a ```Fina
+
 
 
 ### 2.2 Finalize & destructor
