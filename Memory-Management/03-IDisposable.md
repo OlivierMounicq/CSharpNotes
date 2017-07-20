@@ -17,8 +17,12 @@ There are three different kinds of resources:
 
 ### 1.3 Why to use the method Dispose ?
 
+First, the Dispose method is __never called by the GC__. We use Dispose method to prepare the instance to be ready to delete by GC. Generally, we use ```using``` keyword to call automatically the ```Dispose``` method.
+
 Actually, there are two cases to use Dispose method:
-- using dispose method with managed resource : you decide when to free up memory space. It's deterministic. Otherwise, if the CLR handdles the resource's memory destruction, the workflow will be undeterministic. (you don't when the garbage collector will release the memory space).
+- using dispose method with managed resource : actually, 
+
+you decide when to free up memory space. It's deterministic. Otherwise, if the CLR handdles the resource's memory destruction, the workflow will be undeterministic. (you don't when the garbage collector will release the memory space).
 - using to dispose the unmanaged resource with also using the Finalize method to set up the security in order to be sure that the unmanaged resources will always be destroyed. (the CLR does not the manage the space of the unmanaged resource, so we must define explicitly the workflow to clean up the memory)
 
 Actually the managed resources are totally managed by the garbage collector (the allocation and the deallocation). So when there is no reference pointing to object, the memory used by the object will be free by the garbage collector.
