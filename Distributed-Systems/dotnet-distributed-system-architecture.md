@@ -29,4 +29,8 @@
 - Group membership maintained in many places
 - Authorization distributed
 
+### 1.5 Logging
+
+- Debbuging distributed application is hard
+- 
 
