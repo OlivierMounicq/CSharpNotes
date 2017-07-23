@@ -167,3 +167,7 @@ GC.CollectionCount(int idGeneration);
 #### How generate a hash code ?
 
 The common way to generate the hash code is to use a pair of prime number.
+
+### IList<struct>
+
+[C# List of struct](https://generally.wordpress.com/2007/06/21/c-list-of-struct/)
