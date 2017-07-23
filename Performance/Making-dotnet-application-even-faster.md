@@ -184,3 +184,18 @@ GC.Collect();
   - an array of reference type stores references ! so the array is not stored contiguously.
 - Value types are easier for the GC to traverse  
 
+### 2.3 Reducing allocation
+
+- More allocations mean more work for GC
+  - Allocating many large objects is especially bad
+- PerfView can measure allocation sources and GC performance
+- _Buffering_ can reduce small object allocation : ```StringBuilder``` vs ```String```
+- Pooling can reduce large object allocation (cf [Object pool pattern](https://en.wikipedia.org/wiki/Object_pool_pattern))
+  - e.g : WCF BufferManager
+
+### 2.4 Finalization best practices
+
+- keep your finalizers at the leaves of the object graph
+- never block a finalizer
+- make finalizable class very small
+- beware of circular dependencies between the finalizable objects
