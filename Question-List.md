@@ -177,4 +177,8 @@ The common way to generate the hash code is to use a pair of prime number.
 
 We caannot use a Value Type with the ```lock``` keyword because a value type does not contain a Sync Block Index.
 
+```cs 
+lock(<reference type>)
+```
+
 
