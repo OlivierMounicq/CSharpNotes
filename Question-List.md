@@ -168,6 +168,13 @@ GC.CollectionCount(int idGeneration);
 
 The common way to generate the hash code is to use a pair of prime number.
 
-### IList<struct>
+#### IList<struct>
 
 [C# List of struct](https://generally.wordpress.com/2007/06/21/c-list-of-struct/)
+
+
+#### lock and Value Type
+
+We caannot use a Value Type with the ```lock``` keyword because a value type does not contain a Sync Block Index.
+
+
