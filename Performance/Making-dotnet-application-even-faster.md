@@ -168,3 +168,19 @@ GC.Collect();
 
 
 * the Finalize queue is a root
+
+
+
+## 2. Garbage Collector and Performance counters
+
+### 2.1 The metrics
+
+
+### 2.2 Switching to value type
+
+- 1. The value types are more friendly to the GC : the value types is always smaller than the reference type (Sync Block Index + Method Table Pointer)
+- 2.The value types are embedded in their container
+  - an array of struct is stored contiguously in memory
+  - an array of reference type stores references ! so the array is not stored contiguously.
+- Value types are easier for the GC to traverse  
+
