@@ -199,3 +199,264 @@ GC.Collect();
 - never block a finalizer
 - make finalizable class very small
 - beware of circular dependencies between the finalizable objects
+
+## 3. Vectorizing CPU-Bound Algorithms
+
+### 3.1 SIMD in Modern Processor
+
+- Classic processors have instructions operating on scalar values
+  - ```ADD EAX, DWORD PTR [ECX]```
+  - Adds numbers, operates on processor registers
+  - registers are small and fast on-chip memory locations that can be accessed much faster than the main memory
+ 
+- Modern processors have instructions operating on vector values
+  - one instruction can operate on multiple scalar elements (which is a vector)
+  - SIMD = Single Instruction Multiple Data
+  - SSE Introduce 16-byte instructions (x86 architecture)
+  - AVX introduces 32-byte instructions (AVX stands dor Advanced Vector Extension)
+ 
+### 3.2 More on SIMD instructions
+
+- Instruction latency
+  - ADD has a latency of 1 cycle and so does PADDD
+  - Processors have specialized vector execution units
+
+- Instruction throughput
+  - Processors have a complex execution pipeline that affects throughput
+  - ADD has throughput of 3 instructions per cycle
+  - PADDD has throughput of 2 insttructions per cycle (but it does 4x the work)
+
+- Conclsion : we should use vector instructions when possible
+  - => But vectorizing algorithms is not always easy
+
+### 3.3 SIMD Vector Ads
+
+We would like to vectorize this loop:
+
+```cs  
+for(int i = 0; i< N; i++)
+{  
+	C[i] = A[i] + B[i]; //A,B C are arrays of int
+} 
+```  
+
+- Add 4 or 8 integers in each iteration, requires 4x or 8x fewer iterations
+  - No dependencies between iterations, sile compilers can even do this automatically
+
+In this case, vectorization would be harder
+  
+```cs  
+for(int i = 0; i< N; i++)
+{  
+	A[i] += A[i-1]; 
+} 
+```  
+
+### 3.4 Microsoft.Bcl.Simd
+
+- C&#35; does not have any special sauce for vector instructions
+- Microsoft.Bcl.Simd and RuyJIT enable SIMD for C# code (2014)
+  - If RyuJIT is not installed, the SIMD library falls back to scalar instructions
+  - Currently, RuyJIT only supports x64
+
+#### 3.4.1 New types
+
+- ```Vector4f``` represents _four packed_ floating-point values
+- for more hardware flexibility, use ```Vector<float>```, ```Vector<int>```, ```Vector<double>``` ...
+  - ```Vector<T>.Length``` returns how many ```T```'s fit in a hardware SIMD register
+
+Vectorize versio of array addition
+
+```cs  
+for(int i = 0; i< N; i+ = Vector<int>.Length)
+{  
+	Vector<int> vA = new Vector<int>(A,i);
+	Vector<int> vB = new Vector<int>(B,i);
+	Vector<int> vC = vA + vB;
+	vc.Copy(C,i);
+} 
+```    
+
+### 3.4.2 Example
+
+The former code:
+
+```cs
+public static void MultiplyScalar(int[] A, int M, int R, int[] B, int N, int[] C)
+{
+	for(int i = 0; i < M; i++)
+	{
+		for(int k = 0; k < R; ++k)
+		{
+			for(int j = 0; j < N; ++j)
+			{
+				C[i * M +j] += A[i * M + k] * B[k * R + j];
+			}
+		}
+	]
+}
+```    
+
+
+```cs
+public static void MultiplyVector(int[] A, int M, int R, int[] B, int N, int[] C)
+{
+	int vecSize = Vector<int>.Length;
+	Trace.Assert(N % vecSize == 0, "N must be divisible by the vector length");
+	
+	for(int i = 0; i < M; i++)
+	{
+		for(int k = 0; k < R; ++k)
+		{
+			for(int j = 0; j < N; j += vecsize)
+			{
+				Vector<int> vC = new Vector<int>(C, i * M + j);
+				Vector<int> vB = new Vector<int>(B, k * R + j);
+				Vector<int> vA = new Vector<int>(A[i * M + k]);
+				vC += vA * vB;
+				vC.CopyTo(C, i * M + j);
+			}
+		}
+	]
+}
+``` 
+
+### 3.4.3 The configuration setting
+
+Don't forget to set the environment variables
+
+```bat
+@echo off
+SET COMPLUS_AltJit=*
+SET COMPLUS_FeatureSIMD=1
+``` 
+
+  
+  
+  
+  
+
+
+
+
+  
+  
+  
+
+
+
+## 4 - JIT Optimizations and .NET Native
+
+### 4.1 JIT Optimizations
+
+#### 4.1.1 JIT presentation
+
+C&#35; Source => C&#35; Compiler => IL / MSIL
+
+- JIT compiler compiles code on a method-by-method basis : 
+  - the method must be called to be compiled
+  - the method is called at the first time
+- JIT Compilation can hurt startup times
+- We can use PerfView to get a detailled report of JIT statistics of JIT
+  - PerfView can produce detailed JIT time reports => JIT bottleneck ?
+  - NGen.exe can precompile IL to native code before runtime (NGen stands for Native Image Generator)
+  - JIT has been remplaced by RuyJIT
+  
+### 4.1.2 Inlining
+
+- Replace method call with method body:
+
+Before
+
+```cs  
+int add(intx, int y)
+{
+	return x+y;
+}
+
+int z = add(5,3);
+```
+
+After
+
+```cs  
+int z = 5+3;
+```
+
+- Pros
+  - Gets rid of method call overhead
+  
+- Cons
+  - Code size grows
+  - Debbuging is a little harder : you won't see all the calls in the call stack  
+  
+- It is important to inline very small methods (such as properties) which are called very often   
+  - Verifying if a method was inlined is hard work
+
+
+#### 4.1.3 Tuning inlining
+
+JIT gives us a certain degree of control over whether and when inlining happens
+We can inhibit or recommend inlining by using the ```MethodImpl``` attribute
+ 
+The JIT will inline _small methods_  that :
+- don't contain exception handling (try/catch)
+- Are not virtual
+- Are not recursive
+
+
+To control inlining, use ```[MethodImpl]```  
+
+```cs
+[MethodImpl(MethodImplOptions.NonInlining)]
+void Method1(){ }
+```
+
+You tell to JIT that it should try to inline the method
+```cs
+[MethodImpl(MethodImplOptions.AggressiveInlining)]
+void Method2(){ }
+```
+
+#### 4.1.4 Array Bounds Check Elimination
+
+- The JIT must ensure all array accesses are valid
+  - checking this take a few cycle
+  - the JIT can eliminate the check under som circumstances
+  
+- Especially important in tight, small loops that go from 0 to N
+  - JIT tries to recognize this pattern and avoid the bounds check if possible  
+  
+- The JIT will eliminate the bounds check if:
+  - the array reference is local : in this case, the array won't remplaced by another one during the runtime
+  - The loop pattern is from 0 to ```array.Length``` and not the reverse. You should not skip elements and not start from something other than 0
+ 
+```cs
+int[] array = ....;
+
+for(int i = 0; i < array.Lenght; i++)
+{
+	//use only array[i] to access the array here
+}
+``` 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
