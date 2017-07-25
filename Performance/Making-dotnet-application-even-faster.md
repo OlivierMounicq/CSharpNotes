@@ -362,7 +362,7 @@ C&#35; Source => C&#35; Compiler => IL / MSIL
   - NGen.exe can precompile IL to native code before runtime (NGen stands for Native Image Generator)
   - JIT has been remplaced by RuyJIT
   
-### 4.1.2 Inlining
+#### 4.1.2 Inlining
 
 - Replace method call with method body:
 
@@ -439,6 +439,14 @@ for(int i = 0; i < array.Lenght; i++)
 	//use only array[i] to access the array here
 }
 ``` 
+
+### 4.2 .NET Native
+
+- .NET Native ("Project N") produces  fully precompilled _native executable_ that does not depend n the JIT or the .NET Framework
+
+__Standart .NET compilation pipeline__  
+C&#35; source => C&#35; Compiler => IL => JIT Compiler => Native Code
+
 
 
 
