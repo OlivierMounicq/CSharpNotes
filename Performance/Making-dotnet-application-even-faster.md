@@ -331,25 +331,98 @@ SET COMPLUS_AltJit=*
 SET COMPLUS_FeatureSIMD=1
 ``` 
 
+## 4. CPU Optimizations
+
+### 4.1 Understanding the CPU
+
+#### 4.1.1 Cache structure on modern processors
+
+- Memory is slow, processors are fast
+  - on Core i7, main memory access takes approximately 60ns (> 100 cycles)
+  - Core i7 can do 2 vectors add instructions per cycle
+  - One memory access oin the same time as > 200 vector add instructions
+- This is the _memory wall_  
+- Processors have caches a cache is a small block of fast memory
+- Processors have caches that reduce the memory overhead
+  - Multiple caches level (L1, L2, L3 and sometimes L4 on modern processors)
   
+- Processor tries to get data from the cache L1, if it does not find the data it will ask to L2 cache otherwise it stop and so on.
+- Each time the processor reads the main memory, it will bring the data inside the caches (L1, L2 and L3)
+  - Each time, the processor reads the cache L3, it brings the data into the cache L2 and L1
+  - Each time, the processor reads the cache L2, it brings the data into the cache L1
+
+- Cache coherence with Windows :  it is impossible for a core to see a cached value that was modified by another core (even the modern architecture give the possibility to do that)
+
+
+#### 4.1.2 Cache Coherence and Invalidation
+
+- MESI cache coherence protocol
+  - MESI : Modified, Exclusive, Shared, Invalid
+- It is possible to share data unintentionally
+
+### 4.2 Processor pipelines
+
+- "Classic" processors execute instructios one after the other
+  - e.g : 8086 processor
+- Modern processors reorder instructions : the modern processors are happy to reorder instructons if they think it can help. This feature may cause some issues with the low-latency programming and lock-free algorithms.
+- Modern processors have a deep execution pipeline which allows multiple instructions to execute at once
+  - A processor has multiple executions units :
+    - Vector floating-point | Memory Load | Arithmetic-Logical | Memory Store | Vector Integer
+  - We can execute different kinds of operation in the same time : these units can run in parallel
+  - Multiple instructions can execute in parallel
+  - => And this is also why processor like to reorder and split instructions|
+- ILP : Instruction-level parallelism
+- ```ADD DWORD PTR[EAX], ECX``` reads memoryn performs add, stores result back into memory
+  - Each tasks can be perform by an unit
+
+| Memory Load           | Arithmetic-Logical         | Memory Store              | 
+| read from address EAX | add value of ECX to result | store back to address EAX |  
+
+- Modern processor actually have pipelines with up to 25 different stages
+
+### 4.3 Data dependencies and Stalls
+
+- An instruction might depend on the result of preceding instruction
+- The processor can short-circuit around the dependency (forwarding)
+- Specially, store-to-load forwarding
+  - Very important optimization 
+  - Easy to inhibit by stores and loads that are not the same size
   
-  
-  
+### 4.4 Eliminating data dependencies
 
+- Data dependency => it is hard for the processor to execute multiple instructions
 
+```cs
+int max = int.MinValue;
+for(int i = 0; i < N; i++)
+{
+	max = Math.Max(max, A[i]); // A is an int[]
+}
+```
 
+- To eliminate the dependencies, we can __unroll_ :
 
-  
-  
-  
+```cs
+int max1 = int.MinValue;
+int max2 = int.MinValue;
 
+for(int i = 0; i < N; i += 2)
+{
+	max1 = Math.Max(max, A[i]);
+	max2 = Math.Max(max, A[i+1]);
+}
+int max = Math.Max(max1, max2);
+```
 
+- up to 37% speedup 
 
-## 4 - JIT Optimizations and .NET Native
+    
 
-### 4.1 JIT Optimizations
+## 5 - JIT Optimizations and .NET Native
 
-#### 4.1.1 JIT presentation
+### 5.1 JIT Optimizations
+
+#### 5.1.1 JIT presentation
 
 C&#35; Source => C&#35; Compiler => IL / MSIL
 
@@ -362,7 +435,7 @@ C&#35; Source => C&#35; Compiler => IL / MSIL
   - NGen.exe can precompile IL to native code before runtime (NGen stands for Native Image Generator)
   - JIT has been remplaced by RuyJIT
   
-#### 4.1.2 Inlining
+#### 5.1.2 Inlining
 
 - Replace method call with method body:
 
@@ -394,7 +467,7 @@ int z = 5+3;
   - Verifying if a method was inlined is hard work
 
 
-#### 4.1.3 Tuning inlining
+#### 5.1.3 Tuning inlining
 
 JIT gives us a certain degree of control over whether and when inlining happens
 We can inhibit or recommend inlining by using the ```MethodImpl``` attribute
@@ -418,7 +491,7 @@ You tell to JIT that it should try to inline the method
 void Method2(){ }
 ```
 
-#### 4.1.4 Array Bounds Check Elimination
+#### 5.1.4 Array Bounds Check Elimination
 
 - The JIT must ensure all array accesses are valid
   - checking this take a few cycle
@@ -440,9 +513,9 @@ for(int i = 0; i < array.Lenght; i++)
 }
 ``` 
 
-### 4.2 .NET Native
+### 5.2 .NET Native
 
-#### 4.2.1 Compilation chain
+#### 5.2.1 Compilation chain
 
 - .NET Native ("Project N") produces  fully precompilled _native executable_ that does not depend n the JIT or the .NET Framework
 
@@ -465,14 +538,14 @@ __ilc.exe__
 
 MDIL : Machine Dependent Intermediate Language
 
-#### 4.2.2 .NET Native benefits
+#### 5.2.2 .NET Native benefits
 
 - Higher-quality compilation but slower compilation build time
 - No dependency on .NET framework installation
   - a minimal CLR runtime is still present : mrt100_app.dll (mrt: minimal runtine)
 - smaller memory footprint, faster startup
 
-#### 4.2.2 .NET Native restriction
+#### 5.2.2 .NET Native restriction
 
 - only available to __Windows Store app__ : we cannot use .NET Native with WPF, ASP.NET, WCF Services...
 - some "dynamic" APIs don't work
@@ -481,7 +554,6 @@ MDIL : Machine Dependent Intermediate Language
   - Dealt with using runtime directives (.rd.xml files)
   - many additonal directives
   - Serialization needs to be declared
-  - 
 
 
 
