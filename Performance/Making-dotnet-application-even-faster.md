@@ -277,7 +277,7 @@ for(int i = 0; i< N; i+ = Vector<int>.Length)
 } 
 ```    
 
-### 3.4.2 Example
+#### 3.4.2 Example
 
 The former code:
 
@@ -321,7 +321,7 @@ public static void MultiplyVector(int[] A, int M, int R, int[] B, int N, int[] C
 }
 ``` 
 
-### 3.4.3 The configuration setting
+#### 3.4.3 The configuration setting
 
 Don't forget to set the environment variables
 
@@ -330,6 +330,54 @@ Don't forget to set the environment variables
 SET COMPLUS_AltJit=*
 SET COMPLUS_FeatureSIMD=1
 ``` 
+
+### 3.5 Vectorizing Minimum-Maximum
+
+How to vectorize that ?
+
+```cs
+int min = int.MaxValue;
+int max = int.MinValue;
+
+for(int i = 0; i < N; i++)
+{
+  min = Math.Min(min, A[i]);
+  max = Math.Max(max, A[i]);
+}
+```
+
+So apply that:
+
+
+```cs
+Vector<int> vmin  = new Vector<int>(int.MaxValue);
+Vector<int> vmax  = new Vector<int>(int.MinValue);
+
+for(int i = 0; i < N; i += Vector<int>.Length)
+{
+    Vector<int> va = new Vector<int>(A,i);
+    
+    Vector<int> vless = Vector.LessThan(va, vmin);
+    vmin = Vector.ConditionalSelect(vless, va, vmin);
+    
+    Vector<int> vgrtr = Vector.GreaterThan(va, vmax);
+    vmax = Vector.ConditionalSelect(vgrtr, va, vmax);
+}
+
+
+
+int min = int.MaxValue;
+int max = int.MinValue;
+
+
+for(int i = 0; i < Vector<int>.Length; ++i)
+{
+  min = Math.Min(min, vmin[i]);
+  max = Math.Max(max, vmax[i]);
+}
+```
+
+
 
 ## 4. CPU Optimizations
 
