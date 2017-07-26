@@ -442,10 +442,48 @@ for(int i = 0; i < array.Lenght; i++)
 
 ### 4.2 .NET Native
 
+#### 4.2.1 Compilation chain
+
 - .NET Native ("Project N") produces  fully precompilled _native executable_ that does not depend n the JIT or the .NET Framework
 
 __Standart .NET compilation pipeline__  
-C&#35; source => C&#35; Compiler => IL => JIT Compiler => Native Code
+C&#35; source __=>__ C&#35; Compiler __=>__ IL __=>__ JIT Compiler __=>__ Native Code
+
+__.NET Native compilation pipeline __  
+
+C&#35; source __=>__ C&#35; Compiler __=>__ IL __=>__ ilc.exe __=>__ .ilexe __=>__ nutc_driver.exe __=>__ MDIL __=>__ rhbind.exe __=>__ Native Code
+
+__ilc.exe__
+- Marshaling : for the interuption (initially made by the CLR)
+- sg.exe (serialization of the assemblies : JSON serialization, XML serialization, data contract serialization)
+- Assembly merge (the assemblies are merges with also the .NET framework and only the methods used will be merged - any dead code and dead dependencies are eliminated
+- Merge .Net Fx
+- IL optimization
+- nutc_driver.exe contains a C++ optimizing compiler. The goal is to produce a highly optimized machine code
+- rhbind.exe : binds the MDIL binary and produces the final machine code
+
+
+MDIL : Machine Dependent Intermediate Language
+
+#### 4.2.2 .NET Native benefits
+
+- Higher-quality compilation but slower compilation build time
+- No dependency on .NET framework installation
+  - a minimal CLR runtime is still present : mrt100_app.dll (mrt: minimal runtine)
+- smaller memory footprint, faster startup
+
+#### 4.2.2 .NET Native restriction
+
+- only available to __Windows Store app__ : we cannot use .NET Native with WPF, ASP.NET, WCF Services...
+- some "dynamic" APIs don't work
+  - Reflection
+  - Common in XAMl apps that use data binding
+  - Dealt with using runtime directives (.rd.xml files)
+  - many additonal directives
+  - Serialization needs to be declared
+  - 
+
+
 
 
 
