@@ -69,8 +69,8 @@
   - ```RemoveAt``` : you rearrange the array to compact it : removing an element near the beginning of the list is expensive  
   - ```Remove(object)``` : this will take longer than ```RemoveAt(idx)```, must find index by searching elements and then apply ```RemoveAt(idx)``` method
    
-  ```cs
- public class Foo
+ ```cs
+public class Foo
 {
     public static void Run()
     {
@@ -90,6 +90,7 @@
         }        
     }
 }
+
 Foo.Run();  
 ```
   
