@@ -1,7 +1,7 @@
-#Why use the Design Patterns
+# Why use the Design Patterns
 
 
-##The use cases
+## The use cases
 
 
 | Design Pattern | Type | Use case |
