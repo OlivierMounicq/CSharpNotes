@@ -1,9 +1,9 @@
-####1. Some defintions
+#### 1. Some defintions
 - A __type__ defines the blueprint for a value
 - __predefined types__ are the types specially supported by the compiler
 - __Custom type__ is a complex type built from _primitive type_
 
-####2 Type categories
+#### 2 Type categories
 
 There are 4 categories:
 - value type
@@ -11,14 +11,14 @@ There are 4 categories:
 - generic type parameter
 - pointer type
 
-#####2.1 Value type
+##### 2.1 Value type
 
 The value type contains:
 - the most built-in type (all numeric type, char, bool, DateTime),
 - struct, 
 - enum.
 
-#####2.2 Reference type
+##### 2.2 Reference type
 
 The reference types contains:
 - class
@@ -27,7 +27,7 @@ The reference types contains:
 - interface
 - string
 
-####3 Default values
+#### 3 Default values
 
 |Type | Default value |
 |:----|:--------------|
@@ -36,17 +36,17 @@ The reference types contains:
 | char type | '\0' |
 | bool type | false |
 
-####4 Conversion
+#### 4 Conversion
 
-#####4.1 Implicit conversion
+##### 4.1 Implicit conversion
 - always succeed
 - no information lost in the conversion
 
-#####4.2 Explicit conversion
+##### 4.2 Explicit conversion
 - the compiler cannot guarantee the explicit conversion will always succeed
 - information may be lost during the conversion
 
-#####4.3 Examples
+##### 4.3 Examples
 
 ```cs
 int a = 12345;
@@ -54,7 +54,7 @@ long b = x; //implicit conversion
 short c = (short)x; //explicit conversion
 ```
 
-####5 Alias
+#### 5 Alias
 
 
 | Alias   | Class            |
