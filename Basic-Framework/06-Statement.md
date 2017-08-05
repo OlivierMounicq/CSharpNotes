@@ -1,6 +1,6 @@
-#The statments
+# The statments
 
-###For vs Foreach
+### For vs Foreach
 
 The iterator inside the _foreach_ loop is __immutable__.
 
