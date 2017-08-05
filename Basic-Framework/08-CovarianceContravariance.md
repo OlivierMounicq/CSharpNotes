@@ -1,4 +1,4 @@
-##Covariance / Contravariance
+## Covariance / Contravariance
 
 #### Covariance
 
@@ -172,7 +172,7 @@ In the .net framework 4.0, the following interfaces are _covariant_ :
 
 
 
-#####Links
+##### Links
 
 [The theory behind covariance and contravariance in C# 4](http://tomasp.net/blog/variance-explained.aspx/)
 
