@@ -413,6 +413,16 @@ var enumerator = ((GetEnumerator<int>)numbers).GetEnumerator();
 - Clear() method does not affect the size of the array
 - _O(n)_
 
+#### Instantiation of an array
+
+The compiler need only the _nested type_ and the _quantity_ of elements to instantiate. So there are several ways to instantiate the arrays:
+
+```cs
+int[] arr1 = new int[5] ; //[0,0,0,0,0];
+var arr2 = new int[5] ; //[0,0,0,0,0];
+var arr3 = new int[5]{ 1, 4, 9, 16 , 25 } // [1, 4, 9, 16,25]
+int[] arr4 = { 1, 4, 9, 16 , 25 } // [1, 4, 9, 16,25]
+```
 
 #### Equality
 
