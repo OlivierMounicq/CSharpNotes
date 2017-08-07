@@ -445,7 +445,7 @@ int[] myArray = new int[5];
 int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9} };
 ````
 
-#####Instantiate a new array by CreateInstance
+##### Instantiate a new array by CreateInstance
 
 =&gt; This method also initialiaze the elements
 
@@ -453,7 +453,7 @@ int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9} };
 string[] myArray = Array.CreateInstance(typeof(string), 5);
 ````
 
-#####Set values by using __SetValue__ and get value by using __GetValue__
+##### Set values by using __SetValue__ and get value by using __GetValue__
 
 ```cs
 Array a = Array.CreateInstance(typeof(int), 5);
@@ -842,7 +842,7 @@ Namespace : System.Collections.ObjectModel
 |:-----------|:----------------------------|
 | _O(1)_     | ```Dictionary<K,>```        |
 |            | ```HashTable ```            |
-|            | ``ÒrderedDictionary ```     |
+|            | ```OrderedDictionary ```    |
 | _O(log n)_ | ```SortedDictionary<K,V> ```|
 |            | ```SortedList ```           |
 |            | ```SortedList<K,V> ```      |
