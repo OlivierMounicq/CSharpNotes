@@ -65,6 +65,7 @@ namespace InternalGenericList
             }
         }
 
+        //The name of the inner generic list List<T> of the ReadOnlyCollection : list
         public static List<T> GetInternalList<T>(ReadOnlyCollection<T> collection)
         {
             var field = collection.GetType().
@@ -74,6 +75,7 @@ namespace InternalGenericList
             return internalList;
         }
 
+        //The name of the inner array of a generic list List<T>: _items
         public static T[] GetInternalArray<T>(List<T> list)
         {
             var field = list.GetType().
