@@ -67,7 +67,8 @@ namespace InternalGenericList
 
         public static List<T> GetInternalList<T>(ReadOnlyCollection<T> collection)
         {
-            var field = collection.GetType().GetField("list", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            var field = collection.GetType().
+                GetField("list", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             var internalList = field.GetValue(collection) as List<T>;
 
             return internalList;
@@ -75,7 +76,8 @@ namespace InternalGenericList
 
         public static T[] GetInternalArray<T>(List<T> list)
         {
-            var field = list.GetType().GetField("_items", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            var field = list.GetType().
+                GetField("_items", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             var internalArray = field.GetValue(list) as T[];
 
             return internalArray;
