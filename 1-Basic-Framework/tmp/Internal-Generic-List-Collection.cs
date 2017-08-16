@@ -85,7 +85,7 @@ namespace InternalGenericList
             return internalArray;
         }
         
-        //The name of the inner array of a generic list List<T>: _items
+        //Get the version of the list
         public static int GetVersion<T>(List<T> list)
         {
             var field = list.GetType().
