@@ -373,4 +373,6 @@ If the developer forgot to call the _Dispose_ method in his/her code, the _Final
 
 [Dispose pattern](https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx)
 
-[Object.Finalize Method ()](https://msdn.microsoft.com/en-us/library/system.object.finalize(v=vs.110).aspx)
+[Object.Finalize Method ()](https://msdn.microsoft.com/en-us/library/system.object.finalize(v=vs.110).aspx)  
+
+[IDisposable and Thread Safety](http://www.blackwasp.co.uk/ThreadSafeIDisposable.aspx)
