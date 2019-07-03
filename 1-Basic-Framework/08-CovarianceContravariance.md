@@ -1,6 +1,6 @@
 ## Covariance / Contravariance
 
-#### Covariance
+### Covariance
 
 ##### Definition
 
@@ -11,7 +11,10 @@ Let B is convertible to A, X has a covariant type parameter if X&lt;B&gt; is con
 
 To decalare a type parameter as covariant, you must ass the modifier _out_. (See the below example).
 
-##### Example
+
+
+
+###### Example 1
 
 ```cs
 public class Person
@@ -144,6 +147,39 @@ while(enumerator.MoveNext())
 ```
 
 
+```cs
+public class A
+{
+    public override string ToString()
+    {
+        return "class A";    
+    }
+}
+public class B : A
+{
+    public override string ToString()
+    {
+        return "class B";    
+    }
+}
+
+var listB = new List<B>();
+listB.Add(new B());
+listB.Add(new B());
+
+var enumB = listB.AsEnumerable<B>();
+
+IEnumerable<A> enumA = enumB;
+
+foreach(var a in enumA)
+{
+    Console.WriteLine(a.ToString());        
+}
+
+//The output
+//class B
+//class B
+```
 
 ##### Interface & Covariance
 
