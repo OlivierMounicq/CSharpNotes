@@ -9,7 +9,8 @@ Let B is convertible to A, X has a covariant type parameter if X&lt;B&gt; is con
 
 ### 1.2 The modifier _out_
 
-To decalare a type parameter as covariant, you must ass the modifier _out_. (See the below example).
+To decalare a type parameter as covariant, you must add the modifier _out_. (See the below example).  
+And it's a read-only way.
 
 ### 1.3 Example 1
 
@@ -237,6 +238,17 @@ In the .net framework 4.0, the following interfaces are _covariant_ :
 
 
 ## 2/ The contravariance
+
+### 2.1 The definition
+
+
+### 2.2 The modifier _In_
+
+To declare an interface as contravariant, you have to use the modifier _in_ in the declaration.  
+And it's write-only way
+
+
+### 2.3  Example 1
 
 
 
