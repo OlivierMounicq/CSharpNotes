@@ -1,20 +1,17 @@
-## Covariance / Contravariance
+# Covariance / Contravariance
 
-### Covariance
+## 1/ Covariance
 
-##### Definition
+### 1.1 Definition
 
 Let B is convertible to A, X has a covariant type parameter if X&lt;B&gt; is convertible to X&lt;A&gt;.
 
 
-##### The modifier _out_
+### 1.2 The modifier _out_
 
 To decalare a type parameter as covariant, you must ass the modifier _out_. (See the below example).
 
-
-
-
-###### Example 1
+### 1.3 Example 1
 
 ```cs
 public class Person
@@ -92,7 +89,7 @@ personStack.Pop().GetData();
 
 ```
 
-##### IEnumerable
+### 1.4 IEnumerable and the covariance
 
 The interface IEnumerable is convariant. So, for instance: 
 
@@ -146,7 +143,7 @@ while(enumerator.MoveNext())
 
 ```
 
-__Example 2__
+### 1.5 Exemple 2
 
 ```cs
 public class A
@@ -182,7 +179,44 @@ foreach(var a in enumA)
 //class B
 ```
 
-##### Interface & Covariance
+### 1.5 Exemple 3
+
+```
+public class A
+{
+    public override string ToString()
+    {
+        return "class A";    
+    }
+}
+public class B : A
+{
+    public override string ToString()
+    {
+        return "class B";    
+    }
+}
+public void PrintA(IEnumerable<A> enumA)
+{
+    foreach(var a in enumA)
+    {
+        Console.WriteLine(a.ToString());    
+    }
+}
+var listB = new List<B>();
+listB.Add(new B());
+listB.Add(new B());
+
+PrintA(listB);
+
+//The output
+//class B
+//class B
+```cs
+
+
+
+### 1.5 Interface & Covariance
 
 In the .net framework 4.0, the following interfaces are _covariant_ : 
 
@@ -202,14 +236,14 @@ In the .net framework 4.0, the following interfaces are _covariant_ :
 | ``` IQueryable<T> ```|
 
 
+## 2/ The contravariance
 
 
 
 
 
 
-
-##### Links
+## 3/ Links
 
 [The theory behind covariance and contravariance in C# 4](http://tomasp.net/blog/variance-explained.aspx/)
 
