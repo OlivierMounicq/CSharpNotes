@@ -152,9 +152,10 @@ class Program
 ### 4.The Dispose pattern
 
 #### 4.1.When should you use and implement the IDisposable interface and the finalizer?
+Only when you use _unmanaged resource_ : 
 
 - Unmanaged resource : Dispose + Finalizer 
-- Managed resource : Dispose
+
 
 Never use the Finalizer method in the case of the full managed resource: the CLR does not need an explanation to free up the memory. Otherwise, the garbage collector will add the object in Finalizer queue, apply the useless methods defined in Finalizer and remove the objec from the Finalizer queue: you waste the time of the Garbage Collector.
 
